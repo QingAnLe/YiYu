@@ -6,7 +6,7 @@
   "repo": "https://github.com/jiuli12/Script",
   "apps": [{
     "id": "jiuli_zq",
-    "name": "中青看点",
+    "name": "中青",
     "keys": ["youthheader_zq", "read_zq", "red_zq", "readtime_zq","youthheader_zq2", "read_zq2", "red_zq2", "readtime_zq2"],
     "author": "@jiuli",
     "settings": [
