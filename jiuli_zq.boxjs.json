@@ -9,7 +9,20 @@
     "name": "企鹅读书",
     "keys": ["youthheader_zq", "read_zq", "red_zq", "readtime_zq","youthheader_zq2", "read_zq2", "red_zq2", "readtime_zq2"],
     "author": "@jiuli",
-    "settings": [{
+    "settings": [
+       {
+         "id": "notifytimes",
+         "name": "通知频率 (点击查看设置说明)",
+         "val": "",
+         "type": "number",
+         "desc": "设定通知频率，前三次为全部通知，之后转盘次数/设定频率整除时通知，如设置0为无通知，设置1为全部通知，设置其他数可整除余0时通知，默认值50"
+       },{
+          "id": "zqlogs",
+          "name": "调试日志",
+          "val": false,
+          "type": "boolean",
+          "desc": "调试日志开关，默认关闭"
+       },{
         "id": "qeSuffix",
         "name": "当前账号",
         "val": "1",
