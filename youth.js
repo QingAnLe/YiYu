@@ -1,5 +1,4 @@
 let s = 200 //各数据接口延迟
-const name = "中青看点";
 const $ = new Env("中青看点");
 let notifyInterval = $.getdata("notifytimes")||50; //通知间隔，默认抽奖每50次通知一次，如需关闭全部通知请设为0
 let logs = $.getdata('zqlogs')||false, rotaryscore=0,doublerotary=0,signresult; 
@@ -75,23 +74,21 @@ if ($.isNode()) {
           timeArr.push(READTIME[item])
         }
       })
-      console.log(`============ 共${cookiesArr.length}个中青账号  =============\n`)
-      console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
-	} else {
-		cookiesArr.push($.getdata('youthheader_zq'));
-		redpArr.push($.getdata('red_zq'));
-		readArr.push($.getdata('read_zq'));
-		timeArr.push($.getdata('readtime_zq'));
-		// 根据boxjs中设置的额外账号数，添加存在的账号数据进行任务处理
-		let qeCount = ($.getval('qeCount') || '1') - 0;
-		for (let i = 2; i <= qeCount; i++) {
-		  if ($.getdata(`youthheader_zq{i}`)) {
-			  cookiesArr.push($.getdata(`youthheader_zq{i}`));
-			  redpArr.push($.getdata(`red_zq{i}`));
-			  readArr.push($.getdata(`read_zq{i}`));
-			  timeArr.push($.getdata(`readtime_zq{i}`));
-		  }
-		}
+} else {
+	cookiesArr.push($.getdata('youthheader_zq'));
+	redpArr.push($.getdata('red_zq'));
+	readArr.push($.getdata('read_zq'));
+	timeArr.push($.getdata('readtime_zq'));
+	// 根据boxjs中设置的额外账号数，添加存在的账号数据进行任务处理
+	let qeCount = ($.getval('qeCount') || '1') - 0;
+	for (let i = 2; i <= qeCount; i++) {
+	  if ($.getdata(`youthheader_zq{i}`)) {
+		  cookiesArr.push($.getdata(`youthheader_zq{i}`));
+		  redpArr.push($.getdata(`red_zq{i}`));
+		  readArr.push($.getdata(`read_zq{i}`));
+		  timeArr.push($.getdata(`readtime_zq{i}`));
+	  }
+	}
 }
 
 const firstcheck = $.getdata('signt');
@@ -102,26 +99,26 @@ function GetCookie() {
    if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/TaskCenter\/(sign|getSign)/)) {
    const signheaderVal = JSON.stringify($request.headers)
     if (signheaderVal)        $.setdata(signheaderVal,'youthheader_zq'+ $.idx)
-    $.log(`[${name + $.idx}] 获取Cookie: 成功,signheaderVal: ${signheaderVal}`)
-    $.msg(name + $.idx, `获取Cookie: 成功🎉`, ``)
+    $.log(`[${$.name + $.idx}] 获取Cookie: 成功,signheaderVal: ${signheaderVal}`)
+    $.msg($.name + $.idx, `获取Cookie: 成功🎉`, ``)
   }
 else if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/article\/complete/)) {
    const articlebodyVal = $request.body
     if (articlebodyVal)        $.setdata(articlebodyVal,'read_zq'+ $.idx)
-    $.log(`[${name + $.idx}] 获取阅读: 成功,articlebodyVal: ${articlebodyVal}`)
-    $.msg(name + $.idx, `获取阅读请求: 成功🎉`, ``)
+    $.log(`[${$.name + $.idx}] 获取阅读: 成功,articlebodyVal: ${articlebodyVal}`)
+    $.msg($.name + $.idx, `获取阅读请求: 成功🎉`, ``)
   }
 else if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/v5\/user\/app_stay/)) {
    const timebodyVal = $request.body
     if (timebodyVal)        $.setdata(timebodyVal,'readtime_zq'+ $.idx)
-    $.log(`[${name + $.idx}] 获取阅读: 成功,timebodyVal: ${timebodyVal}`)
-    $.msg(name + $.idx, `获取阅读时长: 成功🎉`, ``)
+    $.log(`[${$.name + $.idx}] 获取阅读: 成功,timebodyVal: ${timebodyVal}`)
+    $.msg($.name + $.idx, `获取阅读时长: 成功🎉`, ``)
   }
 else if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/article\/red_packet/)) {
    const redpbodyVal = $request.body
     if (redpbodyVal)        $.setdata(redpbodyVal, 'red_zq'+ $.idx)
-    $.log(`[${name + $.idx}] 获取惊喜红包: 成功,redpbodyVal: ${redpbodyVal}`)
-    $.msg(name + $.idx, `获取惊喜红包请求: 成功🎉`, ``)
+    $.log(`[${$.name + $.idx}] 获取惊喜红包: 成功,redpbodyVal: ${redpbodyVal}`)
+    $.msg($.name + $.idx, `获取惊喜红包请求: 成功🎉`, ``)
   }
  }
 
@@ -132,7 +129,6 @@ if (isGetCookie) {
 } else {
   !(async () => {
     await all();
-   // await msgShow();
   })()
       .catch((e) => {
         $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -148,10 +144,9 @@ async function all() {
 	    $.msg(name + $.idx, '【提示】请先获取'+name + $.idx+'cookie');
 	    return;
 	}else{
-																													  
-	  
-																																																																														 
-	   for (let i = 0; i < cookiesArr.length; i++) {
+	  console.log(`============ 共${cookiesArr.length}个${$.name}账号  =============\n`)
+    	  console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)																											  																																																																												 
+	  for (let i = 0; i < cookiesArr.length; i++) {
 		     if (cookiesArr[i]) {
 				signheaderVal = cookiesArr[i];
 				articlebodyVal = readArr[i];
@@ -179,7 +174,6 @@ async function all() {
 				await Articlered();
 				await readTime();
 				for ( k=0;k<5;k++){
-					console.log("等待5s进行下一次任务")
 					await $.wait(5000);
 					await rotary();
 					if (rotaryres.status == 0) {
