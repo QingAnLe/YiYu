@@ -100,10 +100,6 @@ const firstcheck = $.getdata('signt');
 const runtimes = $.getdata('times');
 const opboxtime = $.getdata('opbox');
 
-if (isGetCookie = typeof $request !== 'undefined') {
-   GetCookie();
-   $.done()
-} 
 function GetCookie() {
    if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/TaskCenter\/(sign|getSign)/)) {
    const signheaderVal = JSON.stringify($request.headers)
@@ -131,7 +127,23 @@ else if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/articl
   }
  }
 
-all();
+
+let isGetCookie = typeof $request !== 'undefined'
+if (isGetCookie) {
+  GetCookie()
+} else {
+  !(async () => {
+    await all();
+   // await msgShow();
+  })()
+      .catch((e) => {
+        $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
+      })
+      .finally(() => {
+        $.done();
+      })
+}
+
 function all() {
 	if (!cookiesArr[0]) {
 	    $.msg(name + $.idx, '【提示】请先获取'+name + $.idx+'cookie');
@@ -141,6 +153,7 @@ function all() {
 	  articlebodyVal = readArr[K];
 	  timebodyVal = timeArr[K];
 	  redpbodyVal = redpArr[K];
+	  $.msg(redpbodyVal);
 	}
 	 
 	 
