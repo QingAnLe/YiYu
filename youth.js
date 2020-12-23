@@ -142,7 +142,7 @@ if (isGetCookie) {
       })
 }
 
-function all() {
+async function all() {
 	if (!cookiesArr[0]) {
 	    $.msg(name + $.idx, '【提示】请先获取'+name + $.idx+'cookie');
 	    return;
