@@ -141,7 +141,7 @@ if (isGetCookie) {
 async function all() {
 		   
 	if (!cookiesArr[0]) {
-	    $.msg(name + $.idx, '【提示】请先获取'+name + $.idx+'cookie');
+	    $.msg($.name , '【提示】请先获取${$.name}cookie');
 	    return;
 	}else{
 	  console.log(`============ 共${cookiesArr.length}个${$.name}账号  =============\n`)
