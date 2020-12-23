@@ -145,7 +145,7 @@ async function all() {
 	    return;
 	}else{
 	  console.log(`============ 共${cookiesArr.length}个${$.name}账号  =============\n`)
-    	  console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)																											  																																																																												 
+    	  console.log(`=== 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  ===\n`)																											  																																																																												 
 	  for (let i = 0; i < cookiesArr.length; i++) {
 		     if (cookiesArr[i]) {
 				signheaderVal = cookiesArr[i];
@@ -231,7 +231,7 @@ function sign() {
                 $.setdata(date,'signt');
               }
             } else if (signres.status == 0) {
-                signresult = `【签到结果】重复`;
+                signresult = `【签到结果】已签到`;
                 detail = "";
               if(runtimes!==undefined){
               $.setdata(`${parseInt(runtimes)+1}`,'times')  
@@ -251,11 +251,16 @@ function signInfo() {
         $.post(infourl, (error, response, data) => {
             signinfo = JSON.parse(data);
             if (signinfo.status == 1) {
-              cash = signinfo.data.user.money
-                subTitle = `【收益总计】${signinfo.data.user.score}青豆  现金约${cash}元`;
-                nick = `账号: ${signinfo.data.user.nickname}`;
-                detail = `${signresult}(今天+${signinfo.data.sign_score}青豆) 已连签${signinfo.data.sign_day}天`;
-               detail +='\n<本次收益>：\n'
+                cash = signinfo.data.user.money
+	        nick = `账号: ${signinfo.data.user.nickname}`;
+		subTitle = `【收益总计】${signinfo.data.user.score}青豆  现金约${cash}元`;
+		detail = `\n========== `;
+	        detail +=   nick;
+		detail += `==========\n`;
+                detail += subTitle;
+                detail += `${signresult}(今天签到收益:+${signinfo.data.sign_score}青豆) 已连签${signinfo.data.sign_day}天`;
+                detail +='\n<本次收益>：\n'
+		
             } else {
                 subTitle = `${signinfo.msg}`;
                 detail = ``;
