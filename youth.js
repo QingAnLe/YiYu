@@ -258,7 +258,7 @@ function signInfo() {
 				cash = signinfo.data.user.money
 				detail = `\n========== 【${signinfo.data.user.nickname}】 ==========\n`;
                 detail += `【收益总计】${signinfo.data.user.score}青豆  现金约${cash}元\n`;
-                detail = `${signresult}(今天签到：+${signinfo.data.sign_score}青豆) 已连签${signinfo.data.sign_day}天`;
+                detail += `${signresult}(今天签到：+${signinfo.data.sign_score}青豆) 已连签${signinfo.data.sign_day}天`;
                detail +='\n<本次收益>：\n'
             } else {
                 subTitle = `${signinfo.msg}`;
