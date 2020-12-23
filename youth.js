@@ -1,15 +1,11 @@
 let s = 200 //各数据接口延迟
-const name = "中青看点";
 const $ = new Env("中青看点");
 let notifyInterval = $.getdata("notifytimes")||50; //通知间隔，默认抽奖每50次通知一次，如需关闭全部通知请设为0
 let logs = $.getdata('zqlogs')||false, rotaryscore=0,doublerotary=0,signresult; 
 $.idx = ($.idx = ($.getval('qeSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
 let COOKIES_SPLIT = "\n"; // 自定义多cookie之间连接的分隔符，默认为\n换行分割，不熟悉的不要改动和配置，为了兼容本地node执行
-
-
 const YOUTH_HOST = "https://kd.youth.cn/WebApi/";
 const notify = $.isNode() ? require('./sendNotify') : '';
-
 const cookiesArr = [];
 let signheaderVal = '';
 const readArr = [];
@@ -75,9 +71,7 @@ if ($.isNode()) {
           timeArr.push(READTIME[item])
         }
       })
-      console.log(`============ 共${cookiesArr.length}个中青账号  =============\n`)
-      console.log(`============ 脚本执行-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  =============\n`)
-	} else {
+} else {
 		cookiesArr.push($.getdata('youthheader_zq'));
 		redpArr.push($.getdata('red_zq'));
 		readArr.push($.getdata('read_zq'));
@@ -102,26 +96,26 @@ function GetCookie() {
    if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/TaskCenter\/(sign|getSign)/)) {
    const signheaderVal = JSON.stringify($request.headers)
     if (signheaderVal)        $.setdata(signheaderVal,'youthheader_zq'+ $.idx)
-    $.log(`[${name + $.idx}] 获取Cookie: 成功,signheaderVal: ${signheaderVal}`)
-    $.msg(name + $.idx, `获取Cookie: 成功🎉`, ``)
+    $.log(`[${$.name + $.idx}] 获取Cookie: 成功,signheaderVal: ${signheaderVal}`)
+    $.msg($.name + $.idx, `获取Cookie: 成功🎉`, ``)
   }
 else if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/article\/complete/)) {
    const articlebodyVal = $request.body
     if (articlebodyVal)        $.setdata(articlebodyVal,'read_zq'+ $.idx)
-    $.log(`[${name + $.idx}] 获取阅读: 成功,articlebodyVal: ${articlebodyVal}`)
-    $.msg(name + $.idx, `获取阅读请求: 成功🎉`, ``)
+    $.log(`[${$.name + $.idx}] 获取阅读: 成功,articlebodyVal: ${articlebodyVal}`)
+    $.msg($.name + $.idx, `获取阅读请求: 成功🎉`, ``)
   }
 else if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/v5\/user\/app_stay/)) {
    const timebodyVal = $request.body
     if (timebodyVal)        $.setdata(timebodyVal,'readtime_zq'+ $.idx)
-    $.log(`[${name + $.idx}] 获取阅读: 成功,timebodyVal: ${timebodyVal}`)
-    $.msg(name + $.idx, `获取阅读时长: 成功🎉`, ``)
+    $.log(`[${$.name + $.idx}] 获取阅读: 成功,timebodyVal: ${timebodyVal}`)
+    $.msg($.name + $.idx, `获取阅读时长: 成功🎉`, ``)
   }
 else if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/article\/red_packet/)) {
    const redpbodyVal = $request.body
     if (redpbodyVal)        $.setdata(redpbodyVal, 'red_zq'+ $.idx)
-    $.log(`[${name + $.idx}] 获取惊喜红包: 成功,redpbodyVal: ${redpbodyVal}`)
-    $.msg(name + $.idx, `获取惊喜红包请求: 成功🎉`, ``)
+    $.log(`[${$.name + $.idx}] 获取惊喜红包: 成功,redpbodyVal: ${redpbodyVal}`)
+    $.msg($.name + $.idx, `获取惊喜红包请求: 成功🎉`, ``)
   }
  }
 
@@ -144,7 +138,7 @@ if (isGetCookie) {
 
 async function all() {
 	if (!cookiesArr[0]) {
-	    $.msg(name + $.idx, '【提示】请先获取'+name + $.idx+'cookie');
+	    $.msg($.name, '【提示】请先获取中青看点cookie');
 	    return;
 	}else{
 		  console.log(`============ 共${cookiesArr.length}个${$.name}账号  =============\n`
