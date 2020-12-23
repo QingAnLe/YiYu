@@ -10,7 +10,7 @@
     "keys": ["youthheader_zq", "read_zq", "red_zq", "readtime_zq","youthheader_zq2", "read_zq2", "red_zq2", "readtime_zq2","youthheader_zq3", "read_zq3", "red_zq3", "readtime_zq3"],
     "author": "@jiuli",
     "settings": [
-       {
+       /*{
          "id": "notifytimes",
          "name": "通知频率 (点击查看设置说明)",
          "val": "",
@@ -22,7 +22,8 @@
           "val": false,
           "type": "boolean",
           "desc": "调试日志开关，默认关闭"
-       },{
+       },*/
+      {
         "id": "qeSuffix",
         "name": "当前账号",
         "val": "1",
