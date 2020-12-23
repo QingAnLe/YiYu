@@ -6,8 +6,8 @@
   "repo": "https://github.com/jiuli12/Script",
   "apps": [{
     "id": "jiuli_zq",
-    "name": "中青",
-    "keys": ["youthheader_zq", "read_zq", "red_zq", "readtime_zq","youthheader_zq2", "read_zq2", "red_zq2", "readtime_zq2"],
+    "name": "中青多账号签到+转盘抽奖",
+    "keys": ["youthheader_zq", "read_zq", "red_zq", "readtime_zq","youthheader_zq2", "read_zq2", "red_zq2", "readtime_zq2","youthheader_zq3", "read_zq3", "red_zq3", "readtime_zq3"],
     "author": "@jiuli",
     "settings": [
        {
@@ -27,7 +27,7 @@
         "name": "当前账号",
         "val": "1",
         "type": "number",
-        "desc": "当前抓取ck记录的账号序号，如：1、2目前仅支持2账号"
+        "desc": "当前抓取ck记录的账号序号，如：1、2、3目前仅支持3账号"
       },
       {
         "id": "qeCount",
