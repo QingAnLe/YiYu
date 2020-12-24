@@ -181,6 +181,7 @@ if (isGetCookie) {
 } else {
   !(async () => {
     await all();
+    await showmsg();
   })()
       .catch((e) => {
         $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -254,7 +255,6 @@ async function all() {
 				}
 				await rotaryCheck();
 				await earningsInfo();
-				await showmsg();
 			   }
 	   }
 	  
@@ -303,7 +303,7 @@ function signInfo() {
             signinfo = JSON.parse(data);
             if (signinfo.status == 1) {
                 cash = signinfo.data.user.money
-		detail = `\n============= 账号: ${signinfo.data.user.nickname}=============\n`;
+		detail += `\n============= 账号: ${signinfo.data.user.nickname}=============\n`;
                 detail += `【收益总计】${signinfo.data.user.score}青豆  现金约${cash}元\n`;
                 detail += `${signresult}(今天签到:+${signinfo.data.sign_score}青豆) 已连签${signinfo.data.sign_day}天`;
                 detail +='\n<本次收益>：\n'
