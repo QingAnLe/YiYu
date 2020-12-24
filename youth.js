@@ -16,6 +16,9 @@
 5.增加每日打卡，打卡时间每日5:00-8:00❗️，请不要忘记设置运行时间，共4条Cookie，请全部获取，请注释重写
 6. 支持账号运行。当转盘次数为50或者100并且余额大于10元时推送通知
 ~~~~~~~~~~~~~~~~
+[MITM]
+hostname = *.youth.cn, ios.baertt.com 
+~~~~~~~~~~~~~~~~
 Surge 4.0 :
 [Script]
 中青看点 = type=cron,cronexp=35 5 0 * * *,script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/youth.js,script-update-interval=0
@@ -36,15 +39,11 @@ http-request https:\/\/ios\.baertt\.com\/v5\/user\/app_stay\.json script-path=ht
 QX 1.0. 7+ :
 [task_local]
 0 9 * * * https://raw.githubusercontent.com/jiuli12/Script/main/youth.js
-[rewrite_local]
-https:\/\/\w+\.youth\.cn\/TaskCenter\/(sign|getSign) url script-request-header https://raw.githubusercontent.com/jiuli12/Script/main/youth.js
-https?:\/\/ios\.baertt\.com\/v5\/article\/complete url script-request-body https://raw.githubusercontent.com/jiuli12/Script/main/youth.js
-https:\/\/ios\.baertt\.com\/v5\/article\/red_packet url script-request-body https://raw.githubusercontent.com/jiuli12/Script/main/youth.js
-https:\/\/ios\.baertt\.com\/v5\/user\/app_stay\.json url script-request-body https://raw.githubusercontent.com/jiuli12/Script/main/youth.js
-~~~~~~~~~~~~~~~~
-[MITM]
-hostname = *.youth.cn, ios.baertt.com 
-~~~~~~~~~~~~~~~~
+
+#
+[rewrite_remote]
+https://raw.githubusercontent.com/jiuli12/Script/main/youth_getCookie.conf, tag=中青GetCookie, update-interval=86400, opt-parser=false, enabled=true
+
 */
 
 let s = 200 //各数据接口延迟
