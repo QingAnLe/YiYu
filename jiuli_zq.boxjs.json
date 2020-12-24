@@ -11,14 +11,14 @@
     "author": "@jiuli",
     "settings": [
       {
-        "id": "qeSuffix",
+        "id": "zqSuffix",
         "name": "当前账号",
         "val": "1",
         "type": "number",
         "desc": "当前抓取ck记录的账号序号，如：1、2、3目前仅支持3账号"
       },
       {
-        "id": "qeCount",
+        "id": "zqCount",
         "name": "账号个数",
         "val": "1",
         "type": "number",
@@ -31,18 +31,18 @@
   },{
     "id": "youthRead",
     "name": "中青多账号阅读",
-    "keys": ["zqgetbody_body","zqgetbody_body2","zqgetbody_body3"],
+    "keys": ["zqgetbody_body","index","zqgetbody_body2","index3","zqgetbody_body3","index3"],
     "author": "@jiuli",
     "settings": [
       {
-        "id": "qeSuffix",
+        "id": "zqReadSuffix",
         "name": "当前账号",
         "val": "1",
         "type": "number",
         "desc": "当前抓取ck记录的账号序号，如：1、2、3目前仅支持3账号"
       },
       {
-        "id": "qeCount",
+        "id": "zqReadCount",
         "name": "账号个数",
         "val": "1",
         "type": "number",
