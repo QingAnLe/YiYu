@@ -252,6 +252,7 @@ async function all() {
 				}else{
 					detail += `【转盘双倍】已用完\n`
 				}
+			        await friendsign();
 				await rotaryCheck();
 				await earningsInfo();
 			   }
@@ -362,7 +363,11 @@ function friendSign(uid) {
 			try{
 				friendres = JSON.parse(data)
 				if (friendres.error_code == "0") {
-				  detail += `好友${friendres.data[0].nickname}已签到,获得${friendres.data[0].score}个青豆\n`
+					detail +=`【好友签到】\n`
+					friendsDataitem = friendres.data
+					for(friendsData of friendsDataitem){
+						 detail += `好友【${friendsData.nickname}】已签到,获得${friendsData.score}个青豆\n`
+					}
 				}
 			} catch (e) {
 				$.logErr(e, resp)
