@@ -209,11 +209,10 @@ async function all() {
 				await signInfo();
 				await friendsign();
 			     //八点之后开启报名打开
-			     if($.time('HH')>=8){
-					console.log("开始报名打卡")
+			     if($.time('HH')>=9){
 			        await punchCard()
 			     };
-			     
+			     await endCard();
 			     
 			     
 			    
@@ -339,7 +338,6 @@ function punchCard() {
         }
         $.post(url, (error, response, data) => {
 			try{ 
-				console.log(data);
 				punchcardstart = JSON.parse(data);
 				if (punchcardstart.code == 1) {
 				    detail += `【打卡报名】打卡报名${punchcardstart.msg} ✅ \n`;
@@ -365,18 +363,24 @@ function endCard() {
               url: `${YOUTH_HOST}PunchCard/doCard?`,headers: JSON.parse(signheaderVal),
             }
             $.post(url,async(error, response, data) => {
-                punchcardend = JSON.parse(data)
-		    console.log(punchcardend);
-                if (punchcardend.code == 1) {
-                    detail += `【早起打卡】${punchcardend.data.card_time}${punchcardend.msg}✅\n`
-                   $.log("早起打卡成功，打卡时间:"+`${punchcardend.data.card_time}`)
-                   await Cardshare();
-                } else if (punchcardend.code == 0) {
-                    // TODO .不在打卡时间范围内
-                    //detail += `【早起打卡】${punchcardend.msg}\n`
-                //   $.log("不在打卡时间范围内")
-                }
-                resolve()
+				try{
+					console.log(data);
+					punchcardend = JSON.parse(data)
+					console.log(punchcardend);
+					if (punchcardend.code == 1) {
+					    detail += `【早起打卡】${punchcardend.data.card_time}${punchcardend.msg}✅\n`
+					   $.log("早起打卡成功，打卡时间:"+`${punchcardend.data.card_time}`)
+					   await Cardshare();
+					} else if (punchcardend.code == 0) {
+					    // TODO .不在打卡时间范围内
+					    //detail += `【早起打卡】${punchcardend.msg}\n`
+					//   $.log("不在打卡时间范围内")
+					}
+				} catch (e) {
+					$.logErr(e, resp)
+				} finally {
+					resolve();
+				}
             })
         },s)
     })
@@ -389,26 +393,39 @@ function Cardshare() {
             headers: JSON.parse(signheaderVal),
         }
         $.post(starturl, (error, response, data) => {
-            sharestart = JSON.parse(data)
-            //detail += `【打卡分享】${sharestart.msg}\n`
-            if (sharestart.code == 1) {
-                setTimeout(() => {
-                    let endurl = {
-                        url: `${YOUTH_HOST}PunchCard/shareEnd?`,
-                        headers: JSON.parse(signheaderVal)
-                    }
-                    $.post(endurl, (error, response, data) => {
-                        shareres = JSON.parse(data)
-                        if (shareres.code == 1) {
-                            detail += `+${shareres.data.score}青豆\n`
-                        } else {
-                            //detail += `【打卡分享】${shareres.msg}\n`
-                         //$.log(`${shareres.msg}`)
-                        }
-                        resolve()
-                    })
-                  },s*2);
-            }
+			try{
+				console.log(data)
+				sharestart = JSON.parse(data)
+				if (sharestart.code == 1) {
+					setTimeout(() => {
+						let endurl = {
+							url: `${YOUTH_HOST}PunchCard/shareEnd?`,
+							headers: JSON.parse(signheaderVal)
+						}
+						$.post(endurl, (error, response, data) => {
+							try{ 
+								console.log(data)
+								shareres = JSON.parse(data)
+								if (shareres.code == 1) {
+									detail += `+${shareres.data.score}青豆\n`
+								} else {
+									//detail += `【打卡分享】${shareres.msg}\n`
+								 //$.log(`${shareres.msg}`)
+								}
+							} catch (e) {
+								$.logErr(e, resp)
+							} finally {
+								resolve();
+							}
+						})
+					  },s*2);
+				}
+			} catch (e) {
+				$.logErr(e, resp)
+			} finally {
+				resolve();
+			}
+          
         })
     })
 }
