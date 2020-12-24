@@ -125,10 +125,10 @@ function AutoRead(articlebody,RIndex,i) {
 		$.post(url, async (error, response, data) => {
 			try{
 				let readres = JSON.parse(data);  
-				$.message +='========第'+ (i+1) +'个${$.name}账号========';
+				$.message +='========第'+ (i+1) +'个'+$.name+'账号========';
 				if (readres.error_code == '0' && typeof readres.items.read_score === 'number') {
 
-					$.message +='\n本次阅读第'+(RIndex+1)+'个Body,获得${readres.items.read_score}个青豆';
+					$.message +='\n本次阅读第'+(RIndex+1)+'个Body,获得'+readres.items.read_score+'个青豆';
 				}
 // 				else if (readres.error_code == '0' && typeof readres.items.score === 'number') {
 // 					$.message +=`\n本次阅读第`+(RIndex+1)+`个Body,获得${readres.items.score}个青豆`;
