@@ -104,10 +104,9 @@ async function all() {
 			let articlebody = YBody[RIndex];
 			await AutoRead(articlebody,RIndex,i)
 			if(RIndex = YBody.length){
-				
-				 $.setdata(0,'index')
+				 $.setdata(0,'index'+i)
 			}else{
-				$.setdata(RIndex+1,'index')
+				$.setdata(RIndex+1,'index'+i)
 			}
 			
 		}
