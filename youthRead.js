@@ -99,7 +99,7 @@ async function all() {
 	    $.msg($.name, '提示：⚠️请点击前往中青阅读获取Body\n');
 	    return;
 	  } else {
-		onsole.log(`============ 共${ReadArr.length}个${$.name}账号  =============\n`);
+		console.log(`============ 共${ReadArr.length}个${$.name}账号  =============\n`);
 		console.log(`脚本执行- 北京时间(UTC+8)：${new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000).toLocaleString()}\n`)
 		
 		for (let i = 0; i < ReadArr.length; i++) {
