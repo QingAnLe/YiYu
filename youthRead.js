@@ -104,47 +104,18 @@ async function all() {
 			let articlebody = YBody[RIndex];
 			await AutoRead(articlebody,RIndex,i)
 			if(RIndex == YBody.length){
-				console.log(11111);
-				console.log(i);
 				if( i == 0){
 				 	$.setdata(0,"index")
 				}else{
-				 	console.log("index"+(i+1));
+					$.setdata(0,"index"+(i+1))
 				}
 			}else{
-				console.log(22222);
-				console.log(i);
 				if( i == 0){
-					console.log(RIndex+1);
 				 	$.setdata(RIndex+1,"index")
 				}else{
-				 	console.log("index"+(i+1));
+					$.setdata(RIndex+1,"index"+(i+1))
 				}
 			}
-// 			if(RIndex = YBody.length){
-// 				console.log(11111);
-// 				if(i == 0){
-// 					console.log(0);
-// 					$.setdata(0,"index")
-// 				 }else{
-// 					 console.log("index"+(i+1));
-// 					 $.setdata(0,"index"+(i+1))
-// 				 }
-// 			}else{
-// 				console.log(222222);
-// 				console.log(RIndex+1);
-// 				if(i == 0){
-// 					console.log("进来第一个");
-// 					$.setdata(RIndex+1,"index")
-// 				 }else{
-// 					 console.log("进来不是第一个");
-// 					 console.log("index"+（i+1）);
-					 
-// 					$.setdata(RIndex+1,"index"+（i+1）)
-// 				 }
-				
-				
-// 			}
 			
 		}
 	
