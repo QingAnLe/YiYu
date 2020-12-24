@@ -100,20 +100,24 @@ async function all() {
 		
 		for (let i = 0; i < ReadArr.length; i++) {
 			let YBody = ReadArr[i].split('&');
-			let RIndex = ReadIndex[i] ? ReadIndex[i] : 0;
-			let articlebody = YBody[RIndex];
-			await AutoRead(articlebody,RIndex,i)
-			if(RIndex == YBody.length){
+			let RIndex = ReadIndex[i] ? ReadIndex[i] : "0";
+			//转换int
+			let intIndex = parseInt(RIndex);
+			console.log(intIndex);
+			let articlebody = YBody[intIndex];
+			await AutoRead(articlebody,intIndex,i)
+			let nextIndex = (intIndex+1).toString()
+			if(intIndex == YBody.length){
 				if( i == 0){
-				 	$.setdata(0,"index")
+				 	$.setdata("0","index")
 				}else{
-					$.setdata(0,"index"+(i+1))
+					$.setdata("0","index"+(i+1))
 				}
 			}else{
 				if( i == 0){
-				 	$.setdata(RIndex+1,"index")
+				 	$.setdata(nextIndex,"index")
 				}else{
-					$.setdata(RIndex+1,"index"+(i+1))
+					$.setdata(nextIndex,"index"+(i+1))
 				}
 			}
 			
@@ -121,7 +125,7 @@ async function all() {
 	
 	}
 }
-function AutoRead(articlebody,RIndex,i) {
+function AutoRead(articlebody,intIndex,i) {
  	return new Promise((resolve, reject) => {
 		 let url = {
 		      url: `https://ios.baertt.com/v5/article/complete.json`,
@@ -135,16 +139,16 @@ function AutoRead(articlebody,RIndex,i) {
 				let readres = JSON.parse(data);  
 				$.message +='========第'+ (i+1) +'个'+$.name+'账号========\n';
 				if (readres.error_code == '0' && typeof readres.items.read_score === 'number') {
-					$.message +='本次阅读第'+(RIndex+1)+'个Body成功,获得'+readres.items.read_score+'个青豆\n';
+					$.message +='本次阅读第'+(intIndex+1)+'个Body成功,获得'+readres.items.read_score+'个青豆\n';
 				}
  				else if (readres.error_code == '0' && typeof readres.items.score === 'number') {
- 					$.message +='本次阅读第'+(RIndex+1)+'个Body成功,获得'+readres.items.score+'个青豆\n';
+ 					$.message +='本次阅读第'+(intIndex+1)+'个Body成功,获得'+readres.items.score+'个青豆\n';
 				}
  				else if (readres.items.max_notice == '\u770b\u592a\u4e45\u4e86\uff0c\u63621\u7bc7\u8bd5\u8bd5') {
- 					$.message += '本次阅读第'+(RIndex+1)+'个Body错误,错误信息：'+readres.items.max_notice; 
+ 					$.message += '本次阅读第'+(intIndex+1)+'个Body错误,错误信息：'+readres.items.max_notice; 
  				}
  				else if (readres.success == false) {
-					$.message += '本次阅读第'+(RIndex+1)+'个Body错误,错误信息：阅读请求失败'; 
+					$.message += '本次阅读第'+(intIndex+1)+'个Body错误,错误信息：阅读请求失败'; 
  				}
 			} catch (e) {
 				$.logErr(e, resp)
