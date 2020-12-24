@@ -307,6 +307,8 @@ function signInfo() {
         }
         $.post(infourl, (error, response, data) => {
             signinfo = JSON.parse(data);
+		$.log(data)
+		$.log(signinfo)
             if (signinfo.status == 1) {
                 cash = signinfo.data.user.money
 		detail += `\n============= 账号: ${signinfo.data.user.nickname}=============\n`;
