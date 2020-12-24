@@ -206,14 +206,14 @@ async function all() {
 				redpbodyVal = redpArr[i];
 																														  
 				/* await sign();
-				await signInfo(); */
+				await signInfo(); 
 				await friendsign();
 			     //八点之后开启报名打开
-			     if($.time('HH')>=9){
+			    if($.time('HH')>=9){
 			        await punchCard()
-			     };
+			    };*/
 				 
-			    // await Cardshare();
+			    await Cardshare();
 			     
 				if ($.isNode()&& $.time('HH')>20&&$.time('HH')<22){
 				   await endCard();
@@ -328,7 +328,58 @@ function signInfo() {
         })
     })
 }
-//开启打卡
+
+function friendsign() {
+    return new Promise((resolve, reject) => {
+        const url = {
+            url: `https://kd.youth.cn/WebApi/ShareSignNew/getFriendActiveList`,
+            headers: JSON.parse(signheaderVal)
+        }
+        $.get(url, async(error, response, data) => {
+			try{
+				let addsign = JSON.parse(data)
+				if (addsign.error_code == "0"&& addsign.data.active_list.length>0) {
+					friendsitem = addsign.data.active_list
+					for(friends of friendsitem){
+						if(friends.button==1 || friends.button==3){
+							await friendSign(friends.uid)
+						}
+					}
+				}
+			} catch (e) {
+				$.logErr(e, resp)
+			} finally {
+				resolve();
+			}
+           
+        })
+    })
+}
+
+
+function friendSign(uid) {
+    return new Promise((resolve, reject) => {
+        const url = {
+            url: `https://kd.youth.cn/WebApi/ShareSignNew/sendScoreV2?friend_uid=${uid}`,
+            headers: JSON.parse(signheaderVal)
+        }
+        $.get(url, (error, response, data) => {
+			try{
+				console.log(data);
+				friendres = JSON.parse(data)
+				if (friendres.error_code == "0") {
+				   detail += `好友${friendres.data.nickname}已签到,获得${friendres.data.score}个青豆\n`
+				}
+			} catch (e) {
+				$.logErr(e, resp)
+			} finally {
+				resolve();
+			}
+        })
+    })
+}
+
+//开启打卡报名
 function punchCard() {
     return new Promise((resolve, reject) => {
         const url = {
@@ -389,6 +440,7 @@ function Cardshare() {
         }
         $.post(starturl, (error, response, data) => {
 			try{
+				console.log(data);
 				sharestart = JSON.parse(data)
 				if (sharestart.code == 1) {
 					setTimeout(() => {
@@ -400,10 +452,9 @@ function Cardshare() {
 							try{ 
 								shareres = JSON.parse(data)
 								if (shareres.code == 1) {
-									detail += `+${shareres.data.score}青豆\n`
+									detail += `【打卡分享】已分享获得+${shareres.data.score}青豆\n`
 								} else {
-									//detail += `【打卡分享】${shareres.msg}\n`
-								 //$.log(`${shareres.msg}`)
+									detail += `【打卡分享】${shareres.msg}\n`
 								}
 							} catch (e) {
 								$.logErr(e, resp)
@@ -511,58 +562,7 @@ function boxshare() {
     })
 }
 
-function friendsign() {
-    return new Promise((resolve, reject) => {
-        const url = {
-            url: `https://kd.youth.cn/WebApi/ShareSignNew/getFriendActiveList`,
-            headers: JSON.parse(signheaderVal)
-        }
-        $.get(url, async(error, response, data) => {
-			try{
-				let addsign = JSON.parse(data)
-				if (addsign.error_code == "0"&& addsign.data.active_list.length>0) {
-					friendsitem = addsign.data.active_list
-					for(friends of friendsitem){
-						if(friends.button==1){
-							await friendSign(friends.uid)
-						}else if(friends.button==3){
-							await friendSign(friends.uid)
-						}
-					}
-				}
-			} catch (e) {
-				$.logErr(e, resp)
-			} finally {
-				resolve();
-			}
-           
-        })
-    })
-}
 
-
-function friendSign(uid) {
-	console.log(uid);
-    return new Promise((resolve, reject) => {
-        const url = {
-            url: `https://kd.youth.cn/WebApi/ShareSignNew/sendScoreV2?friend_uid=${uid}`,
-            headers: JSON.parse(signheaderVal)
-        }
-        $.get(url, (error, response, data) => {
-			try{
-				console.log(data);
-				friendres = JSON.parse(data)
-				if (friendres.error_code == "0") {
-				   console.log(`好友签到，我得红包 +${friendres.score}个青豆`)
-				}
-			} catch (e) {
-				$.logErr(e, resp)
-			} finally {
-				resolve();
-			}
-        })
-    })
-}
 
 
 //看视频奖励
