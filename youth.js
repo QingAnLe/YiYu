@@ -762,11 +762,11 @@ function earningsInfo() {
 }
 async function showmsg() {
         if (rotaryres.status == 1 && rotarytimes >= 97) {
-        	$.msg(detail)  //默认前三次为通知
+        	$.msg($.name, '', detail)  //默认前三次为通知
         }else if (rotaryres.status == 1 && rotarytimes % notifyInterval == 0) {
-        	$.msg(detail) //转盘次数/间隔整除时通知;
+        	$.msg($.name, '', detail) //转盘次数/间隔整除时通知;
         }else if (rotaryres.code == 10010 && notifyInterval != 0) {
-        	 $.msg(detail)//任务全部完成且通知间隔不为0时通知;
+        	 $.msg($.name, '', detail)//任务全部完成且通知间隔不为0时通知;
         }else {
        		console.log(detail)
    	}
