@@ -223,12 +223,12 @@ async function all() {
 				
 				await SevCont();
 				await comApp();
-				await ArticleShare();*/
-				await openbox();
-				/*await getAdVideo();
-				await gameVideo();
+				await ArticleShare();
+				await openbox();*/
+				await getAdVideo();
+				//await gameVideo();
 				await readArticle();
-				await Articlered();
+				/*await Articlered();
 				await readTime();
 				for ( k=0;k<5;k++){
 					await $.wait(5000);
@@ -552,7 +552,6 @@ function openbox() {
             }
             $.post(url, async(error, response, data) => {
 				try{
-					console.log(data);
 					boxres = JSON.parse(data)
 					if (boxres.code == 1) {
 					  boxretime = boxres.data.time
@@ -560,8 +559,7 @@ function openbox() {
 					    detail += `【开启宝箱】+${boxres.data.score}青豆 下次奖励${boxres.data.time / 60}分钟\n`
 					      await boxshare();
 					}else{
-					    //detail += `【开启宝箱】${boxres.msg}\n`
-					   // $.log(`${boxres.msg}`)
+					    detail += `【开启宝箱】${boxres.msg}\n`
 					}
 				} catch (e) {
 					$.logErr(e, resp)
@@ -583,13 +581,11 @@ function boxshare() {
             }
             $.post(url, (error, response, data) => {
 			   try{
-				   console.log(data);
 				  shareres = JSON.parse(data)
 				  if (shareres.code == 1) {
 				      detail += `【宝箱分享】+${shareres.data.score}青豆\n`
 				  }else{
-				      //detail += `【宝箱分享】${shareres.msg}\n`
-				    //$.log(`${shareres.msg}`)
+				      detail += `【宝箱分享】${shareres.msg}\n`
 				  } 
 			   } catch (e) {
 				$.logErr(e, resp)
@@ -613,11 +609,17 @@ function getAdVideo() {
             body: 'type=taskCenter'
         }
         $.post(url, (error, response, data) => {
-            adVideores = JSON.parse(data)
-            if (adVideores.status == 1) {
-                detail += `【观看视频】+${adVideores.score}个青豆\n`
-            }
-            resolve()
+			try{ 
+				console.log(data);
+				adVideores = JSON.parse(data)
+				if (adVideores.status == 1) {
+				    detail += `【观看视频】+${adVideores.score}个青豆\n`
+				}
+			} catch (e) {
+				$.logErr(e, resp)
+			} finally {
+				resolve();
+			}
         })
     })
 }
@@ -629,15 +631,20 @@ function gameVideo() {
             body: articlebodyVal,
         }
         $.post(url, (error, response, data) => {
-            gameres = JSON.parse(data)
-            if (gameres.success == true) {
-                detail += `【激励视频】${gameres.items.score}\n`
-            }else{
-                if(gameres.error_code == "10003"){
-                    //detail += `【激励视频】${gameres.message}\n`
-                }
+			try{
+				gameres = JSON.parse(data)
+				if (gameres.success == true) {
+					detail += `【激励视频】${gameres.items.score}\n`
+				}else{
+					if(gameres.error_code == "10003"){
+						detail += `【激励视频】${gameres.message}\n`
+					}
+				}
+            } catch (e) {
+            	$.logErr(e, resp)
+            } finally {
+            	resolve();
             }
-            resolve()
         })
     })
 }
@@ -654,12 +661,17 @@ function readArticle() {
             body: articlebodyVal,
         }
         $.post(url, (error, response, data) => {
-           readres = JSON.parse(data);
-			if (typeof readres.items.read_score === 'number')  {
-              detail += `【阅读奖励】+${readres.items.read_score}个青豆\n`;
-            } 
-
-            resolve()
+			try{
+				console.log(data);
+				readres = JSON.parse(data);
+				if (typeof readres.items.read_score === 'number')  {
+				   detail += `【阅读奖励】+${readres.items.read_score}个青豆\n`;
+				} 
+			} catch (e) {
+				$.logErr(e, resp)
+			} finally {
+				resolve();
+			}
         })
     })
 }
@@ -679,7 +691,7 @@ function Articlered() {
                 detail += `【惊喜红包】+${redres.items.score}个青豆\n`
             }else{
                 if(redres.error_code == "100001"){
-                    //detail += `【惊喜红包】${redres.message}\n`
+                   detail += `【惊喜红包】${redres.message}\n`
                 }
             }
             resolve()
@@ -706,7 +718,7 @@ function readTime() {
                     detail += `【阅读时长】❎ 未获取阅读时长Cookie\n`
                 }else{
                     detail += `【阅读时长】❎ ${timeres.msg}\n`
-                $.log(`阅读时长统计失败，原因:${timeres.msg}`)
+					$.log(`阅读时长统计失败，原因:${timeres.msg}`)
                 }
             }
             resolve()
