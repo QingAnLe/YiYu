@@ -519,12 +519,14 @@ function friendsign() {
         }
         $.get(url, async(error, response, data) => {
 			try{
-				console.log(data);
 				let addsign = JSON.parse(data)
 				if (addsign.error_code == "0"&& addsign.data.active_list.length>0) {
 					friendsitem = addsign.data.active_list
 					for(friends of friendsitem){
 						if(friends.button==1){
+							await friendSign(friends.uid)
+						}
+						f(friends.button==3){
 							await friendSign(friends.uid)
 						}
 					}
@@ -552,7 +554,6 @@ function friendSign(uid) {
 				console.log(data);
 				friendres = JSON.parse(data)
 				if (friendres.error_code == "0") {
-				    //detail += `【好友红包】+${friendres.score}个青豆\n`
 				   console.log(`好友签到，我得红包 +${friendres.score}个青豆`)
 				}
 			} catch (e) {
