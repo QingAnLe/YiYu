@@ -206,13 +206,14 @@ async function all() {
 				redpbodyVal = redpArr[i];
 				await sign();
 				await signInfo(); 
-			     //八点之后开启报名打开
-			    if($.time('HH')>=9){
-			        await punchCard()
-			    };
+			        await friendsign();
+			        //八点之后开启报名打开
+			        if($.time('HH')>=9){
+			            await punchCard()
+			        };
 				if ($.isNode()&& $.time('HH')>20&&$.time('HH')<22){
 				   await endCard();
-				 }else if ($.time('HH')>4&&$.time('HH')<8){
+				}else if ($.time('HH')>4&&$.time('HH')<8){
 				   await endCard();
 				}
 				await SevCont();
@@ -251,7 +252,6 @@ async function all() {
 				}else{
 					detail += `【转盘双倍】已用完\n`
 				}
-			        await friendsign();
 				await rotaryCheck();
 				await earningsInfo();
 			   }
@@ -363,11 +363,13 @@ function friendSign(uid) {
 				friendres = JSON.parse(data)
 				if (friendres.error_code == "0") {
 					friendsDataitem = friendres.data;
+					let inedx = 1;
 					let scoreNum=0;
 					for(friendsData of friendsDataitem){
 						scoreNum +=${friendsData.score};
+						inedx++;
 					}
-					detail +=`【好友签到】 共${friendsData.length}个好友已签到，获得+${scoreNum}个青豆\n`
+					detail +=`【好友签到】 共${inedx}个好友已签到，获得+${scoreNum}个青豆\n`
 				}
 			} catch (e) {
 				$.logErr(e, resp)
