@@ -49,8 +49,11 @@ hostname = *.youth.cn, ios.baertt.com
 
 let s = 200 //各数据接口延迟
 const $ = new Env("中青看点");
-let notifyInterval = $.getdata("notifytimes")||50; //通知间隔，默认抽奖每50次通知一次，如需关闭全部通知请设为0
-let logs = $.getdata('zqlogs')||false, rotaryscore=0,doublerotary=0,signresult; 
+let notifyInterval = 50; //通知间隔，默认抽奖每50次通知一次，如需关闭全部通知请设为0
+let logs = true;
+let  rotaryscore=0;
+let doublerotary=0
+let signresult; 
 $.idx = ($.idx = ($.getval('zqSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
 let COOKIES_SPLIT = "\n"; // 自定义多cookie之间连接的分隔符，默认为\n换行分割，不熟悉的不要改动和配置，为了兼容本地node执行
 
