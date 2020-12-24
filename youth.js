@@ -525,8 +525,7 @@ function friendsign() {
 					for(friends of friendsitem){
 						if(friends.button==1){
 							await friendSign(friends.uid)
-						}
-						if(friends.button==3){
+						}else if(friends.button==3){
 							await friendSign(friends.uid)
 						}
 					}
