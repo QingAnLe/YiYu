@@ -213,7 +213,7 @@ async function all() {
 			        await punchCard()
 			     };
 				 
-			     await Cardshare();
+			    // await Cardshare();
 			     
 				if ($.isNode()&& $.time('HH')>20&&$.time('HH')<22){
 				   await endCard();
@@ -221,7 +221,7 @@ async function all() {
 				   await endCard();
 				}
 				
-				await SevCont();
+				//await SevCont();
 				//await comApp();
 				/* await ArticleShare();
 				await openbox();
@@ -389,7 +389,6 @@ function Cardshare() {
         }
         $.post(starturl, (error, response, data) => {
 			try{
-				console.log(data)
 				sharestart = JSON.parse(data)
 				if (sharestart.code == 1) {
 					setTimeout(() => {
@@ -399,7 +398,6 @@ function Cardshare() {
 						}
 						$.post(endurl, (error, response, data) => {
 							try{ 
-								console.log(data)
 								shareres = JSON.parse(data)
 								if (shareres.code == 1) {
 									detail += `+${shareres.data.score}青豆\n`
@@ -432,7 +430,6 @@ function SevCont() {
               headers: JSON.parse(signheaderVal),
             }, async(error, response, data) => {
 				try{ 
-					console.log(data);
 					sevres = JSON.parse(data)
 					if (sevres.code == 1) {
 					    detail += `【七日签到】+${sevres.data.score}青豆 \n`
@@ -521,35 +518,48 @@ function friendsign() {
             headers: JSON.parse(signheaderVal)
         }
         $.get(url, async(error, response, data) => {
-            let addsign = JSON.parse(data)
-            if (addsign.error_code == "0"&& addsign.data.active_list.length>0) {
-             friendsitem = addsign.data.active_list
-             for(friends of friendsitem){
-            if(friends.button==1){
-               await friendSign(friends.uid)
-              }
-             }
-            }
-           resolve()
+			try{
+				console.log(data);
+				let addsign = JSON.parse(data)
+				if (addsign.error_code == "0"&& addsign.data.active_list.length>0) {
+					friendsitem = addsign.data.active_list
+					for(friends of friendsitem){
+						if(friends.button==1){
+							await friendSign(friends.uid)
+						}
+					}
+				}
+			} catch (e) {
+				$.logErr(e, resp)
+			} finally {
+				resolve();
+			}
+           
         })
     })
 }
 
 
 function friendSign(uid) {
+	console.log(uid);
     return new Promise((resolve, reject) => {
         const url = {
             url: `https://kd.youth.cn/WebApi/ShareSignNew/sendScoreV2?friend_uid=${uid}`,
             headers: JSON.parse(signheaderVal)
         }
         $.get(url, (error, response, data) => {
-			console.log(data);
-            friendres = JSON.parse(data)
-            if (friendres.error_code == "0") {
-                //detail += `【好友红包】+${friendres.score}个青豆\n`
-               console.log(`好友签到，我得红包 +${friendres.score}个青豆`)
-            }
-            resolve()
+			try{
+				console.log(data);
+				friendres = JSON.parse(data)
+				if (friendres.error_code == "0") {
+				    //detail += `【好友红包】+${friendres.score}个青豆\n`
+				   console.log(`好友签到，我得红包 +${friendres.score}个青豆`)
+				}
+			} catch (e) {
+				$.logErr(e, resp)
+			} finally {
+				resolve();
+			}
         })
     })
 }
