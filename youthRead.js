@@ -149,7 +149,7 @@ function AutoRead(articlebody,RIndex,i) {
 					$.message +='本次阅读第'+(RIndex+1)+'个Body成功,获得'+readres.items.read_score+'个青豆\n';
 				}
  				else if (readres.error_code == '0' && typeof readres.items.score === 'number') {
- 					$.message +='本次阅读第'+(RIndex+1)+'个Body成功,获得'+readres.items.read_score+'个青豆\n';
+ 					$.message +='本次阅读第'+(RIndex+1)+'个Body成功,获得'+readres.items.score+'个青豆\n';
 				}
  				else if (readres.items.max_notice == '\u770b\u592a\u4e45\u4e86\uff0c\u63621\u7bc7\u8bd5\u8bd5') {
  					$.message += '本次阅读第'+(RIndex+1)+'个Body错误,错误信息：'+readres.items.max_notice; 
