@@ -31,7 +31,7 @@
   },{
     "id": "youthRead",
     "name": "中青多账号阅读",
-    "keys": ["zqgetbody_body","index","zqgetbody_body2","index3","zqgetbody_body3","index3"],
+    "keys": ["zqgetbody_body","index","zqgetbody_body2","index2","zqgetbody_body3","index3"],
     "author": "@jiuli",
     "settings": [
       {
