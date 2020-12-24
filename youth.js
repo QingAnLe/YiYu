@@ -221,11 +221,11 @@ async function all() {
 				   await endCard();
 				}
 				
-				await SevCont();*/
+				await SevCont();
 				await comApp();
-				await ArticleShare();
-				/*await openbox();
-				await getAdVideo();
+				await ArticleShare();*/
+				await openbox();
+				/*await getAdVideo();
 				await gameVideo();
 				await readArticle();
 				await Articlered();
@@ -365,7 +365,6 @@ function friendSign(uid) {
         }
         $.get(url, (error, response, data) => {
 			try{
-				console.log(data);
 				friendres = JSON.parse(data)
 				if (friendres.error_code == "0") {
 				   detail += `好友${friendres.data.nickname}已签到,获得${friendres.data.score}个青豆\n`
@@ -510,13 +509,12 @@ function comApp() {
         }
         $.post(url, (error, response, data) => {
 			try { 
-				console.log(data);
 				redres = JSON.parse(data)
 				if (redres.success == true) {
 				    detail += `【回访奖励】+${redres.items.score}个青豆\n`
 				}else{
 				    if(redres.error_code == "100009"){
-				        //detail += `【回访奖励】${redres.message}\n`
+				       detail += `【回访奖励】没有可领取的奖励\n`
 				    }
 				}
 			} catch (e) {
@@ -528,7 +526,7 @@ function comApp() {
     })
 }
 
-
+//分享文章
 function ArticleShare() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -537,8 +535,6 @@ function ArticleShare() {
                 headers: JSON.parse(signheaderVal),
             }
             $.post(url, async(error, response, data) => {
-				console.log(data);
-                //boxres = JSON.parse(data)
                 resolve()
             })
         },s)
@@ -555,17 +551,23 @@ function openbox() {
                 headers: JSON.parse(signheaderVal),
             }
             $.post(url, async(error, response, data) => {
-                boxres = JSON.parse(data)
-                if (boxres.code == 1) {
-                  boxretime = boxres.data.time
-                  $.setdata(boxretime, 'opbox')
-                    detail += `【开启宝箱】+${boxres.data.score}青豆 下次奖励${boxres.data.time / 60}分钟\n`
-                      await boxshare();
-                }else{
-                    //detail += `【开启宝箱】${boxres.msg}\n`
-                   // $.log(`${boxres.msg}`)
-                }
-                resolve()
+				try{
+					console.log(data);
+					boxres = JSON.parse(data)
+					if (boxres.code == 1) {
+					  boxretime = boxres.data.time
+					  $.setdata(boxretime, 'opbox')
+					    detail += `【开启宝箱】+${boxres.data.score}青豆 下次奖励${boxres.data.time / 60}分钟\n`
+					      await boxshare();
+					}else{
+					    //detail += `【开启宝箱】${boxres.msg}\n`
+					   // $.log(`${boxres.msg}`)
+					}
+				} catch (e) {
+					$.logErr(e, resp)
+				} finally {
+					resolve();
+				}
             })
         },s)
     })
@@ -580,15 +582,20 @@ function boxshare() {
                 headers: JSON.parse(signheaderVal),
             }
             $.post(url, (error, response, data) => {
-   
-                shareres = JSON.parse(data)
-                if (shareres.code == 1) {
-                    detail += `【宝箱分享】+${shareres.data.score}青豆\n`
-                }else{
-                    //detail += `【宝箱分享】${shareres.msg}\n`
-                  //$.log(`${shareres.msg}`)
-                }
-                resolve()
+			   try{
+				   console.log(data);
+				  shareres = JSON.parse(data)
+				  if (shareres.code == 1) {
+				      detail += `【宝箱分享】+${shareres.data.score}青豆\n`
+				  }else{
+				      //detail += `【宝箱分享】${shareres.msg}\n`
+				    //$.log(`${shareres.msg}`)
+				  } 
+			   } catch (e) {
+				$.logErr(e, resp)
+			   } finally {
+				resolve();
+			   }
             })
         },s*2);
     })
@@ -648,12 +655,9 @@ function readArticle() {
         }
         $.post(url, (error, response, data) => {
            readres = JSON.parse(data);
-     if (typeof readres.items.read_score === 'number')  {
+			if (typeof readres.items.read_score === 'number')  {
               detail += `【阅读奖励】+${readres.items.read_score}个青豆\n`;
             } 
-    //else if (readres.items.max_notice == '\u770b\u592a\u4e45\u4e86\uff0c\u63621\u7bc7\u8bd5\u8bd5') {
-              //detail += `【阅读奖励】看太久了，换1篇试试\n`;
-         //  $.log(readres.items.max_notice)}
 
             resolve()
         })
