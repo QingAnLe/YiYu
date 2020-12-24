@@ -115,11 +115,11 @@ async function all() {
  function Read(YBody,RIndex){
 	 let i = RIndex ? RIndex : 0;
 	 console.log(i);
-	 let num = RIndex + ReadNum ;
+	 let num = i + ReadNum ;
 	 console.log(num);
 	 let len = YBody.length;
 	 console.log(len);
-	 if(RIndex+20 < len){
+	 if(num < len){
 	 	len = num;
 	 }
 	 console.log(len);
