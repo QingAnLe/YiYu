@@ -211,7 +211,7 @@ async function all() {
 			     //八点之后开启报名打开
 			    if($.time('HH')>=9){
 			        await punchCard()
-			    };*/
+			    };
 				 
 			    await Cardshare();
 			     
@@ -221,10 +221,10 @@ async function all() {
 				   await endCard();
 				}
 				
-				await SevCont();
-				//await comApp();
-				/* await ArticleShare();
-				await openbox();
+				await SevCont();*/
+				await comApp();
+				await ArticleShare();
+				/*await openbox();
 				await getAdVideo();
 				await gameVideo();
 				await readArticle();
@@ -440,7 +440,6 @@ function Cardshare() {
         }
         $.post(starturl, (error, response, data) => {
 			try{
-				
 				sharestart = JSON.parse(data)
 				if (sharestart.code == 1) {
 					setTimeout(() => {
@@ -483,13 +482,11 @@ function SevCont() {
               headers: JSON.parse(signheaderVal),
             }, async(error, response, data) => {
 				try{ 
-					console.log(data);
 					sevres = JSON.parse(data)
 					if (sevres.code == 1) {
 					    detail += `【七日签到】+${sevres.data.score}青豆 \n`
 					}else if (sevres.code == 0){
-					     //detail += `【七日签到】${sevres.msg}\n`
-					   // $.log(`${boxres.msg}`)
+						detail += `【七日签到】未签到七天，${sevres.msg} \n`
 					}
 				} catch (e) {
 					$.logErr(e, resp)
