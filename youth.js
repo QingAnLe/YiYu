@@ -197,7 +197,7 @@ async function all() {
 	    return;
 	}else{
 	  console.log(`============ 共${cookiesArr.length}个${$.name}账号  =============\n`)
-    	  console.log(`脚本执行- 北京时间(UTC+8)：${new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000).toLocaleString()} \n`)																											  																																																																												 
+      console.log(`脚本执行- 北京时间(UTC+8)：${new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000).toLocaleString()} \n`)																											  																																																																												 
 	  for (let i = 0; i < cookiesArr.length; i++) {
 		     if (cookiesArr[i]) {
 				signheaderVal = cookiesArr[i];
@@ -205,17 +205,16 @@ async function all() {
 				timebodyVal = timeArr[i];
 				redpbodyVal = redpArr[i];
 																														  
-				await sign();
-				await signInfo();
+				/* await sign();
+				await signInfo(); */
 				await friendsign();
 			     //八点之后开启报名打开
 			     if($.time('HH')>=9){
 			        await punchCard()
 			     };
-			     await endCard();
+				 
+			     await Cardshare();
 			     
-			     
-			    
 				if ($.isNode()&& $.time('HH')>20&&$.time('HH')<22){
 				   await endCard();
 				 }else if ($.time('HH')>4&&$.time('HH')<8){
@@ -223,8 +222,8 @@ async function all() {
 				}
 				
 				await SevCont();
-				await comApp();
-				await ArticleShare();
+				//await comApp();
+				/* await ArticleShare();
 				await openbox();
 				await getAdVideo();
 				await gameVideo();
@@ -259,7 +258,7 @@ async function all() {
 					detail += `【转盘双倍】已用完\n`
 				}
 				await rotaryCheck();
-				await earningsInfo();
+				await earningsInfo(); */
 			   }
 	   }
 	  
@@ -364,17 +363,13 @@ function endCard() {
             }
             $.post(url,async(error, response, data) => {
 				try{
-					console.log(data);
 					punchcardend = JSON.parse(data)
-					console.log(punchcardend);
 					if (punchcardend.code == 1) {
-					    detail += `【早起打卡】${punchcardend.data.card_time}${punchcardend.msg}✅\n`
+					   detail += `【早起打卡】${punchcardend.data.card_time}${punchcardend.msg}✅\n`
 					   $.log("早起打卡成功，打卡时间:"+`${punchcardend.data.card_time}`)
 					   await Cardshare();
 					} else if (punchcardend.code == 0) {
-					    // TODO .不在打卡时间范围内
-					    //detail += `【早起打卡】${punchcardend.msg}\n`
-					//   $.log("不在打卡时间范围内")
+					   detail += `【早起打卡】${punchcardend.msg}\n`
 					}
 				} catch (e) {
 					$.logErr(e, resp)
@@ -436,16 +431,20 @@ function SevCont() {
             $.post({url: `${YOUTH_HOST}PunchCard/luckdraw?`,
               headers: JSON.parse(signheaderVal),
             }, async(error, response, data) => {
-                sevres = JSON.parse(data)
-                if (sevres.code == 1) {
-          
-                    detail += `【七日签到】+${sevres.data.score}青豆 \n`
-          
-                }else if (sevres.code == 0){
-                     //detail += `【七日签到】${sevres.msg}\n`
-                   // $.log(`${boxres.msg}`)
-                }
-                resolve()
+				try{ 
+					console.log(data);
+					sevres = JSON.parse(data)
+					if (sevres.code == 1) {
+					    detail += `【七日签到】+${sevres.data.score}青豆 \n`
+					}else if (sevres.code == 0){
+					     //detail += `【七日签到】${sevres.msg}\n`
+					   // $.log(`${boxres.msg}`)
+					}
+				} catch (e) {
+					$.logErr(e, resp)
+				} finally {
+					resolve();
+				}
             })
         },s)
     })
@@ -544,8 +543,8 @@ function friendSign(uid) {
             headers: JSON.parse(signheaderVal)
         }
         $.get(url, (error, response, data) => {
+			console.log(data);
             friendres = JSON.parse(data)
-	console.log(friendres);
             if (friendres.error_code == "0") {
                 //detail += `【好友红包】+${friendres.score}个青豆\n`
                console.log(`好友签到，我得红包 +${friendres.score}个青豆`)
