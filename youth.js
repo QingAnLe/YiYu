@@ -69,8 +69,7 @@ const timeArr = [];
 let timebodyVal = '';
 const redpArr = [];
 let redpbodyVal = '';
-let detail = ``; 
-let subTitle = ``;	
+let detail = ``; 	
 let CookieYouth = [];
 let ARTBODYs = []; 
 let REDBODYs  = [];
@@ -209,20 +208,21 @@ async function all() {
 				await sign();
 				await signInfo();
 				await friendsign();
+			     //八点之后开启报名打开
+			     if($.time('HH')>=8){
+					console.log("开始报名打卡")
+			        await punchCard()
+			     };
 			     
-			      await punchCard()
-			      await endCard();
 			     
-			     /*	 
-				if($.time('HH')>12){
-				   await punchCard()
-				};
+			     
+			    
 				if ($.isNode()&& $.time('HH')>20&&$.time('HH')<22){
 				   await endCard();
 				 }else if ($.time('HH')>4&&$.time('HH')<8){
 				   await endCard();
 				}
-				*/
+				
 				await SevCont();
 				await comApp();
 				await ArticleShare();
@@ -275,26 +275,30 @@ function sign() {
             headers: JSON.parse(signheaderVal),
         }
         $.post(signurl, (error, response, data) => {
-            signres = JSON.parse(data)
-        const date =  $.time(`MMdd`)
-            if (signres.status == 2) {
-                signresult = `签到失败，Cookie已失效‼️`;
-                $.msg($.name, signresult, "");
-                return;
-            } else if (signres.status == 1) {
-                 signresult = `【签到结果】成功 🎉 明日+${signres.nextScore} `
-                $.setdata(1,'times')
-              if(firstcheck==undefined||firstcheck!=date){
-                $.setdata(date,'signt');
-              }
-            } else if (signres.status == 0) {
-                signresult = `【签到结果】已签到`;
-                detail = "";
-              if(runtimes!==undefined){
-              $.setdata(`${parseInt(runtimes)+1}`,'times')  
-              }
-            }
-           resolve() 
+			try{
+				signres = JSON.parse(data)
+				const date =  $.time(`MMdd`)
+				if (signres.status == 2) {
+				    signresult = `签到失败，Cookie已失效‼️`;
+				    $.msg($.name, signresult, "");
+				    return;
+				} else if (signres.status == 1) {
+				     signresult = `【签到结果】成功 🎉 明日+${signres.nextScore} `
+				    $.setdata(1,'times')
+				  if(firstcheck==undefined||firstcheck!=date){
+				    $.setdata(date,'signt');
+				  }
+				} else if (signres.status == 0) {
+				  signresult = `【签到结果】已签到`;
+				  if(runtimes!==undefined){
+					$.setdata(`${parseInt(runtimes)+1}`,'times')  
+				  }
+				}
+			} catch (e) {
+				$.logErr(e, resp)
+			} finally {
+				resolve();
+			}
         })
     })
 }
@@ -306,21 +310,23 @@ function signInfo() {
             headers: JSON.parse(signheaderVal),
         }
         $.post(infourl, (error, response, data) => {
-            signinfo = JSON.parse(data);
-		$.log(data)
-		$.log(signinfo)
-            if (signinfo.status == 1) {
-                cash = signinfo.data.user.money
-		detail += `\n============= 账号: ${signinfo.data.user.nickname}=============\n`;
-                detail += `【收益总计】${signinfo.data.user.score}青豆  现金约${cash}元\n`;
-                detail += `${signresult}(今天签到:+${signinfo.data.sign_score}青豆) 已连签${signinfo.data.sign_day}天`;
-                detail +='\n<本次收益>：\n'
-		
-            } else {
-                subTitle = `${signinfo.msg}`;
-                detail = ``;
-            }
-            resolve()
+			  try {
+				 signinfo = JSON.parse(data);
+				 if (signinfo.status == 1) {
+				     cash = signinfo.data.user.money
+				 	detail += `\n============= 账号: ${signinfo.data.user.nickname}=============\n`;
+				     detail += `【收益总计】${signinfo.data.user.score}青豆  现金约${cash}元\n`;
+				     detail += `${signresult}(今天签到:+${signinfo.data.sign_score}青豆) 已连签${signinfo.data.sign_day}天`;
+				     detail +='\n<本次收益>：\n'
+				 } else {
+				 	detail +=`获取用户失败请重新获取Cookie\n`;
+				    detail += `失败原因：${signinfo.msg}\n`;
+				 } 
+			  } catch (e) {
+				$.logErr(e, resp)
+			  } finally {
+				resolve();
+			  }
         })
     })
 }
@@ -332,18 +338,21 @@ function punchCard() {
             headers: JSON.parse(signheaderVal),
         }
         $.post(url, (error, response, data) => {
-            punchcardstart = JSON.parse(data);
-		console.log(punchcardstart);
-            if (punchcardstart.code == 1) {
-                detail += `【打卡报名】打卡报名${punchcardstart.msg} ✅ \n`;
-                $.log("每日报名打卡成功，报名时间:"+`${$.time('MM-dd HH:mm')}`)
-                resolve();
-            }
-          else {
-            //detail += `【打卡报名】${punchcardstart.msg}\n`
-          // $.log(punchcardstart.msg)
-            resolve()
-          }
+			try{ 
+				console.log(data);
+				punchcardstart = JSON.parse(data);
+				if (punchcardstart.code == 1) {
+				    detail += `【打卡报名】打卡报名${punchcardstart.msg} ✅ \n`;
+				    $.log("每日报名打卡成功，报名时间:"+`${$.time('MM-dd HH:mm')}`)
+				    resolve();
+				} else {
+					detail += `【打卡报名】${punchcardstart.msg}\n`
+				}
+			} catch (e) {
+				$.logErr(e, resp)
+			} finally {
+				resolve();
+			}
         })
     })
 }
