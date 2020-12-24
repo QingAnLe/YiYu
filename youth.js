@@ -440,7 +440,7 @@ function Cardshare() {
         }
         $.post(starturl, (error, response, data) => {
 			try{
-				console.log(data);
+				
 				sharestart = JSON.parse(data)
 				if (sharestart.code == 1) {
 					setTimeout(() => {
@@ -450,6 +450,7 @@ function Cardshare() {
 						}
 						$.post(endurl, (error, response, data) => {
 							try{ 
+								console.log(data);
 								shareres = JSON.parse(data)
 								if (shareres.code == 1) {
 									detail += `【打卡分享】已分享获得+${shareres.data.score}青豆\n`
