@@ -125,20 +125,20 @@ function AutoRead(articlebody,RIndex,i) {
 		$.post(url, async (error, response, data) => {
 			try{
 				let readres = JSON.parse(data);  
-				$.message += `========第'+ (i+1) +`个${$.name}账号========`;
+				$.message +='========第'+ (i+1) +'个${$.name}账号========';
 				if (readres.error_code == '0' && typeof readres.items.read_score === 'number') {
 
-					$.message +=`\n本次阅读第`+(RIndex+1)+`个Body,获得${readres.items.read_score}个青豆`;
+					$.message +='\n本次阅读第'+(RIndex+1)+'个Body,获得${readres.items.read_score}个青豆';
 				}
-				else if (readres.error_code == '0' && typeof readres.items.score === 'number') {
-					$.message +=`\n本次阅读第`+(RIndex+1)+`个Body,获得${readres.items.score}个青豆`;
-				}
-				else if (readres.items.max_notice == '\u770b\u592a\u4e45\u4e86\uff0c\u63621\u7bc7\u8bd5\u8bd5') {
-						$.message +=`\n本次阅读第`+(RIndex+1)+`个Body,错误`+readres.items.max_notice;
-				}
-				else if (readres.success == false) {
-					$.message +=`\n本次阅读第`+(RIndex+1)+`个Body,阅读请求失败`;
-				}
+// 				else if (readres.error_code == '0' && typeof readres.items.score === 'number') {
+// 					$.message +=`\n本次阅读第`+(RIndex+1)+`个Body,获得${readres.items.score}个青豆`;
+// 				}
+// 				else if (readres.items.max_notice == '\u770b\u592a\u4e45\u4e86\uff0c\u63621\u7bc7\u8bd5\u8bd5') {
+// 						$.message +=`\n本次阅读第`+(RIndex+1)+`个Body,错误`+readres.items.max_notice;
+// 				}
+// 				else if (readres.success == false) {
+// 					$.message +=`\n本次阅读第`+(RIndex+1)+`个Body,阅读请求失败`;
+// 				}
 			} catch (e) {
 				$.logErr(e, resp)
 			} finally {
