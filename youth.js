@@ -134,7 +134,7 @@ if ($.isNode()) {
 	// 根据boxjs中设置的额外账号数，添加存在的账号数据进行任务处理
 	let zqCount = ($.getval('zqCount') || '1') - 0;
 	for (let i = 2; i <= zqCount; i++) {
-	  if ($.getdata(`youthheader_zq{i}`)) {
+	  if ($.getdata(`youthheader_zq${i}`)) {
 		  cookiesArr.push($.getdata(`youthheader_zq${i}`));
 		  redpArr.push($.getdata(`red_zq${i}`));
 		  readArr.push($.getdata(`read_zq${i}`));
