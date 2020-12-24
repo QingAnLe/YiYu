@@ -209,7 +209,11 @@ async function all() {
 				await sign();
 				await signInfo();
 				await friendsign();
-			     	  console.log($.time('HH'));
+			     
+			      await punchCard()
+			      await endCard();
+			     
+			     /*	 
 				if($.time('HH')>12){
 				   await punchCard()
 				};
@@ -218,6 +222,7 @@ async function all() {
 				 }else if ($.time('HH')>4&&$.time('HH')<8){
 				   await endCard();
 				}
+				*/
 				await SevCont();
 				await comApp();
 				await ArticleShare();
@@ -326,6 +331,7 @@ function punchCard() {
         }
         $.post(url, (error, response, data) => {
             punchcardstart = JSON.parse(data);
+		console.log(punchcardstart);
             if (punchcardstart.code == 1) {
                 detail += `【打卡报名】打卡报名${punchcardstart.msg} ✅ \n`;
                 $.log("每日报名打卡成功，报名时间:"+`${$.time('MM-dd HH:mm')}`)
@@ -349,6 +355,7 @@ function endCard() {
             }
             $.post(url,async(error, response, data) => {
                 punchcardend = JSON.parse(data)
+		    console.log(punchcardend);
                 if (punchcardend.code == 1) {
                     detail += `【早起打卡】${punchcardend.data.card_time}${punchcardend.msg}✅\n`
                    $.log("早起打卡成功，打卡时间:"+`${punchcardend.data.card_time}`)
@@ -510,7 +517,7 @@ function friendSign(uid) {
         }
         $.get(url, (error, response, data) => {
             friendres = JSON.parse(data)
-		console.log(`$.friendres`);
+	console.log(friendres);
             if (friendres.error_code == "0") {
                 //detail += `【好友红包】+${friendres.score}个青豆\n`
                console.log(`好友签到，我得红包 +${friendres.score}个青豆`)
