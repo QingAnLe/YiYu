@@ -365,7 +365,7 @@ function friendSign(uid) {
 					let inedx = 1;
 					let scoreNum=0;
 					for(friendsData of friendsDataitem){
-						scoreNum +=${friendsData.score};
+						scoreNum +=friendsData.score;
 						inedx++;
 					}
 					detail +=`【好友签到】 共${inedx}个好友已签到，获得+${scoreNum}个青豆\n`
