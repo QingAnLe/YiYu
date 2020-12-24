@@ -95,7 +95,8 @@ function all() {
 	  } else {
 		console.log(`============ 共${ReadArr.length}个${$.name}账号  =============\n`);
 		console.log(`脚本执行- 北京时间(UTC+8)：${new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000).toLocaleString()}\n`)
-		console.log(`本次阅读 ${ReadArr.length}* ${ReadNum} /60 分钟,请耐心等待 \n`)
+		let log = (ReadArr.length * ReadNum)/60;
+		console.log(`本次阅读预计 ${log}分钟,请耐心等待 \n`)
 		
 		for (let i = 0; i < ReadArr.length; i++) {
 			let YBody = ReadArr[i].split('&');
