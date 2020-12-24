@@ -206,7 +206,6 @@ async function all() {
 				redpbodyVal = redpArr[i];
 				await sign();
 				await signInfo(); 
-				await friendsign();
 			     //八点之后开启报名打开
 			    if($.time('HH')>=9){
 			        await punchCard()
@@ -364,13 +363,11 @@ function friendSign(uid) {
 				friendres = JSON.parse(data)
 				if (friendres.error_code == "0") {
 					friendsDataitem = friendres.data;
-					detail +=`【好友签到】\n`
-					let index = 1;
+					let scoreNum=0;
 					for(friendsData of friendsDataitem){
-						detail += `           ${index++}.好友【${friendsData.nickname}】已签到,获得${friendsData.score}个青豆\n`
-
-						 detail += ``
+						scoreNum +=${friendsData.score};
 					}
+					detail +=`【好友签到】 共${friendsData.length}个好友已签到，获得+${scoreNum}个青豆\n`
 				}
 			} catch (e) {
 				$.logErr(e, resp)
