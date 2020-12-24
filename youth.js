@@ -363,10 +363,13 @@ function friendSign(uid) {
 			try{
 				friendres = JSON.parse(data)
 				if (friendres.error_code == "0") {
+					friendsDataitem = friendres.data;
 					detail +=`【好友签到】\n`
-					friendsDataitem = friendres.data
+					let index = 1;
 					for(friendsData of friendsDataitem){
-						 detail += `好友【${friendsData.nickname}】已签到,获得${friendsData.score}个青豆\n`
+						detail += `           ${index++}.好友【${friendsData.nickname}】已签到,获得${friendsData.score}个青豆\n`
+
+						 detail += ``
 					}
 				}
 			} catch (e) {
