@@ -1,3 +1,6 @@
+
+
+
 const $ = new Env("中青看点自动阅读")
 const notify = $.isNode() ? require('./sendNotify') : '';
 $.idx = ($.idx = ($.getval('zqReadSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
@@ -7,7 +10,6 @@ let ReadArr = [];
 let YouthBody = []; 
 let ReadIndex = []; 
 let YouthIndex = []; 
-const ReadNum = 20; //一个账号一次自动阅读20次
 
 $.message = '';
 
@@ -56,10 +58,16 @@ let isGetCookie = typeof $request !== 'undefined';
 if (isGetCookie) {
   GetCookie()
 } else {
-
+!(async () => {
     await all();
     await msgShow();
+  })()
+  .catch((e) => {
+	$.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
+  })
+  .finally(() => {
 	$.done();
+  })
 }
 
 //获取Body
@@ -92,78 +100,62 @@ function all() {
 	  } else {
 		console.log(`============ 共${ReadArr.length}个${$.name}账号  =============\n`);
 		console.log(`脚本执行- 北京时间(UTC+8)：${new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000).toLocaleString()}\n`)
-		let log = (ReadArr.length * ReadNum)/60;
-		console.log(`本次阅读预计 ${log}分钟,请耐心等待 \n`)
-		
 		for (let i = 0; i < ReadArr.length; i++) {
 			let YBody = ReadArr[i].split('&');
-			let RIndex = ReadIndex[i];
-			await Read(YBody,RIndex,i);
+			let RIndex = ReadIndex[i] ? ReadIndex[i] : 0;
+			let articlebody = YBody[RIndex];
+			console.log(i);
+			await AutoRead(articlebody,RIndex,i);
+			
+			if(RIndex = YBody.length){
+				 $.setdata(0,'index')
+			}else{
+				 $.setdata(RIndex+1,'index')
+			}
+			//await Read(,RIndex,i);
 		}
 	
 	}
 }
 
 
- function Read(YBody,RIndex,index){
-	 let ri = RIndex ? RIndex : 0;
-	 let num = ri + ReadNum ;
-	 let len = YBody.length;
-	 let readn = 0;
-	 if(num < len){
-	 	len = num;
-		readn = num;
-	 }else{
-		readn = len - ri ;
-	 }
-	 let readscore = 0;
-	 for (var i = ri; i <= len; i++) {
-		 return new Promise((resolve, reject) => {
-			  let url = {
-				url: `https://ios.baertt.com/v5/article/complete.json`,
-				headers: {
-				  'User-Agent': 'KDApp/1.7.8 (iPhone; iOS 14.0; Scale/3.00)'
-				},
-				body: YBody[i]
-			  };
-			  $.post(url, async (error, response, data) => {
-					try{
-						let readres = JSON.parse(data);
-						if (readres.error_code == '0' && typeof readres.items.read_score === 'number') {
-							console.log(`\n本次阅读获得${readres.items.read_score}个青豆，请等待30s后执行下一次阅读\n`);
-							readscore += readres.items.read_score;
-							await $.wait(30000);
-						}
-						else if (readres.error_code == '0' && typeof readres.items.score === 'number') {
-							console.log(`\n本次阅读获得${readres.items.score}个青豆，即将开始下次阅读\n`)
-							readscore += readres.items.score;
-							await $.wait(30000);
-						}
-						else if (readres.items.max_notice == '\u770b\u592a\u4e45\u4e86\uff0c\u63621\u7bc7\u8bd5\u8bd5') {
-							console.log(readres.items.max_notice)
-						}
-						else if (readres.success == false) {
-							console.log(`第${$.index}次阅读请求失败`)
-						}
-					} catch (e) {
-						$.logErr(e, resp);
-					} finally {
-						resolve()
-					}
-				})
-		
-		})
-	 }
-	 if(index = 0){
-		 $.setdata(num, 'index'); 
-	 }else{
-		let aa = index +1;
-		 $.setdata(num, 'index'+aa);  
-	 }
-	
-	 $.message += '第'+ index+'个${$.name}账号,本次阅读共'+readn+'次\n本次阅读共收益+'+readscore+'个青豆，阅读请求全部结束';
- }
+function AutoRead(articlebody,RIndex,i) {
 
+  return new Promise((resolve, reject) => {
+    let url = {
+      url: `https://ios.baertt.com/v5/article/complete.json`,
+      headers: {
+        'User-Agent': 'KDApp/1.7.8 (iPhone; iOS 14.0; Scale/3.00)'
+      },
+      body: articlebody
+    };
+    $.post(url, async (error, response, data) => {
+		try{
+			let readres = JSON.parse(data);  
+			$.message += `========第'+ (i+1) +`个${$.name}账号========`;
+			if (readres.error_code == '0' && typeof readres.items.read_score === 'number') {
+				
+				$.message +=`\n本次阅读第`+(RIndex+1)+`个Body,获得${readres.items.read_score}个青豆`;
+			}
+			else if (readres.error_code == '0' && typeof readres.items.score === 'number') {
+				$.message +=`\n本次阅读第`+(RIndex+1)+`个Body,获得${readres.items.score}个青豆`;
+			}
+			else if (readres.items.max_notice == '\u770b\u592a\u4e45\u4e86\uff0c\u63621\u7bc7\u8bd5\u8bd5') {
+					$.message +=`\n本次阅读第`+(RIndex+1)+`个Body,错误`+readres.items.max_notice;
+			}
+			else if (readres.success == false) {
+				$.message +=`\n本次阅读第`+(RIndex+1)+`个Body,阅读请求失败`;
+			}
+		} catch (e) {
+			$.logErr(e, resp)
+		} finally {
+			resolve();
+		}
+      resolve()
+    })
+
+  })
+}
 
 function msgShow() {
   $.msg($.name, '', $.message);
