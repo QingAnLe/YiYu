@@ -103,10 +103,23 @@ async function all() {
 			let RIndex = ReadIndex[i] ? ReadIndex[i] : 0;
 			let articlebody = YBody[RIndex];
 			await AutoRead(articlebody,RIndex,i)
-			if(RIndex = YBody.length){
+			if(RIndex == YBody.length){
 				console.log(11111);
+				console.log(i);
+				if( i == 0){
+				 	$.setdata(0,"index")
+				}else{
+				 	console.log("index"+(i+1));
+				}
 			}else{
 				console.log(22222);
+				console.log(i);
+				if( i == 0){
+					console.log(RIndex+1);
+				 	$.setdata(RIndex+1,"index")
+				}else{
+				 	console.log("index"+(i+1));
+				}
 			}
 // 			if(RIndex = YBody.length){
 // 				console.log(11111);
