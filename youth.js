@@ -221,7 +221,7 @@ async function all() {
 				   await endCard();
 				}
 				
-				//await SevCont();
+				await SevCont();
 				//await comApp();
 				/* await ArticleShare();
 				await openbox();
@@ -483,6 +483,7 @@ function SevCont() {
               headers: JSON.parse(signheaderVal),
             }, async(error, response, data) => {
 				try{ 
+					console.log(data);
 					sevres = JSON.parse(data)
 					if (sevres.code == 1) {
 					    detail += `【七日签到】+${sevres.data.score}青豆 \n`
@@ -500,6 +501,37 @@ function SevCont() {
     })
 }
 
+
+function comApp() {
+    return new Promise((resolve, reject) => {
+        const url = {
+            url: `https://ios.baertt.com/v5/mission/msgRed.json`,
+            headers: {
+            'User-Agent': 'KDApp/1.8.0 (iPhone; iOS 14.2; Scale/3.00)'
+            },
+            body: articlebodyVal,
+        }
+        $.post(url, (error, response, data) => {
+			try { 
+				console.log(data);
+				redres = JSON.parse(data)
+				if (redres.success == true) {
+				    detail += `【回访奖励】+${redres.items.score}个青豆\n`
+				}else{
+				    if(redres.error_code == "100009"){
+				        //detail += `【回访奖励】${redres.message}\n`
+				    }
+				}
+			} catch (e) {
+				$.logErr(e, resp)
+			} finally {
+				resolve();
+			}
+        })
+    })
+}
+
+
 function ArticleShare() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -508,6 +540,7 @@ function ArticleShare() {
                 headers: JSON.parse(signheaderVal),
             }
             $.post(url, async(error, response, data) => {
+				console.log(data);
                 //boxres = JSON.parse(data)
                 resolve()
             })
@@ -604,28 +637,7 @@ function gameVideo() {
         })
     })
 }
-function comApp() {
-    return new Promise((resolve, reject) => {
-        const url = {
-            url: `https://ios.baertt.com/v5/mission/msgRed.json`,
-            headers: {
-            'User-Agent': 'KDApp/1.8.0 (iPhone; iOS 14.2; Scale/3.00)'
-            },
-            body: articlebodyVal,
-        }
-        $.post(url, (error, response, data) => {
-            redres = JSON.parse(data)
-            if (redres.success == true) {
-                detail += `【回访奖励】+${redres.items.score}个青豆\n`
-            }else{
-                if(redres.error_code == "100009"){
-                    //detail += `【回访奖励】${redres.message}\n`
-                }
-            }
-            resolve()
-        })
-    })
-}
+
 
 //阅读奖励
 function readArticle() {
