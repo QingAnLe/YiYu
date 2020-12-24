@@ -57,7 +57,7 @@ if (isGetCookie) {
 } else {
   !(async () => {
     await all();
-    //await msgShow();
+    await msgShow();
   })()
       .catch((e) => {
         $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -104,9 +104,21 @@ async function all() {
 			let articlebody = YBody[RIndex];
 			await AutoRead(articlebody,RIndex,i)
 			if(RIndex = YBody.length){
-				 $.setdata(0,'index'+i)
+				console.log('index'+i);
+				if(i == 0){
+					$.setdata(0,'index')
+				 }else{
+					 $.setdata(0,'index'+i)
+				 }
 			}else{
-				$.setdata(RIndex+1,'index'+i)
+				console.log('index'+i);
+				if(i == 0){
+					$.setdata(RIndex+1,'index')
+				 }else{
+					$.setdata(RIndex+1,'index'+i)
+				 }
+				
+				
 			}
 			
 		}
