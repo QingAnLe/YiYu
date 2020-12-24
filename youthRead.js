@@ -1,6 +1,3 @@
-
-
-
 const $ = new Env("中青看点自动阅读")
 const notify = $.isNode() ? require('./sendNotify') : '';
 $.idx = ($.idx = ($.getval('zqReadSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
