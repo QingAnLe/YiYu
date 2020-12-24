@@ -107,7 +107,7 @@ async function all() {
 			let articlebody = YBody[intIndex];
 			await AutoRead(articlebody,intIndex,i)
 			let nextIndex = (intIndex+1).toString()
-			if(intIndex == YBody.length){
+			if(intIndex == YBody.length-1){
 				if( i == 0){
 				 	$.setdata("0","index")
 				}else{
