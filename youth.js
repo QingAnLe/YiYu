@@ -180,7 +180,7 @@ if (isGetCookie) {
 } else {
   !(async () => {
     await all();
-    await showmsg();
+    //await showmsg();
   })()
       .catch((e) => {
         $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -444,6 +444,7 @@ function Cardshare() {
 				sharestart = JSON.parse(data)
 				if (sharestart.code == 1) {
 					setTimeout(() => {
+						console.log(进来了);
 						let endurl = {
 							url: `${YOUTH_HOST}PunchCard/shareEnd?`,
 							headers: JSON.parse(signheaderVal)
