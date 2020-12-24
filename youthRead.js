@@ -8,10 +8,9 @@ let COOKIES_SPLIT = "&"; // 自定义多body之间连接的分隔符，默认为
 
 let ReadArr = []; 
 let YouthBody = []; 
-
 let ReadIndex = []; 
 let YouthIndex = []; 
-
+const ReadNum = 20; //一个账号一次自动阅读20次
 
 $.message = '';
 
@@ -51,7 +50,7 @@ if ($.isNode()) {
 	for (let i = 2; i <= zqReadCount; i++) {
 	  if ($.getdata(`zqgetbody_body{i}`)) {
 		  ReadArr.push($.getdata(`zqgetbody_body{i}`));
-		  ReadArr.push($.getdata(`index{i}`));
+		  ReadIndex.push($.getdata(`index{i}`));
 	  }
 	}
 }
@@ -61,7 +60,7 @@ if (isGetCookie) {
   GetCookie()
 } else {
   !(async () => {
-    //await all();
+    await all();
     //await msgShow();
   })()
       .catch((e) => {
@@ -95,9 +94,36 @@ function GetCookie(){
 	}
 }
 
+async function all() {
+	if (!ReadArr[0]) {
+	    $.msg($.name, '提示：⚠️请点击前往中青阅读获取Body\n');
+	    return;
+	  } else {
+		onsole.log(`============ 共${ReadArr.length}个${$.name}账号  =============\n`);
+		console.log(`脚本执行- 北京时间(UTC+8)：${new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000).toLocaleString()}\n`)
+		
+		for (let i = 0; i < ReadArr.length; i++) {
+			let YBody = ReadArr[i].split('&');
+			let RIndex = ReadIndex[i];
+			await Read(YBody,RIndex);
+		}
+	
+	}
+}
 
 
-
+ function Read(YBody,RIndex){
+	 let i = RIndex ? RIndex : 0;
+	 console.log(i);
+	 let num = RIndex + ReadNum ;
+	 console.log(num);
+	 let len = YBody.length;
+	 console.log(len);
+	 if(RIndex+20 < len){
+	 	len = num;
+	 }
+	 console.log(len);
+ }
 
 
 
