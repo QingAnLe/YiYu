@@ -59,16 +59,10 @@ let isGetCookie = typeof $request !== 'undefined';
 if (isGetCookie) {
   GetCookie()
 } else {
-  !(async () => {
+
     await all();
     await msgShow();
-  })()
-      .catch((e) => {
-        $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
-      })
-      .finally(() => {
-        $.done();
-      })
+	$.done();
 }
 
 //获取Body
@@ -94,13 +88,14 @@ function GetCookie(){
 	}
 }
 
-async function all() {
+function all() {
 	if (!ReadArr[0]) {
 	    $.msg($.name, '提示：⚠️请点击前往中青阅读获取Body\n');
 	    return;
 	  } else {
 		console.log(`============ 共${ReadArr.length}个${$.name}账号  =============\n`);
 		console.log(`脚本执行- 北京时间(UTC+8)：${new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000).toLocaleString()}\n`)
+		console.log(`本次阅读 ${ReadArr.length}* ${ReadNum} /60 分钟,请耐心等待 \n`)
 		
 		for (let i = 0; i < ReadArr.length; i++) {
 			let YBody = ReadArr[i].split('&');
@@ -161,7 +156,13 @@ async function all() {
 		
 		})
 	 }
-	 $.setdata(num, 'index');
+	 if(index = 0){
+		 $.setdata(num, 'index'); 
+	 }else{
+		let aa = index +1;
+		 $.setdata(num, 'index'+aa);  
+	 }
+	
 	 $.message += '第'+ index+'个${$.name}账号,本次阅读共'+readn+'次\n本次阅读共收益+'+readscore+'个青豆，阅读请求全部结束';
  }
 
