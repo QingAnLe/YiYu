@@ -209,6 +209,7 @@ async function all() {
 				await sign();
 				await signInfo();
 				await friendsign();
+			     	  console.log($.time('HH'));
 				if($.time('HH')>12){
 				   await punchCard()
 				};
@@ -479,7 +480,7 @@ function boxshare() {
     })
 }
 
-function friendsign(uid) {
+function friendsign() {
     return new Promise((resolve, reject) => {
         const url = {
             url: `https://kd.youth.cn/WebApi/ShareSignNew/getFriendActiveList`,
@@ -509,6 +510,7 @@ function friendSign(uid) {
         }
         $.get(url, (error, response, data) => {
             friendres = JSON.parse(data)
+		console.log(`$.friendres`);
             if (friendres.error_code == "0") {
                 //detail += `【好友红包】+${friendres.score}个青豆\n`
                console.log(`好友签到，我得红包 +${friendres.score}个青豆`)
