@@ -180,7 +180,7 @@ if (isGetCookie) {
 } else {
   !(async () => {
     await all();
-    //await showmsg();
+    await showmsg();
   })()
       .catch((e) => {
         $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -204,31 +204,26 @@ async function all() {
 				articlebodyVal = readArr[i];
 				timebodyVal = timeArr[i];
 				redpbodyVal = redpArr[i];
-																														  
-				/* await sign();
+				await sign();
 				await signInfo(); 
 				await friendsign();
 			     //八点之后开启报名打开
 			    if($.time('HH')>=9){
 			        await punchCard()
 			    };
-				 
-			    await Cardshare();
-			     
 				if ($.isNode()&& $.time('HH')>20&&$.time('HH')<22){
 				   await endCard();
 				 }else if ($.time('HH')>4&&$.time('HH')<8){
 				   await endCard();
 				}
-				
 				await SevCont();
 				await comApp();
 				await ArticleShare();
-				await openbox();*/
+				await openbox();
 				await getAdVideo();
-				//await gameVideo();
+				await gameVideo();
 				await readArticle();
-				/*await Articlered();
+				await Articlered();
 				await readTime();
 				for ( k=0;k<5;k++){
 					await $.wait(5000);
@@ -258,7 +253,7 @@ async function all() {
 					detail += `【转盘双倍】已用完\n`
 				}
 				await rotaryCheck();
-				await earningsInfo(); */
+				await earningsInfo();
 			   }
 	   }
 	  
@@ -610,10 +605,11 @@ function getAdVideo() {
         }
         $.post(url, (error, response, data) => {
 			try{ 
-				console.log(data);
 				adVideores = JSON.parse(data)
 				if (adVideores.status == 1) {
 				    detail += `【观看视频】+${adVideores.score}个青豆\n`
+				}else{
+					  detail += `【观看视频】+0个青豆\n`
 				}
 			} catch (e) {
 				$.logErr(e, resp)
@@ -662,11 +658,17 @@ function readArticle() {
         }
         $.post(url, (error, response, data) => {
 			try{
-				console.log(data);
 				readres = JSON.parse(data);
 				if (typeof readres.items.read_score === 'number')  {
-				   detail += `【阅读奖励】+${readres.items.read_score}个青豆\n`;
-				} 
+					if(readres.items.read_score == 0){
+						detail += `【阅读奖励】看太久了，换1篇试试\n`;
+					}else{
+						detail += `【阅读奖励】+${readres.items.read_score}个青豆\n`;
+					}
+				   
+				} else{
+					detail += `【阅读奖励】看太久了，换1篇试试\n`;
+				}
 			} catch (e) {
 				$.logErr(e, resp)
 			} finally {
