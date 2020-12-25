@@ -1,3 +1,18 @@
+/*
+本脚本修改Sunert中青看点.再次感谢大佬
+赞赏:中青邀请码`52049058`,农妇山泉 -> 有点咸，万分感谢
+本脚本仅适用于中青看点极速版签加转盘领取青豆
+获取body方法:
+1.将下方[rewrite_local]和[MITM]地址复制的相应的区域下
+#中青阅读body获取
+hostname =  ios.baertt.com
+
+圈X。其他软件请自行添加。获取大约200个Boy，删除重写
+https://ios.baertt.com/v5/article/complete.json url script-request-body https://raw.githubusercontent.com/jiuli12/Script/main/youthRead.js
+
+
+*/
+
 const $ = new Env("中青看点自动阅读")
 const notify = $.isNode() ? require('./sendNotify') : '';
 $.idx = ($.idx = ($.getval('zqReadSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
