@@ -5,7 +5,7 @@
   "icon": "",
   "repo": "https://github.com/jiuli12/Script",
   "apps": [{
-    "id": "youth",
+    "id": "youthQD",
     "name": "中青多账号签到+转盘抽奖",
     "keys": ["youthheader_zq", "read_zq", "red_zq", "readtime_zq","youthheader_zq2", "read_zq2", "red_zq2", "readtime_zq2","youthheader_zq3", "read_zq3", "red_zq3", "readtime_zq3"],
     "author": "@jiuli",
@@ -29,7 +29,7 @@
     "icons": ["https://raw.githubusercontent.com/jiuli12/Script/main/image/youth.png", "https://raw.githubusercontent.com/jiuli12/Script/main/image/youth.png"],
     "script": "https://raw.githubusercontent.com/jiuli12/Script/main/youth.js"
   },{
-    "id": "youthRead",
+    "id": "youthZDRead",
     "name": "中青多账号阅读",
     "keys": ["zqgetbody_body","index","zqgetbody_body2","index2","zqgetbody_body3","index3"],
     "author": "@jiuli",
