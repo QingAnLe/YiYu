@@ -34,6 +34,13 @@
     "keys": ["zqgetbody_body","index","zqgetbody_body2","index2","zqgetbody_body3","index3"],
     "author": "@jiuli",
     "settings": [
+       {
+          "id": "zqReadLog",
+          "name": "通知",
+          "val": false,
+          "type": "boolean",
+          "desc": "通知开关，30秒一次,较频繁！建议关闭。"
+      },
       {
         "id": "zqReadSuffix",
         "name": "当前账号",
