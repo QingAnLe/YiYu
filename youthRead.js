@@ -175,8 +175,7 @@ function AutoRead(articlebody,intIndex,i) {
 
 function msgShow() {
 	let zqReadLog = $.getdata('zqReadLog')||false;
-	console.log(zqReadLog);
-	if(zqReadLog){
+	if(zqReadLog == "true"){
 	   $.msg($.name, '', $.message);
 	}
 	console.log($.message);
