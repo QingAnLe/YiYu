@@ -159,10 +159,10 @@ function AutoRead(articlebody,intIndex,i) {
  					$.message +='本次阅读第'+(intIndex+1)+'个Body成功,获得'+readres.items.score+'个青豆\n';
 				}
  				else if (readres.items.max_notice == '\u770b\u592a\u4e45\u4e86\uff0c\u63621\u7bc7\u8bd5\u8bd5') {
- 					$.message += '本次阅读第'+(intIndex+1)+'个Body错误,错误信息：'+readres.items.max_notice; 
+ 					$.message += '本次阅读第'+(intIndex+1)+'个Body错误,错误信息：'+readres.items.max_notice+'\n'; 
  				}
  				else if (readres.success == false) {
-					$.message += '本次阅读第'+(intIndex+1)+'个Body错误,错误信息：阅读请求失败'; 
+					$.message += '本次阅读第'+(intIndex+1)+'个Body错误,错误信息：阅读请求失败\n'; 
  				}
 			} catch (e) {
 				$.logErr(e, resp)
