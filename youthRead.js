@@ -16,7 +16,6 @@ https://ios.baertt.com/v5/article/complete.json url script-request-body https://
 const $ = new Env("中青看点自动阅读")
 const notify = $.isNode() ? require('./sendNotify') : '';
 $.idx = ($.idx = ($.getval('zqReadSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
-let zqReadLog = $.getdata('zqReadLog')||false;  
 let COOKIES_SPLIT = "&"; // 自定义多body之间连接的分隔符，默认为&分割，不熟悉的不要改动和配置
 
 let ReadArr = []; 
@@ -175,7 +174,7 @@ function AutoRead(articlebody,intIndex,i) {
 }
 
 function msgShow() {
-	if(zqReadLog){
+	if($.getdata('zqReadLog')){
 	   $.msg($.name, '', $.message);
 	}
 	console.log($.message);
