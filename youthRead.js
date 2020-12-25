@@ -103,7 +103,6 @@ async function all() {
 			let RIndex = ReadIndex[i] ? ReadIndex[i] : "0";
 			//转换int
 			let intIndex = parseInt(RIndex);
-			console.log(intIndex);
 			let articlebody = YBody[intIndex];
 			await AutoRead(articlebody,intIndex,i)
 			let nextIndex = (intIndex+1).toString()
