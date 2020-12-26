@@ -362,13 +362,11 @@ function friendSign(uid) {
 				friendres = JSON.parse(data)
 				if (friendres.error_code == "0") {
 					friendsDataitem = friendres.data;
-					let inedx = 0;
 					let scoreNum= 0;
-					for(friendsData of friendsDataitem){
-						scoreNum += friendsData.score;
-						inedx++;
+					for(const friendsData of friendsDataitem){
+						scoreNum += parseInt(friendsData.score);
 					}
-					detail +=`【好友签到】 共${inedx}个好友已签到，获得+${scoreNum}个青豆\n`
+					detail +=`【好友签到】 共${friendsDataitem.lenght}个好友已签到，获得+${scoreNum}个青豆\n`
 				}
 			} catch (e) {
 				$.logErr(e, resp)
