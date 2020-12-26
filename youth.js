@@ -73,6 +73,9 @@ let CookieYouth = [];
 let ARTBODYs = []; 
 let REDBODYs  = [];
 let READTIME = [];
+
+let scoreNum= 0;
+
 if ($.isNode()) {
 	if (process.env.COOKIES_SPLIT) {
 		COOKIES_SPLIT = process.env.COOKIES_SPLIT;
@@ -339,6 +342,8 @@ function friendsign() {
 							await friendSign(friends.uid)
 						}
 					}
+					detail +=`【好友签到】 共${friendsitem.length}个好友已签到，获得+${scoreNum}个青豆\n`
+					
 				}
 			} catch (e) {
 				$.logErr(e, resp)
@@ -362,11 +367,9 @@ function friendSign(uid) {
 				friendres = JSON.parse(data)
 				if (friendres.error_code == "0") {
 					friendsDataitem = friendres.data;
-					let scoreNum= 0;
 					for(const friendsData of friendsDataitem){
 						scoreNum += parseInt(friendsData.score);
 					}
-					detail +=`【好友签到】 共${friendsDataitem.lenght}个好友已签到，获得+${scoreNum}个青豆\n`
 				}
 			} catch (e) {
 				$.logErr(e, resp)
