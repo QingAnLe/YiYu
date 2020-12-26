@@ -161,15 +161,15 @@ function AutoRead(articlebody,intIndex,i) {
 					if(readres.items.max_notice =='看太久了，换1篇试试'|| readres.items.max_notice =='今日阅读到上限啦，去看视频赚青豆吧'){
 					   $.message += '本次阅读第'+(intIndex+1)+'个Body未获取青豆。\n原因：'+readres.items.max_notice+'\n'; 
 					 }else{
-						 if(readres.items.read_score == 'undefined'){
+						 if(readres.items.read_score != 'undefined'){
 						    $.message +='本次阅读第'+(intIndex+1)+'个Body成功。\n获得'+readres.items.read_score+'个青豆\n';
 						 }
 						 
-						  if(readres.items.score == 'undefined'){
+						  if(readres.items.score != 'undefined'){
 						    $.message +='本次阅读第'+(intIndex+1)+'个Body成功。\n获得'+readres.items.score+'个青豆\n';
 						 }
 						 
-					 	$.message +='本次阅读第'+(intIndex+1)+'个Body成功。\n获得'+readres.items.read_score+'个青豆\n';
+					 
 					 }
 				   }else{
 				  	 $.message += '本次阅读第'+(intIndex+1)+'个Body未获取青豆。\n原因：未获取到青豆信息\n'; 
