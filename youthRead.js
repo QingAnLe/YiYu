@@ -153,18 +153,24 @@ function AutoRead(articlebody,intIndex,i) {
 				console.log(data);
 				let readres = JSON.parse(data);  
 				$.message +='========第'+ (i+1) +'个'+$.name+'账号========\n';
-				if (readres.error_code == '0' && typeof readres.items.read_score === 'number') {
-					$.message +='本次阅读第'+(intIndex+1)+'个Body成功,获得'+readres.items.read_score+'个青豆\n';
-				}
- 				else if (readres.error_code == '0' && typeof readres.items.score === 'number') {
- 					$.message +='本次阅读第'+(intIndex+1)+'个Body成功,获得'+readres.items.score+'个青豆\n';
-				}
- 				else if (readres.items.max_notice == '\u770b\u592a\u4e45\u4e86\uff0c\u63621\u7bc7\u8bd5\u8bd5') {
- 					$.message += '本次阅读第'+(intIndex+1)+'个Body错误,错误信息：'+readres.items.max_notice+'\n'; 
- 				}
- 				else if (readres.success == false) {
+				
+				
+				
+				if (readres.success ==true) {
+				    if(typeof readres.items.read_score === 'number'  || typeof readres.items.score === 'number'){
+					if(readres.items.max_notice =='看太久了，换1篇试试'|| readres.items.max_notice =='今日阅读到上限啦，去看视频赚青豆吧'){
+					   $.message += '本次阅读第'+(intIndex+1)+'个Body未获取青豆\n原因：'+readres.items.max_notice+'\n'; 
+					 }else{
+					 	$.message +='本次阅读第'+(intIndex+1)+'个Body成功,获得'+readres.items.read_score+'个青豆\n';
+					 }
+				   }else{
+				  	 $.message += '本次阅读第'+(intIndex+1)+'个Body未获取青豆\n原因：未获取到青豆信息\n'; 
+				   }	
+				}else {
 					$.message += '本次阅读第'+(intIndex+1)+'个Body错误,错误信息：阅读请求失败\n'; 
  				}
+				
+ 				
 			} catch (e) {
 				$.logErr(e, resp)
 			} finally {
