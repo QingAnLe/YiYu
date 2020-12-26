@@ -74,8 +74,6 @@ let ARTBODYs = [];
 let REDBODYs  = [];
 let READTIME = [];
 
-let scoreNum= 0;
-
 if ($.isNode()) {
 	if (process.env.COOKIES_SPLIT) {
 		COOKIES_SPLIT = process.env.COOKIES_SPLIT;
@@ -336,6 +334,7 @@ function friendsign() {
 			try{
 				let addsign = JSON.parse(data)
 				if (addsign.error_code == "0"&& addsign.data.active_list.length>0) {
+                                        let scoreNum= 0;
 					friendsitem = addsign.data.active_list
 					for(friends of friendsitem){
 						if(friends.button==1 || friends.button==3){
