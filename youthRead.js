@@ -150,6 +150,7 @@ function AutoRead(articlebody,intIndex,i) {
 		    };
 		$.post(url, async (error, response, data) => {
 			try{
+				console.log(data);
 				let readres = JSON.parse(data);  
 				$.message +='========第'+ (i+1) +'个'+$.name+'账号========\n';
 				if (readres.error_code == '0' && typeof readres.items.read_score === 'number') {
