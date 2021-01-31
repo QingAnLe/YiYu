@@ -7,28 +7,12 @@
 ~~~~~~~~~~~~~~~~
 [MITM]
 hostname = *.youth.cn, ios.baertt.com 
-~~~~~~~~~~~~~~~~
-Surge 4.0 :
-[Script]
-中青看点 = type=cron,cronexp=35 5 0 * * *,script-path=https://raw.githubusercontent.com/Sunert/Scripts/master/Task/youth.js,script-update-interval=0
-中青看点 = type=http-request,pattern=https:\/\/\w+\.youth\.cn\/TaskCenter\/(sign|getSign),script-path=https://raw.githubusercontent.com/jiuli12/Script/main/youth.js
-中青看点 = type=http-request,pattern=https:\/\/ios\.baertt\.com\/v5\/article\/complete,script-path=https://raw.githubusercontent.com/jiuli12/Script/main/youth.js, requires-body=true
-中青看点 = type=http-request,pattern=https:\/\/ios\.baertt\.com\/v5\/article\/red_packet,script-path=https://raw.githubusercontent.com/jiuli12/Script/main/youth.js, requires-body=true
-中青看点 = type=http-request,pattern=https:\/\/ios\.baertt\.com\/v5\/user\/app_stay\.json,script-path=https://raw.githubusercontent.com/jiuli12/Script/main/youth.js, requires-body=true
-~~~~~~~~~~~~~~~~
-Loon 2.1.0+
-[Script]
-# 本地脚本
-cron "04 00 * * *" script-path=https://raw.githubusercontent.com/jiuli12/Script/main/youth.js, enabled=true, tag=中青看点
-http-request https:\/\/\w+\.youth\.cn\/TaskCenter\/(sign|getSign) script-path=https://raw.githubusercontent.com/jiuli12/Script/main/youth.js
-http-request https:\/\/ios\.baertt\.com\/v5\/article\/complete script-path=https://raw.githubusercontent.com/jiuli12/Script/main/youth.js, requires-body=true
-http-request https:\/\/ios\.baertt\.com\/v5\/article\/red_packet script-path=https://raw.githubusercontent.com/jiuli12/Script/main/youth.js, requires-body=true
-http-request https:\/\/ios\.baertt\.com\/v5\/user\/app_stay\.json script-path=https://raw.githubusercontent.com/jiuli12/Script/main/youth.js, requires-body=true
+
 -----------------
 QX 1.0. 7+ :
 [task_local]
-0 9 * * * https://raw.githubusercontent.com/jiuli12/Script/main/youth.js
-#
+0,30 * * * * https://raw.githubusercontent.com/jiuli12/Script/main/youth.js
+
 [rewrite_remote]
 https://raw.githubusercontent.com/jiuli12/Script/main/youth_getCookie.conf, tag=中青GetCookie, update-interval=86400, opt-parser=false, enabled=true
 */
@@ -191,7 +175,7 @@ else if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/articl
     $.log(`[${$.name + $.idx}] 获取惊喜红包: 成功,redpbodyVal: ${redpbodyVal}`)
     $.msg($.name + $.idx, `获取惊喜红包请求: 成功🎉`, ``)
   }
-else if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/withdraw\.json/)) {
+else if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/withdraw\d?\.json/)) {
     const withdrawVal = $request.body
     const withdrawUrl = $request.url
     if (withdrawVal)        $.setdata(withdrawVal, 'cashbody_zq')
