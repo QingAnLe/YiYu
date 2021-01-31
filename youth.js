@@ -49,12 +49,6 @@ https://raw.githubusercontent.com/jiuli12/Script/main/youth_getCookie.conf, tag=
 let s = 200 //各数据接口延迟
 const $ = new Env("中青看点");
 let notifyInterval = 50; //通知间隔，默认抽奖每50次通知一次，如需关闭全部通知请设为0
-const YOUTH_HOST = "https://kd.youth.cn/WebApi/";
-const notify = $.isNode() ? require('./sendNotify') : '';
-const withdrawcash = 30;//提现金额
-
-
-
 let logs = true;
 let  rotaryscore=0;
 let doublerotary=0
@@ -63,7 +57,8 @@ $.idx = ($.idx = ($.getval('zqSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : '';
 let COOKIES_SPLIT = "\n"; // 自定义多cookie之间连接的分隔符，默认为\n换行分割，不熟悉的不要改动和配置，为了兼容本地node执行
 
 
-
+const YOUTH_HOST = "https://kd.youth.cn/WebApi/";
+const notify = $.isNode() ? require('./sendNotify') : '';
 
 const cookiesArr = [];
 let signheaderVal = '';
@@ -73,18 +68,11 @@ const timeArr = [];
 let timebodyVal = '';
 const redpArr = [];
 let redpbodyVal = '';
-const withdrawUrlArr = [];
-let withdrawUrlVal = '';
-const withdrawBodyArr = [];
-let withdrawBodyVal = '';
-
 let detail = ``; 	
 let CookieYouth = [];
 let ARTBODYs = []; 
 let REDBODYs  = [];
 let READTIME = [];
-let withdrawUrls = [];
-let withdrawBodys = [];
 let scoreNum= 0;
 
 if ($.isNode()) {
@@ -115,18 +103,6 @@ if ($.isNode()) {
 	} else {
 	  READTIME = process.env.YOUTH_TIME.split();
 	}
-	
-	if (process.env.YOUTH_WITHDEAWURL &&process.env.YOUTH_WITHDEAWURL.indexOf(COOKIES_SPLIT) > -1) {
-	  withdrawUrls = process.env.YOUTH_WITHDEAWURL.split(COOKIES_SPLIT);
-	} else {
-	  withdrawUrls = process.env.YOUTH_WITHDEAWURL.split();
-	}
-	
-	if (process.env.YOUTH_WITHDEAWBODY &&process.env.YOUTH_WITHDEAWBODY.indexOf(COOKIES_SPLIT) > -1) {
-	  withdrawBodys = process.env.YOUTH_WITHDEAWBODY.split(COOKIES_SPLIT);
-	} else {
-	  withdrawBodys = process.env.YOUTH_WITHDEAWBODY.split();
-	}
 }
 
 if ($.isNode()) {
@@ -150,23 +126,11 @@ if ($.isNode()) {
           timeArr.push(READTIME[item])
         }
       })
-	  Object.keys(withdrawUrls).forEach((item) => {
-        if (withdrawUrls[item]) {
-          withdrawUrlArr.push(withdrawUrls[item])
-        }
-      })
-	  Object.keys(withdrawBodys).forEach((item) => {
-        if (withdrawBodys[item]) {
-          withdrawBodyArr.push(withdrawBodys[item])
-        }
-      })
 } else {
 	cookiesArr.push($.getdata('youthheader_zq'));
 	redpArr.push($.getdata('red_zq'));
 	readArr.push($.getdata('read_zq'));
 	timeArr.push($.getdata('readtime_zq'));
-	withdrawUrlArr.push($.getdata('cashurl_zq'));
-	withdrawBodyArr.push($.getdata('cashbody_zq'));
 	// 根据boxjs中设置的额外账号数，添加存在的账号数据进行任务处理
 	let zqCount = ($.getval('zqCount') || '1') - 0;
 	for (let i = 2; i <= zqCount; i++) {
@@ -175,8 +139,6 @@ if ($.isNode()) {
 		  redpArr.push($.getdata(`red_zq${i}`));
 		  readArr.push($.getdata(`read_zq${i}`));
 		  timeArr.push($.getdata(`readtime_zq${i}`));
-		  withdrawUrlArr.push($.getdata(`cashurl_zq${i}`));
-		  withdrawBodyArr.push($.getdata(`cashbody_zq${i}`));
 	  }
 	}
 }
@@ -210,16 +172,6 @@ else if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/articl
     $.log(`[${$.name + $.idx}] 获取惊喜红包: 成功,redpbodyVal: ${redpbodyVal}`)
     $.msg($.name + $.idx, `获取惊喜红包请求: 成功🎉`, ``)
   }
-else if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/withdraw\.json/)) {
-    const withdrawVal = $request.body
-    const withdrawUrl = $request.url
-    if (withdrawVal)        $.setdata(withdrawVal, 'cashbody_zq')
-    if (withdrawUrl)        $.setdata(withdrawUrl, 'cashurl_zq')
-    $.log(`${$.name} 获取提现请求: 成功,withdrawUrl: ${withdrawUrl}`)
-    $.log(`${$.name} 获取提现请求: 成功,withdrawBody: ${withdrawVal}`)
-    $.msg($.name, `获取提现请求: 成功🎉`, ``)
-  }
-  
  }
 
 
@@ -253,21 +205,19 @@ async function all() {
 				articlebodyVal = readArr[i];
 				timebodyVal = timeArr[i];
 				redpbodyVal = redpArr[i];
-				withdrawUrlVal = withdrawUrlArr[i];
-				withdrawBody = withdrawBodyArr[i];
-				
 				await sign();
 				await signInfo(); 
-			    await friendsign();
-			    //八点之后开启报名打开
-			    if($.time('HH')>=9){
+			        await friendsign();
+			        //八点之后开启报名打开
+			        if($.time('HH')>=9){
 			            await punchCard()
-			     };
+			        };
 				if ($.isNode()&& $.time('HH')>20&&$.time('HH')<22){
 				   await endCard();
 				}else if ($.time('HH')>4&&$.time('HH')<8){
 				   await endCard();
 				}
+				await SevCont();
 				await comApp();
 				await ArticleShare();
 				await openbox();
@@ -328,8 +278,15 @@ function sign() {
 				    return;
 				} else if (signres.status == 1) {
 				     signresult = `【签到结果】成功 🎉 明日+${signres.nextScore} `
+				    $.setdata(1,'times')
+				  if(firstcheck==undefined||firstcheck!=date){
+				    $.setdata(date,'signt');
+				  }
 				} else if (signres.status == 0) {
 				  signresult = `【签到结果】已签到`;
+				  if(runtimes!==undefined){
+					$.setdata(`${parseInt(runtimes)+1}`,'times')  
+				  }
 				}
 			} catch (e) {
 				$.logErr(e, resp)
@@ -351,16 +308,10 @@ function signInfo() {
 				 signinfo = JSON.parse(data);
 				 if (signinfo.status == 1) {
 				     cash = signinfo.data.user.money
-				 	 detail += `\n============= 账号: ${signinfo.data.user.nickname}=============\n`;
+				 	detail += `\n============= 账号: ${signinfo.data.user.nickname}=============\n`;
 				     detail += `【收益总计】${signinfo.data.user.score}青豆  现金约${cash}元\n`;
 				     detail += `${signresult}(今天签到:+${signinfo.data.sign_score}青豆) 已连签${signinfo.data.sign_day}天`;
 				     detail +='\n<本次收益>：\n'
-					 if(signinfo.data.sign_day == 7){
-						  await SevCont();
-					 }
-					 if( parseInt(cash) >= withdrawcash && !withdrawBody == "false"){
-						await withDraw()
-					 }
 				 } else {
 				 	detail +=`获取用户失败请重新获取Cookie\n`;
 				    detail += `失败原因：${signinfo.msg}\n`;
@@ -373,32 +324,6 @@ function signInfo() {
         })
     })
 }
-
-
-function withDraw() {
-    return new Promise((resolve, reject) => {
-        const url = {
-            url: withdrawUrl,
-            headers: {
-            'User-Agent': 'KDApp/1.8.2 (iPhone; iOS 14.2; Scale/3.00)'
-            },
-            body: withdrawBody,
-        }
-        $.post(url, (error, response, data) => {
-            withDrawres = JSON.parse(data)
-            if (withDrawres.error_code == 0) {
-              detail += `【自动提现】提现${withdrawcash}元成功\n`
-            }else if(withDrawres.error_code == "10002"){
-              detail += `自动提现失败，${withDrawres.homeTime.text}\n`
-            }
-            else {
-              detail += `自动提现失败，${withDrawres.message}\n`
-            }
-            resolve()
-        })
-    })
-}
-
 
 function friendsign() {
     return new Promise((resolve, reject) => {
@@ -607,9 +532,9 @@ function comApp() {
 function ArticleShare() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            const url = {,
-				url: `https://focus.youth.cn/article/s?signature=P5zR0VlwdZoWp3N4KmdjzYCBXDRQtZ2Kkl8aMQLb6BeXxq2kEr&uid=46746961&phone_code=c6dcf2a3056a5183edc85313fdbf3e6e&scid=35902988&time=1611338382&app_version=1.8.2&sign=0b8019551761cc3ebf0b4775701fd16e`,               
-				headers: JSON.parse(signheaderVal),
+            const url = {
+                url: `https://focu.youth.cn/article/s?signature=0Z3Jgv96wqmVPeM7obRdNpHXgAmRhxNPJ6y4jpGDnANbo8KXQr&uid=46308484&phone_code=26170a068d9b9563e7028f197c8a4a2b&scid=33007686&time=1602937887&app_version=1.7.8&sign=d21dd80d0c6563f6f810dd76d7e0aef2`,
+                headers: JSON.parse(signheaderVal),
             }
             $.post(url, async(error, response, data) => {
                 resolve()
@@ -734,7 +659,7 @@ function readArticle() {
         const url = {
             url: `https://ios.baertt.com/v5/article/complete.json`,
             headers: {
-           'User-Agent': 'KDApp/1.8.2 (iPhone; iOS 14.2; Scale/3.00)'
+            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
             },
             body: articlebodyVal,
         }
@@ -765,7 +690,7 @@ function Articlered() {
         const url = {
             url: `https://ios.baertt.com/v5/article/red_packet.json`,
             headers: {
-           'User-Agent': 'KDApp/1.8.2 (iPhone; iOS 14.2; Scale/3.00)'
+            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
             },
             body: redpbodyVal,
         }
@@ -788,7 +713,7 @@ function readTime() {
         const url = {
             url: `https://ios.baertt.com/v5/user/stay.json`,
             headers: {
-           'User-Agent': 'KDApp/1.8.2 (iPhone; iOS 14.2; Scale/3.00)'
+            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
             },
             body: timebodyVal,
          }
@@ -842,7 +767,7 @@ function rotaryCheck() {
         }
         let i = 0;
         while (i <= 3) {
-            if (100 - rotaryres.data.remainTurn == rotaryres.data.chestOpen[i].times&&rotaryres.data.chestOpen[i].received==0) {
+            if (100 - rotaryres.data.remainTurn == rotaryres.data.chestOpen[i].times) {
                 await runRotary(i + 1)
             }
             i++;
