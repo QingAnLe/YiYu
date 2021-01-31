@@ -237,11 +237,8 @@ async function all() {
 				withdrawUrlVal = withdrawUrlArr[i];
 			}
 			if(withdrawBodyArr[i]){
-				withdrawBody = withdrawBodyArr[i] ;
+				withdrawBodyVal = withdrawBodyArr[i] ;
 			}
-			console.log(withdrawUrlVal);
-			console.log(withdrawBody);
-			
 			$.zq = '第'+(i+1)+'个中青';
 			await sign();
 			await signInfo(); 
@@ -344,7 +341,7 @@ async function signInfo() {
 					 if(signinfo.data.sign_day == 7){
 						SevCont();
 					 }
-					 if( parseInt(cash) >= withdrawcash && !withdrawBody == ""){
+					 if( parseInt(cash) >= withdrawcash && !withdrawBodyVal == ""){
 					    withDraw()
 					 }
 				 } else {
