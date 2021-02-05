@@ -57,6 +57,7 @@ const inviteCodes = [
     $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
     return;
   }
+  await requireConfig();
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
@@ -227,6 +228,31 @@ function showMsg() {
   return new Promise(resolve => {
       $.msg($.name, '', `${message}`);
       resolve()
+  })
+}
+
+function requireConfig() {
+  return new Promise(resolve => {
+    console.log(`开始获取${$.name}配置文件\n`);
+    let shareCodes = []
+    console.log(`共${cookiesArr.length}个京东账号\n`);
+    if ($.isNode() && process.env.JDNIAN_ZHULICODES) {
+      if (process.env.JDNIAN_ZHULICODES.indexOf('\n') > -1) {
+        shareCodes = process.env.JDNIAN_ZHULICODES.split('\n');
+      } else {
+        shareCodes = process.env.JDNIAN_ZHULICODES.split('&');
+      }
+    }
+    $.shareCodesArr = [];
+    if ($.isNode()) {
+      Object.keys(shareCodes).forEach((item) => {
+        if (shareCodes[item]) {
+          $.shareCodesArr.push(shareCodes[item])
+        }
+      })
+    }
+
+    resolve()
   })
 }
 
