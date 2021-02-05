@@ -1,22 +1,23 @@
 /*
 京东炸年兽最后阶段互助10人🧨
+修改参考狼大的脚本感谢lxk0301、shylocks的脚本，tnanko写的助力池。感谢大佬们的付出。本人小白正在学习。可能报错请见谅！！！！
 地址 https://wbbny.m.jd.com/babelDiy/Zeus/2cKMj86srRdhgWcKonfExzK4ZMBy/index.html
 已支持IOS双京东账号,Node.js支持N个京东账号
 理论脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
 ============Quantumultx===============
 [task_local]
 #京东炸年兽🧨
-0 9,12,20,21 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_nian.js, tag=京东炸年兽🧨, img-url=https://raw.githubusercontent.com/yogayyy/Scripts/main/Icon/lxk0301/jd_nian.png, enabled=true
+0 9 * * * https://raw.githubusercontent.com/jiuli12/Script/main/nian_zl.js, tag=京东炸年兽🧨, img-url=https://raw.githubusercontent.com/yogayyy/Scripts/main/Icon/lxk0301/jd_nian.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "0 9,12,20,21 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_nian.js,tag=京东炸年兽🧨
+cron "0 9 * * *" script-path=https://raw.githubusercontent.com/jiuli12/Script/main/nian_zl.js,tag=京东炸年兽🧨
 
 ===============Surge=================
-京东炸年兽🧨 = type=cron,cronexp="0 9,12,20,21 * * *",wake-system=1,timeout=3600,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_nian.js
+京东炸年兽🧨 = type=cron,cronexp="0 9 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/jiuli12/Script/main/nian_zl.js
 
 ============小火箭=========
-京东炸年兽🧨 = type=cron,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_nian.js, cronexpr="0 9,12,20,21 * * *", timeout=3600, enable=true
+京东炸年兽🧨 = type=cron,script-path=https://raw.githubusercontent.com/jiuli12/Script/main/nian_zl.js, cronexpr="0 9 * * *", timeout=3600, enable=true
  */
 
 
