@@ -151,7 +151,7 @@ const runtimes = $.getdata('times');
 const opboxtime = $.getdata('opbox');
 
 function GetCookie() {
-   if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/TaskCenter\/(sign|getSign)/)) {
+   if ($request && $request.method != `OPTIONS`&& $request.url.match(/\/NewTasklogs\/(sign|getSign)/)) {
    const signheaderVal = JSON.stringify($request.headers)
     if (signheaderVal)        $.setdata(signheaderVal,'youthheader_zq'+ $.idx)
     $.log(`[${$.name + $.idx}] 获取Cookie: 成功,signheaderVal: ${signheaderVal}`)
