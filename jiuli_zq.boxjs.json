@@ -7,7 +7,8 @@
   "apps": [{
     "id": "youthQD",
     "name": "中青多账号签到+转盘抽奖",
-    "keys": ["youthheader_zq", "read_zq", "red_zq", "readtime_zq", "cashurl_zq", "cashbody_zq","youthheader_zq2", "read_zq2", "red_zq2", "readtime_zq2", "cashurl_zq2", "cashbody_zq2","youthheader_zq3", "read_zq3", "red_zq3", "readtime_zq3", "cashurl_zq3", "cashbody_zq3"],
+    "keys": ["header_zq", "Read_zq","readTime_zq", "cashUrl_zq", "cashBody_zq","header_zq2", "Read_zq2","readTime_zq2", "cashUrl_zq2", "cashBody_zq2","header_zq3", "Read_zq3","readTime_zq3", "cashUrl_zq3", "cashBody_zq3","header_zq4", "Read_zq4","readTime_zq4", "cashUrl_zq4", "cashBody_zq4","header_zq5", "Read_zq5","readTime_zq5", "cashUrl_zq5", "cashBody_zq5","header_zq6", "Read_zq6","readTime_zq6", "cashUrl_zq6", "cashBody_zq6","header_zq7", "Read_zq7","readTime_zq7", "cashUrl_zq7", "cashBody_zq7","header_zq8", "Read_zq8","readTime_zq8", "cashUrl_zq8", "cashBody_zq8","header_zq9", "Read_zq9","readTime_zq9", "cashUrl_zq9", "cashBody_zq9" ,"header_zq10", "Read_zq10","readTime_zq10", "cashUrl_zq10", "cashBody_zq10"
+            ],
     "author": "@jiuli",
     "settings": [
       {
