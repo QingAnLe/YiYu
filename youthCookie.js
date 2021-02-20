@@ -11,28 +11,28 @@ function GetCookie(){
 	if($request&&$request.method!=`OPTIONS`&&$request.url.match(/\/NewTaskIos\/getTaskList/)){
 		RefererVal=$request.headers.Referer;
 		signheaderVal=RefererVal.match(/&uid=\d+/)+RefererVal.match(/&cookie=[_a-zA-Z0-9-]+/)+RefererVal.match(/&cookie_id=[a-zA-Z0-9]+/);
-		if(signheaderVal)$.setdata(signheaderVal,'youthheader_zq'+ $.idx);
+		if(signheaderVal)$.setdata(signheaderVal,'header_zq'+ $.idx);
         $.log(`[${$.name + $.idx}] 获取Cookie: 成功,signheaderVal: ${signheaderVal}`);
         $.msg($.name + $.idx, `获取Cookie: 成功🎉`, ``);
 		
 		
 	}else if($request&&$request.method!=`OPTIONS`&&$request.url.match(/\/article\/info\/get/)){
 		articlebodyVal=$request.url.split("?")[1];
-		if(articlebodyVal) $.setdata(articlebodyVal,'read_zq'+ $.idx);
+		if(articlebodyVal) $.setdata(articlebodyVal,'Read_zq'+ $.idx);
 		$.log(`[${$.name + $.idx}] 获取阅读: 成功,articlebodyVal: ${articlebodyVal}`);
 		$.msg($.name + $.idx, `获取阅读请求: 成功🎉`, ``);
 			
 
 	}else if($request&&$request.method!=`OPTIONS`&&$request.url.match(/\/v5\/user\/stay/)){
 		const timebodyVal=$request.body;
-		if(timebodyVal) $.setdata(timebodyVal,'readtime_zq'+ $.idx);
+		if(timebodyVal) $.setdata(timebodyVal,'readTime_zq'+ $.idx);
 		$.log(`[${$.name + $.idx}] 获取阅读: 成功,timebodyVal: ${timebodyVal}`);
 		$.msg($.name + $.idx, `获取阅读时长: 成功🎉`, ``);
 	}else if($request&&$request.method!=`OPTIONS`&&$request.url.match(/\/withdraw\d?\.json/)){
 		const withdrawVal=$request.body;
 		const withdrawUrl=$request.url;
-		if(withdrawVal)$.setdata(withdrawVal,'cashbody_zq'+ $.idx);
-		if(withdrawUrl)$.setdata(withdrawUrl,'cashurl_zq'+ $.idx);
+		if(withdrawVal)$.setdata(withdrawVal,'cashBody_zq'+ $.idx);
+		if(withdrawUrl)$.setdata(withdrawUrl,'cashUrl_zq'+ $.idx);
 		$.log(`[${$.name + $.idx}] 获取提现请求: 成功, withdrawUrl: ${withdrawUrl}`);
 		$.log(`[${$.name + $.idx}] 获取提现请求: 成功, withdrawBody: ${withdrawVal}`);
 		$.msg($.name + $.idx,`获取提现请求: 成功🎉`,``)
