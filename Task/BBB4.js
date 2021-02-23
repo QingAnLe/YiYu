@@ -11,7 +11,7 @@ if ($.isNode())
 	  
 
 
-CookieArr=[{"Accept": "*/*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-cn","Connection": "keep-alive","Content-Length": "0","Cookie": "PHPSESSID=s9u9uk453fmqcorqjcj6qp1844","Host": "bububao.duoshoutuan.com","User-Agent": "BBB/133 CFNetwork/1128.0.1 Darwin/19.6.0","idfa": "00000000-0000-0000-0000-000000000000","imei": "B94276A6-018F-4202-8F83-7FCADC620402","platform": "2","store": "appstore","tokenstr": "C267DE9A7BE68EBFA781E8ECB531666G1614071779","version": "11",}]
+CookieArr=[{"Accept": "*/*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-cn","Connection": "keep-alive","Content-Length": "0","Cookie": "PHPSESSID=052rq2irfu3vhoqpprpfdqcii2","Host": "bububao.duoshoutuan.com","User-Agent": "BBB/133 CFNetwork/1128.0.1 Darwin/19.6.0","idfa": "00000000-0000-0000-0000-000000000000","imei": "B94276A6-018F-4202-8F83-7FCADC620402","platform": "2","store": "appstore","tokenstr": "BDEED4707949151EF45FC071B531713G1614087136","version": "11",}]
 let dayjinbi=0;
 let lasttxTime=0;
 now = new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000);  
