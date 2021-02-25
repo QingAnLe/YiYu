@@ -76,7 +76,7 @@ $.idx = ($.idx = ($.getval('iboxpaySuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') 
 const CS = 6
  
 let liveIdcd = [],
-    LIVE=1,
+    LIVE=15,
     logs=0,
     spid=[],
     zbid=[],
