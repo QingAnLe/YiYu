@@ -1,3 +1,4 @@
+
 name: 书旗&羊毛赚
 on:
   workflow_dispatch:
@@ -12,7 +13,7 @@ jobs:
       
       - name: Checkout
         run: |
-          git clone https://github.com/QingAnLe/YiYu.git ~/js
+          git clone   https://github.com/QingAnLe/YiYu.git ~/js
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
