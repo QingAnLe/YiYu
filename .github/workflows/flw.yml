@@ -31,12 +31,12 @@ jobs:
       - name: npm install
         if: env.FL_flwURL
         run: |
-          cd ~/ziye12_JavaScript
+          cd ~/YiYu.git
           npm install
       - name: '运行 【返利网】'
         if: env.FL_flwURL
         run: |
-          cd ~/ziye12_JavaScript
+          cd ~/YiYu.git
           node Task/flw.js
         env:
           
