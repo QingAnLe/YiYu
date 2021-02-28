@@ -12,28 +12,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event.repository.owner.id == github.event.sender.id
-    env:
         XL_URL: ${{ secrets.XL_URL }}
-        XL_HEADER: ${{ secrets.XL_HEADER }}		
-        
+        XL_HEADER: ${{ secrets.XL_HEADER }}	
     steps:
       - name: Checkout
-        run: |
-          git clone https://github.com/ziye12/JavaScript.git ~/JavaScript
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
-        if: env.XL_URL
         run: |
-          cd ~/JavaScript
-          npm install
+         npm install
       - name: '运行 【小乐】'
-        if: env.XL_URL
         run: |
-          cd ~/JavaScript
           node Task/xiaole.js
         env:
           
