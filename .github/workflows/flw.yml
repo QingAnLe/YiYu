@@ -22,6 +22,8 @@ jobs:
         FL_DHCASH: ${{ secrets.FL_DHCASH }}//签到活动兑换
     steps:
       - name: Checkout
+        run: |
+          git clone   https://github.com/QingAnLe/YiYu.git ~/js
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -29,10 +31,12 @@ jobs:
       - name: npm install
         if: env.FL_flwURL
         run: |
+          cd ~/js
           npm install
       - name: '运行 【返利网】'
         if: env.FL_flwURL
         run: |
+          cd ~/js
           node Task/flw.js
         env:
           
@@ -43,3 +47,5 @@ jobs:
           BARK_SOUND: ${{ secrets.BARK_SOUND }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+
+    
