@@ -28,12 +28,12 @@ jobs:
       - name: npm install
         if: env.XL_URL
         run: |
-          cd ~/YiYu.git
+          cd ~/js
           npm install
       - name: '运行 【小乐】'
         if: env.XL_URL
         run: |
-          cd ~/YiYu.git
+          cd ~/js
           node Task/xiaole.js
         env:
           
