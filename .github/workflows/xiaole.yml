@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/QingAnLe/YiYu.git ~/js
+          git clone https://github.com/ziye12/JavaScript.git ~/JavaScript
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -28,12 +28,12 @@ jobs:
       - name: npm install
         if: env.XL_URL
         run: |
-          cd ~/js
+          cd ~/JavaScript
           npm install
       - name: '运行 【小乐】'
         if: env.XL_URL
         run: |
-          cd ~/js
+          cd ~/JavaScript
           node Task/xiaole.js
         env:
           
