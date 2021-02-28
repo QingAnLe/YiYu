@@ -22,8 +22,6 @@ jobs:
         FL_DHCASH: ${{ secrets.FL_DHCASH }}//签到活动兑换
     steps:
       - name: Checkout
-        run: |
-          git clone https://github.com/Joinmogul/ziye12_JavaScript.git ~/ziye12_JavaScript
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -31,12 +29,10 @@ jobs:
       - name: npm install
         if: env.FL_flwURL
         run: |
-          cd ~/ziye12_JavaScript
           npm install
       - name: '运行 【返利网】'
         if: env.FL_flwURL
         run: |
-          cd ~/ziye12_JavaScript
           node Task/flw.js
         env:
           
@@ -47,5 +43,3 @@ jobs:
           BARK_SOUND: ${{ secrets.BARK_SOUND }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-
-    
