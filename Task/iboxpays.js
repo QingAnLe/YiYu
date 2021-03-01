@@ -209,7 +209,6 @@ async function all() {
         await user(i);
         await goldcoin(i); //金币信息
         await coin(i); //账户信息
-        if (CASH[i]==15)
         await withdraw(i); //提现
         await sylist(i); //收益列表
 		await $.wait(1000);
