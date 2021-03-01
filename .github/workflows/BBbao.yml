@@ -1,15 +1,15 @@
-name: 书旗&羊毛赚
+name: 步步宝
+
 on:
   workflow_dispatch:
   watch:
     types: started
   schedule:
-    - cron: '0 21 * * *'
+    - cron: '0 */3 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest       
     steps:
-      
       - name: Checkout
         run: |
           git clone https://github.com/QingAnLe/YiYu.git ~/js
@@ -23,14 +23,7 @@ jobs:
           npm install
           npm install cron
           npm install request
-          curl ipinfo.io/json
-      
-      - name: '【书旗小说】'
+      - name: '运行 【步步宝】'
         run: |
           cd ~/js   
-          node Task/sqxs.js
-      - name: '【羊毛赚】'
-        run: |
-          cd ~/js   
-          node Task/ymz.js
- 
+          node Task/BBB.js
