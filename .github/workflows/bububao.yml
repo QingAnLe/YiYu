@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-           BBB_bububaoTOKEN:${{ secrets.BBB_bububaoTOKEN}}
-BBB_CASH:${{ secrets.BBB_CASH}}//天天提现       
+       BBB_bububaoTOKEN: ${{ secrets. BBB_bububaoTOKEN }}	
+BBB_CASH: ${{ secrets. BBB_CASH }}
     steps:
       - name: Checkout
         run: |
