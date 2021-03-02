@@ -1,5 +1,5 @@
 
-name: 书旗&羊毛赚
+name: 书旗
 on:
   workflow_dispatch:
   watch:
@@ -30,8 +30,4 @@ jobs:
         run: |
           cd ~/js   
           node Task/sqxs.js
-      - name: '【羊毛赚】'
-        run: |
-          cd ~/js   
-          node Task/ymz.js
  
