@@ -4,7 +4,7 @@ name: 步步宝
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/30 0-20 * * *'
+     - cron: '*/30 0-23 * * *'
   watch:
     types: started
 jobs:
