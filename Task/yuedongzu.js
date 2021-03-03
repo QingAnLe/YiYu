@@ -65,7 +65,7 @@ let yuedongzutokenVal = ``;
 let middleyuedongzuTOKEN = [];
 if ($.isNode()) {
     // 没有设置 YDZ_CASH 则默认为 0 不兑换
-    CASH = process.env.YDZ_CASH || 0;
+    CASH = process.env.YDZ_CASH || 888;
 }
 if ($.isNode() && process.env.YDZ_yuedongzuTOKEN) {
     COOKIES_SPLIT = process.env.COOKIES_SPLIT || "\n";
@@ -290,7 +290,7 @@ async function all() {
         if (!cookie_is_live) {
             continue;
         }
-        await jinbi_record() //收益记录
+        //await jinbi_record() //收益记录
         if (CZ >= 10) {
             await help_index() //助力活动
             await home() //首页信息
