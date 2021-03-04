@@ -88,7 +88,7 @@ let middleymzhuantxBODY = [];
 
 if ($.isNode()) {
     // 没有设置 YMZ_CASH 则默认为 0 不兑换
-    CASH = process.env.YMZ_CASH || 0;
+    CASH = process.env.YMZ_CASH || 888;
 }
 if ($.isNode() && process.env.YMZ_ymzhuanggBODY) {
     COOKIES_SPLIT = process.env.COOKIES_SPLIT || "\n";
