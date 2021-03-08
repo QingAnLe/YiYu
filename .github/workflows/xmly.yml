@@ -1,4 +1,4 @@
-name: xmly_speed
+name: xmly（更新拉取库）
 on:
   schedule:
     - cron: '1 */3 * * *'
