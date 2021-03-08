@@ -1,4 +1,4 @@
-name: JD-hundun
+name: JD-hundun（更新分支库）
 on:
   schedule:
     - cron: '1 */3 * * *'
