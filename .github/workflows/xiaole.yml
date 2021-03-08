@@ -1,6 +1,3 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: 小乐
 
 on:
@@ -15,12 +12,12 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     env:
         XL_URL: ${{ secrets.XL_URL }}
-        XL_HEADER: ${{ secrets.XL_HEADER }}		
+        XL_HEADER: ${{ secrets.XL_HEADER }}
         
     steps:
       - name: Checkout
         run: |
-          git clone   https://github.com/QingAnLe/YiYu.git ~/js
+          git clone https://github.com/QingAnLe/YiYu/tree/ZiYe.git ~/js
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -29,6 +26,7 @@ jobs:
         if: env.XL_URL
         run: |
           cd ~/js
+          git checkout ZiYe
           npm install
       - name: '运行 【小乐】'
         if: env.XL_URL
@@ -44,5 +42,3 @@ jobs:
           BARK_SOUND: ${{ secrets.BARK_SOUND }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-
-    
