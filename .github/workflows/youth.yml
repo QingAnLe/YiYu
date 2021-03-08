@@ -18,12 +18,13 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/QingAnLe/YiYu.git ~/js
+          git clone https://github.com/QingAnLe/YiYu.git ~/YiYu
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: npm install
+        if: env.YOUTH_HEADER
         run: |
           cd ~/js
           git checkout zq
@@ -31,7 +32,7 @@ jobs:
       - name: '运行 【中青看点】'
         if: env.YOUTH_HEADER
         run: |
-          cd ~/js
+          cd ~/YiYu
           node Task/youth.js
         env:
           YOUTH_NOTIFY_CONTROL: ${{ secrets.YOUTH_NOTIFY_CONTROL }}
