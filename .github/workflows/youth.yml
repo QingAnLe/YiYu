@@ -26,7 +26,7 @@ jobs:
       - name: npm install
         if: env.YOUTH_HEADER
         run: |
-          cd ~/js
+          cd ~/YiYu
           git checkout zq
           npm install
       - name: '运行 【中青看点】'
