@@ -1,4 +1,4 @@
-name: ziye-sync
+name: ziye（更新分支库）
 on:
   schedule:
     - cron: '1 */3 * * *'
