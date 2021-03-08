@@ -1,4 +1,3 @@
-
 name: 步步宝
 
 on:
@@ -14,10 +13,11 @@ jobs:
     env:
        BBB_bububaoTOKEN: ${{ secrets. BBB_bububaoTOKEN }}	
        BBB_CASH: ${{ secrets. BBB_CASH }}
+        
     steps:
       - name: Checkout
         run: |
-          git clone  https://github.com/QingAnLe/YiYu.git ~/js
+          git clone https://github.com/QingAnLe/YiYu/tree/ZiYe.git ~/js
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -26,9 +26,10 @@ jobs:
         if: env.BBB_bububaoTOKEN
         run: |
           cd ~/js
+          git checkout ZiYe
           npm install
       - name: '运行 【步步宝】'
-        if: env. BBB_bububaoTOKEN
+        if: env.BBB_bububaoTOKEN
         run: |
           cd ~/js
           node Task/bububao.js
