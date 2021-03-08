@@ -14,8 +14,8 @@ jobs:
     env:
         FL_flwURL: ${{ secrets.FL_flwURL }}
         FL_flwHEADER: ${{ secrets.FL_flwHEADER }}		
-        FL_FLWSPBODY: ${{ secrets.FL_FLWSPBODY }}	
-        FL_FLWQWBODY: ${{ secrets.FL_FLWQWBODY}} 
+        FL_flwspBODY: ${{ secrets.FL_FLWSPBODY }}	
+        FL_flwqWBODY: ${{ secrets.FL_FLWQWBODY}} 
         FL_flwydBODY: ${{ secrets.FL_flwydBODY}}               
         FL_CASH: ${{ secrets.FL_CASH }}//天天领现金提现
         FL_DHCASH: ${{ secrets.FL_DHCASH }}//签到活动兑换
