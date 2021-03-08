@@ -17,12 +17,12 @@ jobs:
         flwspBODY: ${{ secrets.FL_flwspBODY }}	
         flwqWBODY: ${{ secrets.FL_flwqwBODY}} 
         flwydBODY: ${{ secrets.FL_flwydBODY}}               
-        CASH: ${{ secrets.FL_CASH }}//天天领现金提现
-        DHCASH: ${{ secrets.FL_DHCASH }}//签到活动兑换
+        CASH: ${{ secrets.FL_CASH }}
+        DHCASH: ${{ secrets.FL_DHCASH }}
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/QingAnLe/YiYu.git ~/js
+          git clone https://github.com/QingAnLe/YiYu.git ~/YiYu
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -30,13 +30,13 @@ jobs:
       - name: npm install
         if: env.FL_flwURL
         run: |
-          cd ~/js
+          cd ~/YiYu
           git checkout ZiYe
           npm install
       - name: '运行 【返利网】'
         if: env.FL_flwURL
         run: |
-          cd ~/js
+          cd ~/YiYu
           node Task/flw.js
         env:
           
