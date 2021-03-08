@@ -1,4 +1,4 @@
-name: FeiZao（更新拉取库）
+name: FeiZao（更新分支库）
 on:
   schedule:
     - cron: '1 */3 * * *'
