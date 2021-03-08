@@ -12,13 +12,13 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
 
     env:
-        FL_flwURL: ${{ secrets.FL_flwURL }}
-        FL_flwHEADER: ${{ secrets.FL_flwHEADER }}		
-        FL_flwspBODY: ${{ secrets.FL_FLWSPBODY }}	
-        FL_flwqWBODY: ${{ secrets.FL_FLWQWBODY}} 
-        FL_flwydBODY: ${{ secrets.FL_flwydBODY}}               
-        FL_CASH: ${{ secrets.FL_CASH }}//天天领现金提现
-        FL_DHCASH: ${{ secrets.FL_DHCASH }}//签到活动兑换
+        flwURL: ${{ secrets.FL_flwURL }}
+        flwHEADER: ${{ secrets.FL_flwHEADER }}		
+        flwspBODY: ${{ secrets.FL_flwspBODY }}	
+        flwqWBODY: ${{ secrets.FL_flwqwBODY}} 
+        flwydBODY: ${{ secrets.FL_flwydBODY}}               
+        CASH: ${{ secrets.FL_CASH }}//天天领现金提现
+        DHCASH: ${{ secrets.FL_DHCASH }}//签到活动兑换
     steps:
       - name: Checkout
         run: |
