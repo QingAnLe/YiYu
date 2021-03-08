@@ -10,6 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
+
     env:
         FL_flwURL: ${{ secrets.FL_flwURL }}
         FL_flwHEADER: ${{ secrets.FL_flwHEADER }}		
@@ -17,7 +18,6 @@ jobs:
         FL_flwqwBODY: ${{ secrets.FL_flwqwBODY }}        
         FL_CASH: ${{ secrets.FL_CASH }}//天天领现金提现
         FL_DHCASH: ${{ secrets.FL_DHCASH }}//签到活动兑换
-        
     steps:
       - name: Checkout
         run: |
