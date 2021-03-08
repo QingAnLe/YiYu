@@ -1,4 +1,4 @@
-name: ZQ/Sunert
+name: ZQ/Sunert（更新分支库）
 on:
   schedule:
     - cron: '1 */3 * * *'
