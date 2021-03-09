@@ -33,7 +33,7 @@ jobs:
         if: env.xyzdurl
         run: |
           cd ~/js
-          node Task/xyzd.js
+          node xyzd.js
         env:
           
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
