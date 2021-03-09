@@ -26,13 +26,13 @@ jobs:
         if: env.RLURL
         run: |
           cd ~/js
-          git checkout ZhiYi
+          git checkout main
           npm install
       - name: '运行 【燃旅视频】'
         if: env.RLURL
         run: |
           cd ~/js
-          node Scripts/ranlv.js
+          node task/ranlv.js
         env:
           
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
