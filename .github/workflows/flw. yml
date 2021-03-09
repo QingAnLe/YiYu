@@ -1,3 +1,4 @@
+
 name: 返利网
 
 on:
@@ -10,15 +11,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
-
     env:
-        flwURL: ${{ secrets.FL_flwURL }}
-        flwHEADER: ${{ secrets.FL_flwHEADER }}		
-        flwspBODY: ${{ secrets.FL_flwspBODY }}	
-        flwqWBODY: ${{ secrets.FL_flwqwBODY}} 
-        flwydBODY: ${{ secrets.FL_flwydBODY}}               
-        CASH: ${{ secrets.FL_CASH }}
-        DHCASH: ${{ secrets.FL_DHCASH }}
+        FL_flwURL: ${{ secrets.FL_flwURL }}
+        FL_flwHEADER: ${{ secrets.FL_flwHEADER }}		
+        FL_flwspBODY: ${{ secrets.FL_flwspBODY }}	
+        FL_flwqwBODY: ${{ secrets.FL_flwqwBODY }}        
+        FL_CASH: ${{ secrets.FL_CASH }}//天天领现金提现
+        FL_DHCASH: ${{ secrets.FL_DHCASH }}//签到活动兑换
+        flwydbodyVal: ${{ secrets.FL_flwydBODY}}//签到活动兑换
     steps:
       - name: Checkout
         run: |
@@ -28,17 +28,18 @@ jobs:
         with:
           node-version: 12.x
       - name: npm install
-        if: env. FL_flwURL
+        if: env.FL_flwURL
         run: |
           cd ~/js
           git checkout ZiYe
           npm install
       - name: '运行 【返利网】'
-        if: env. FL_flwURL
+        if: env.FL_flwURL
         run: |
           cd ~/js
           node Task/flw.js
         env:
+          
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
