@@ -11,14 +11,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
-              env:
-                  USERHEADER: ${{ secrets.USERHEADER }}
+    env:
+        USERHEADER: ${{ secrets.USERHEADER }}
                   USERKEY: ${{ secrets.USERKEY }}
                   SINGHEADER: ${{ secrets.SINGHEADER }}
                   SINGKEY: ${{ secrets.SINGKEY }}
                   TASKHEADER: ${{ secrets.TASKHEADER }}
                   TASKKEY: ${{ secrets.TASKKEY }}
-                  WXTASKKEY: ${{ secrets.WXTASKKEY }}        
+                  WXTASKKEY: ${{ secrets.WXTASKKEY }}
+        
     steps:
       - name: Checkout
         run: |
