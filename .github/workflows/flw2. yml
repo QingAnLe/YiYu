@@ -28,13 +28,13 @@ jobs:
         with:
           node-version: 12.x
       - name: npm install
-        if: env.FL_flwURL
+        if: env.flwURL
         run: |
           cd ~/YiYu
           git checkout ZiYe
           npm install
       - name: '运行 【返利网2】'
-        if: env.FL_flwURL
+        if: env.flwURL
         run: |
           cd ~/YiYu
           node Task/flw.js
