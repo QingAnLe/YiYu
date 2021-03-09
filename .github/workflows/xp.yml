@@ -12,9 +12,9 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     env:
        XP_refreshTOKEN: ${{ secrets.XP_refreshTOKEN }}	
-       CASH: ${{ secrets.XP_CASH  }}
-       live:${{ secrets.XP_live }}
-    steps:
+       CASH: ${{ secrets.XP_CASH }}
+       live: ${{ secrets.XP_live }}
+       steps:
       - name: Checkout
         run: |
           git clone https://github.com/QingAnLe/YiYu.git ~/js
