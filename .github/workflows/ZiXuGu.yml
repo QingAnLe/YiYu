@@ -31,7 +31,7 @@ jobs:
         if: env.USERHEADER
         run:|
           cd ~/YiYu
-          git checkout TXSTOCK
+          git checkout CenBoMin
           npm install
       - name: '运行 【腾讯自选股】'
         if: env.USERHEADER
