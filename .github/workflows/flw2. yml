@@ -1,4 +1,4 @@
-name: 返利网
+name: 返利网2
 
 on:
   workflow_dispatch:
@@ -33,13 +33,12 @@ jobs:
           cd ~/YiYu
           git checkout ZiYe
           npm install
-      - name: '运行 【返利网】'
+      - name: '运行 【返利网2】'
         if: env.flwURL
         run: |
           cd ~/YiYu
           node Task/flw.js
         env:
-          
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
