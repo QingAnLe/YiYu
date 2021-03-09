@@ -32,7 +32,7 @@ jobs:
         if: env.RLURL
         run: |
           cd ~/js
-          node task/ranlv.js
+          node Task/ranlv.js
         env:
           
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
