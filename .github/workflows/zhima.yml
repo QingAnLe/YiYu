@@ -3,7 +3,7 @@ c name: 芝麻视频
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/30 * * * *'
+     - cron: '*/20 * * * *'
   watch:
     types: started
 jobs:
