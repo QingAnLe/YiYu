@@ -28,7 +28,7 @@ jobs:
           cd ~/YiYu
           git checkout main
           npm install
-      - name: '运行 【芝麻视频】'
+      - name: '运行 【快手视频】'
         if: env.KUAISHOUMV
         run: |
           cd ~/YiYu
