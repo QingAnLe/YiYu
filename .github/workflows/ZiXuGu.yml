@@ -13,12 +13,12 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     env:
         USERHEADER: ${{ secrets.USERHEADER }}
-                  USERKEY: ${{ secrets.USERKEY }}
-                  CASHHEADER: ${{ secrets.CASHHEADER }}
-                  SINGKEY: ${{ secrets.SINGKEY }}
-                  TASKHEADER: ${{ secrets.TASKHEADER }}
-                  TASKKEY: ${{ secrets.TASKKEY }}
-                  WXTASKKEY: ${{ secrets.WXTASKKEY }}
+        USERKEY: ${{ secrets.USERKEY }}
+        CASHHEADER: ${{ secrets.CASHHEADER }}
+        SINGKEY: ${{ secrets.SINGKEY }}
+        TASKHEADER: ${{ secrets.TASKHEADER }}
+        TASKKEY: ${{ secrets.TASKKEY }}
+        WXTASKKEY: ${{ secrets.WXTASKKEY }}
         
     steps:
       - name: Checkout
