@@ -33,7 +33,7 @@ jobs:
           cd ~/YiYu
           git checkout CenBoMin
           npm install
-      - name: '运行 【腾讯自选股】'
+      - name: "运行【腾讯自选股】"
         if: env.USERHEADER
         run: |
           cd ~/YiYu
