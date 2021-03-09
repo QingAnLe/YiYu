@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/QingAnLe/YiYu.git ~/YiYu
+          git clone https://github.com/QingAnLe/YiYu.git ~/js
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -30,13 +30,13 @@ jobs:
       - name: npm install
         if: env.flwURL
         run: |
-          cd ~/YiYu
+          cd ~/js
           git checkout ZiYe
           npm install
       - name: '运行 【返利网2】'
         if: env.flwURL
         run: |
-          cd ~/YiYu
+          cd ~/js
           node Task/flw.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
