@@ -12,7 +12,8 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     env:
         xyzdurl: ${{ secrets.xyzdurl }}
-        xyzdhd: ${{ secrets.xyzdhd }}		     xyzdbody: ${{ secrets.xyzdbody }}
+        xyzdhd: ${{ secrets.xyzdhd }}		
+        xyzdbody: ${{ secrets.xyzdbody }}
 
     steps:
       - name: Checkout
