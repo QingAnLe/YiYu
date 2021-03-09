@@ -1,5 +1,5 @@
 
-name: 腾讯自选股
+name: 自选股
 
 on:
   workflow_dispatch:
@@ -33,7 +33,7 @@ jobs:
           cd ~/YiYu
           git checkout CenBoMin
           npm install
-      - name: '自选股'
+      - name: '运行 【自选股】'
         if: env.USERHEADER
         run: |
           cd ~/YiYu
