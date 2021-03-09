@@ -6,7 +6,7 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: sync-ZhiYi-N/script
+    types: sync-ZhiYi-N/Private-Script
 jobs:
   repo-sync:
     env:
@@ -18,11 +18,11 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: sync ZhiYi-N/script
+      - name: sync ZhiYi-N/Private-Script
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/ZhiYi-N/script.git"
+          source_repo: "https://github.com/ZhiYi-N/Private-Script.git"
           source_branch: "master"
           destination_branch: "ZhiYi"
           github_token: ${{ secrets.PAT }}
