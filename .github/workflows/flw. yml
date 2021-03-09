@@ -33,7 +33,7 @@ jobs:
           cd ~/js
           git checkout ZiYe
           npm install
-      - name: '运行 【返利网2】'
+      - name: '运行 【返利网】'
         if: env.flwURL
         run: |
           cd ~/js
