@@ -85,7 +85,7 @@ if(!$.isNode()&&hldsphd.indexOf("\n") ==-1){
             hldspurlArr.push(hldspurl[item])
         }
     });
- console.log(` ============= 您共提供${hidsphdArr.length}个哈喽短视频账号 =============`);
+ console.log(` ============= 您共提供${hldsphdArr.length}个哈喽短视频账号 =============`);
 }
 
 if (ishldspck = typeof $request !== 'undefined') {
