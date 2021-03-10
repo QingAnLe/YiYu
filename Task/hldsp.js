@@ -88,13 +88,13 @@ if(!$.isNode()&&hidsphd.indexOf("\n") ==-1){
  console.log(` ============= 您共提供${hidsphdArr.length}个哈喽短视频账号 =============`);
 }
 
-if (isxyzdck = typeof $request !== 'undefined') {
-   xyzdck();
+if (ishldspck = typeof $request !== 'undefined') {
+   hldspck();
    $.done()
 };
 
 !(async () => {
-  if (!xyzdhdArr[0]) {
+  if (!HL_HDArr[0]) {
     $.msg($.name, '【提示】请先获取哈喽短视频一header')
     return;
   } else {hldspurlArr.push($.getdata('hidspurl'))
