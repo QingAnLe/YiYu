@@ -1,9 +1,9 @@
 name: 喜马拉雅极速
 
 on:
-workflow _dispatch
   schedule:
     - cron: '*/30 * * * * '
+ workflow _dispatch
   watch:
     types: [started]
 jobs:
