@@ -24,13 +24,13 @@ jobs:
         with:
           node-version: 12.x
       - name: npm install
-        if: env.xyzdurl
+        if: env.XYZD_URL
         run: |
           cd ~/js
           git checkout main
           npm install
       - name: '运行 【幸运赚点】'
-        if: env.xyzdurl
+        if: env.XYZD_URL
         run: |
           cd ~/js
           node Task/xyzd.js
