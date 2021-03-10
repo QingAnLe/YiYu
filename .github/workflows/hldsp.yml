@@ -3,7 +3,7 @@ name: 哈喽短视频
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/20 0-23 * * *'
+     - cron: '15 3 * * *'
   watch:
     types: started
 jobs:
@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        hldspurl: ${{ secrets.hldspurl }}
-        hldsphd: ${{ secrets.hldsphd }}	
+        HL_URL: ${{ secrets.HL_URL }}
+        HL_HD: ${{ secrets.HL_HD }}	
 
     steps:
       - name: Checkout
@@ -23,16 +23,16 @@ jobs:
         with:
           node-version: 12.x
       - name: npm install
-        if: env.hldspurl
+        if: env.HL_URL
         run: |
           cd ~/js
           git checkout FeiZao
           npm install
       - name: '运行 【哈喽短视频】'
-        if: env.hldspurl
+        if: env.HL_URL
         run: |
           cd ~/js
-          node hldsp.js
+          node Taskhldsp.js
         env:
           
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
