@@ -62,7 +62,7 @@ if(!$.isNode()&&hidsphd.indexOf("\n") ==-1){
 }else {
     if($.isNode()){
     if (process.env.HL_HD && process.env.HL_HD.indexOf('\n') > -1) {
-        xyzdhd = process.env.HL_HD.split('\n');
+        hldsphd = process.env.HL_HD.split('\n');
     } else {
         hidsphd = [process.env.HL_HD]
     };
