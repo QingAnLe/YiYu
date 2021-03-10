@@ -26,7 +26,7 @@ jobs:
         if: env.HL_URL
         run: |
           cd ~/js
-          git checkout mian
+          git checkout main
           npm install
       - name: '运行 【哈喽短视频】'
         if: env.HL_URL
