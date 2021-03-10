@@ -80,7 +80,7 @@ if(!$.isNode()&&hldsphd.indexOf("\n") ==-1){
         hldsphdArr.push(hldsphd[item])
         }
     });
-    Object.keys(hidspurl).forEach((item) =>{
+    Object.keys(hldspurl).forEach((item) =>{
         if (hldspurl[item]) {
             hldspurlArr.push(hldspurl[item])
         }
