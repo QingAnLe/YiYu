@@ -56,33 +56,33 @@ const hldspurlArr = [], hldsphdArr = [],hldspcount = ''
 let hldspurl = $.getdata('hldspurl')
 let hldsphd = $.getdata('hldsphd')
 let hlsign = '',hluid = ''
-if(!$.isNode()&&hidsphd.indexOf("\n") ==-1){
-    hidspurlArr.push($.getdata('hidspurl'))
-    hidsphdArr.push($.getdata('hidsphd'))
+if(!$.isNode()&&hldsphd.indexOf("\n") ==-1){
+    hldspurlArr.push($.getdata('hldspurl'))
+    hldsphdArr.push($.getdata('hldsphd'))
 }else {
     if($.isNode()){
     if (process.env.HL_HD && process.env.HL_HD.indexOf('\n') > -1) {
         hldsphd = process.env.HL_HD.split('\n');
     } else {
-        hidsphd = [process.env.HL_HD]
+        hldsphd = [process.env.HL_HD]
     };
     if (process.env.HL_URL && process.env.HL_URL.indexOf('\n') > -1) {
-        hidspurl = process.env.HL_URL.split('\n');
+        hldspurl = process.env.HL_URL.split('\n');
     } else {
-        hidspurl = [process.env.HL_URL]
+        hldspurl = [process.env.HL_URL]
     };  console.log(` ============脚本执行 - 北京时间 (UTC + 8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()} =============\n`);
  } else if(!$.isNode()&&hlhd.indexOf("\n")>-1){
-   hidsphd = hidspurl.split("\n")
-   hidspurl = hidspurl.split("\n")   
+   hldsphd = hldspurl.split("\n")
+   hldspurl = hldspurl.split("\n")   
 };
-    Object.keys(hidsphd).forEach((item) =>{
-        if (hidsphd[item]) {
-        hidsphdArr.push(hidsphd[item])
+    Object.keys(hldsphd).forEach((item) =>{
+        if (hldsphd[item]) {
+        hldsphdArr.push(hldsphd[item])
         }
     });
     Object.keys(hidspurl).forEach((item) =>{
-        if (hidspurl[item]) {
-            hidspurlArr.push(hidspurl[item])
+        if (hldspurl[item]) {
+            hldspurlArr.push(hldspurl[item])
         }
     });
  console.log(` ============= 您共提供${hidsphdArr.length}个哈喽短视频账号 =============`);
@@ -97,12 +97,12 @@ if (ishldspck = typeof $request !== 'undefined') {
   if (!HL_HDArr[0]) {
     $.msg($.name, '【提示】请先获取哈喽短视频一header')
     return;
-  } else {hldspurlArr.push($.getdata('hidspurl'))
-    hldsphdArr.push($.getdata('hidsphd'))
+  } else {hldspurlArr.push($.getdata('hldspurl'))
+    hldsphdArr.push($.getdata('hldsphd'))
     let hldspcount = ($.getval('hldspcount') || '1');
   for (let i = 2; i <= hldspcount; i++) {
-    hldspurlArr.push($.getdata(`hidspurl${i}`))
-    hldsphdArr.push($.getdata(`hidsphd${i}`))
+    hldspurlArr.push($.getdata(`hldspurl${i}`))
+    hldsphdArr.push($.getdata(`hldsphd${i}`))
   }
       for (let i = 0; i < hldsphdArr.length; i++) {
         if (hldsphdArr[i]) {
