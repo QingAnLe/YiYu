@@ -12,7 +12,7 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     env:
         xyzdurl: ${{ secrets.xyzdurl }}
-        xyzdhd: ${{ secrets.xyzdhd }}		
+        xyzdhd: ${{ secrets.xyzdhd }}	
         xyzdbody: ${{ secrets.xyzdbody }}
 
     steps:
@@ -27,7 +27,7 @@ jobs:
         if: env.xyzdurl
         run: |
           cd ~/js
-          git checkout FeiZao
+          git checkout main
           npm install
       - name: '运行 【幸运赚点】'
         if: env.xyzdurl
