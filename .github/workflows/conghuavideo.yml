@@ -3,7 +3,7 @@
 
 
 
-name: conghuavideo(葱花自动刷视频)
+name: 葱花刷视频
 
 on:
   workflow_dispatch:
