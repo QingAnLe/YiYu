@@ -26,13 +26,13 @@ jobs:
         if: env.HL_URL
         run: |
           cd ~/js
-          git checkout FeiZao
+          git checkout mian
           npm install
       - name: '运行 【哈喽短视频】'
         if: env.HL_URL
         run: |
           cd ~/js
-          node Taskhldsp.js
+          node Task/hldsp.js
         env:
           
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
