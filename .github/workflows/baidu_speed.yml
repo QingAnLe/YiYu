@@ -1,0 +1,32 @@
+name: baidu_speed@Sunert3
+on:
+    workflow_dispatch:
+    schedule:
+      - cron: "13/30 * * * *"
+    watch:
+      types: [started]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        BAIDU_COOKIE: ${{ secrets.BAIDU_COOKIE }}
+        TZ: Asia/shanghai
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install
+        run: |
+          npm install
+      - name: '运行 【百度极速版】'
+        if: env.BAIDU_COOKIE
+        run: |
+          node Task/baidu_speed.js
+        env:
+          BAIDU_CASH: ${{ secrets.BAIDU_CASH }}
+          BAIDU_COOKIE: ${{ secrets.BAIDU_COOKIE }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
