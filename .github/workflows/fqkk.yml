@@ -1,7 +1,7 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 # 运行时间从北京时间12点半开始，每隔90分钟一次，执行6次，最后一次在晚上8点
-name: fqkk@feizao3 
+name: 番茄看看
 
 on:
   workflow_dispatch:
