@@ -20,8 +20,8 @@ jobs:
       RUNFILE: "Task/QQread.js"      
       RUNSTEPTOKEN: ${{ secrets.RUNSTEPTOKEN }}
       RUNSTEPKEY: ${{ secrets.RUNSTEPKEY }}
-      TXTOKEN: ${{ secrets.RUNSTEPTXTOKEN }}
-      TXKEY: ${{ secrets.RUNSTEPTXKEY }}
+      TXTOKEN: ${{ secrets. TXTOKEN }}
+      TXKEY: ${{ secrets. TXKEY }}
       PUSH_KEY: ${{ secrets.PUSH_KEY }}
       BARK_PUSH: ${{ secrets.BARK_PUSH }}
       BARK_SOUND: ${{ secrets.BARK_SOUND }}
