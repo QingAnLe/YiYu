@@ -13,7 +13,7 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     env:
        CFZURL: ${{ secrets.CFZURL }}
-          CFZHD: ${{ secrets.CFZHD }}
+       CFZHD: ${{ secrets.CFZHD }}
         
     steps:
       - name: Checkout
