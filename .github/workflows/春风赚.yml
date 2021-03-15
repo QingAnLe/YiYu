@@ -33,7 +33,7 @@ jobs:
         if: env.CFZURL
         run: |
           cd ~/js
-          node Task/bububao.js
+          node Task/cfz.js
         env:
           
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
