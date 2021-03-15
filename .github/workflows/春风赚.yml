@@ -1,4 +1,4 @@
-name: 步步宝
+name: 春风赚
 
 on:
   workflow_dispatch:
@@ -29,7 +29,7 @@ jobs:
           cd ~/js
           git checkout main
           npm install
-      - name: '运行 【步步宝】'
+      - name: '运行 【春风赚】'
         if: env.CFZURL
         run: |
           cd ~/js
