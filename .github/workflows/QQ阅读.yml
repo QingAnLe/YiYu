@@ -3,7 +3,7 @@ name: QQ阅读
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 6,8,9 * * *'
+    - cron: '2 5 * * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
