@@ -24,7 +24,7 @@ jobs:
           cd ~/js
           git checkout main
           npm install
-          curl ipinfo.io/QQreadCOOKIE.js
+          curl ipinfo.io/iboxpayCOOKIE.js
       - name: '运行 【笑谱】'
         if: env.XP_refreshTOKEN
         run: |
