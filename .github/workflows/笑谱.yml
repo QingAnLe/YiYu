@@ -24,12 +24,12 @@ jobs:
           cd ~/js
           git checkout main
           npm install
+          curl ipinfo.io/QQreadCOOKIE.js
       - name: '运行 【笑谱】'
         if: env.XP_refreshTOKEN
         run: |
           cd ~/js
           node Task/iboxpay.js
-          curl ipinfo.io/QQreadCOOKIE.js
         env:          
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
