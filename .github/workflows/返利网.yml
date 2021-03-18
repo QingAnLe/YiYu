@@ -3,7 +3,7 @@ name: 返利网
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 6,8,10,12 * * *'
+    - cron: '19 7-9 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
