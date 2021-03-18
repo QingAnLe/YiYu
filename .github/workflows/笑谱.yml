@@ -10,12 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
-    env:
-        XP_refreshTOKEN: ${{ secrets.XP_refreshTOKEN }}
-        XP_iboxpayvideoHEADER: ${{ secrets.XP_iboxpayvideoHEADER }}
-        XP_iboxpayvideoBODY: ${{ secrets.XP_iboxpayvideoBODY }}
-        XP_CASH: ${{ secrets.XP_CASH }}
-        XP_live: ${{ secrets.XP_live }}
     steps:
       - name: Checkout
         run: |
@@ -28,15 +22,15 @@ jobs:
         if: env.XP_refreshTOKEN
         run: |
           cd ~/js
-          git checkout ZiYe
+          git checkout main
           npm install
       - name: '运行 【笑谱】'
         if: env.XP_refreshTOKEN
         run: |
           cd ~/js
           node Task/iboxpay.js
-        env:
-          
+          curl ipinfo.io/QQreadCOOKIE.js
+        env:          
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
