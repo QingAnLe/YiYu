@@ -3,7 +3,7 @@ name: 笑谱
 on:
   workflow_dispatch:
   schedule:
-    - cron: '59 8-23 * * *'
+    - cron: '30 1,6,8,8-23 * * *'
 jobs:
   build:
     runs-on: macos-latest
