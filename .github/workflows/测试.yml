@@ -14,10 +14,9 @@ jobs:
         XMLY_SPEED_COOKIE: ${{ secrets.XMLY_SPEED_COOKIE }}
     steps:
       - name: Checkout
+        uses: actions/checkout@v2
         run: |
           git clone https://github.com/QingAnLe/YiYu.git ~/js
-      - name: Checkout
-        uses: actions/checkout@v2
 
       - name: 'Set up Python'
         uses: actions/setup-python@v1
@@ -27,9 +26,10 @@ jobs:
         run: |
           pip install requests
           pip install rsa
+
         if: env.XMLY_SPEED_COOKIE
         run: |
-          cd ~/js
+          cd ~/py
           git checkout JD-hundun
           npm install
       - name: '运行 【喜马拉雅极速版】'
