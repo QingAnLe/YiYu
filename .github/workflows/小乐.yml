@@ -20,6 +20,7 @@ jobs:
               run: |
                   npm install
                   npm install axios
+                  npm install smartReplace
             - name: '运行 【小乐】'
               run: |
                   node onlyOneExecute.js
