@@ -19,6 +19,7 @@ jobs:
             - name: npm install
               run: |
                   npm install
+                  npm install axios
             - name: '运行 【小乐】'
               run: |
                   node onlyOneExecute.js
