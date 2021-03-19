@@ -1,4 +1,4 @@
-name: sync
+name: 同步各大作者库
 on:
   schedule:
     - cron: '0 */3 * * *'
