@@ -27,4 +27,4 @@ jobs:
                   TG_USER_ID: ${{ secrets.TG_USER_ID2 }}
                   XL_URL: ${{ secrets.XL_URL }}
                   XL_HEADER: ${{ secrets.XL_HEADER }}
-                  SYNCURL: https://raw.githubusercontent.com/QingAnLe/YiYu/ZiYe/Task/xiaole.js
+                  SYNCURL: https://github.com/QingAnLe/YiYu/ZiYe/Task/xiaole.js
