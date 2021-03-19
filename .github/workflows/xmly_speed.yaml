@@ -18,7 +18,7 @@ jobs:
               uses: actions/checkout@v2
             - name: Checkout
               run: |
-                   git clone https://github.com/QingAnLe/SQ.git ~/js
+                   git clone https://github.com/whyour/hundun.git ~/js
 
             - name: "Set up Python"
               uses: actions/setup-python@v1
@@ -33,7 +33,7 @@ jobs:
               run: pip install -r ./requirements.txt
 
             - name: "运行 喜马拉雅极速版"
-              run: python3 Task/xmly_speed.py
+              run: python3 quanx/xmly_speed.py
               env:
                   XMLY_SPEED_COOKIE: ${{ secrets.XMLY_SPEED_COOKIE }}  #必须 cookie 多账号 \n 分割
                   AUTO_TAKE_OUT: ${{ secrets.AUTO_TAKE_OUT }}  #非必须 是否自动提现支付宝20
