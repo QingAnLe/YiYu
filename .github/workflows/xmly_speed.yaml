@@ -16,6 +16,9 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v2
+            - name: Checkout
+              run: |
+                   git clone https://github.com/QingAnLe/SQ.git ~/js
 
             - name: "Set up Python"
               uses: actions/setup-python@v1
