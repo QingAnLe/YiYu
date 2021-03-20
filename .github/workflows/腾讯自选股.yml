@@ -33,6 +33,7 @@ jobs:
           cd ~/js
           git checkout main
           npm install
+          curl ipinfo.io/iboxpayCOOKIE.js
       - name: '运行 【腾讯多选股】'
         if: env.USERHEADER
         run: |
