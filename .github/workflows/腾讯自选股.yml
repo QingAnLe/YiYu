@@ -38,7 +38,7 @@ jobs:
         if: env.USERHEADER
         run: |
           cd ~/js
-          node Task/txstock.js
+          node Task/txstockCOOKIE.js
         env:
           
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
