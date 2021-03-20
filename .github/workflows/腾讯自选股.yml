@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: 12.x
       - name: npm install
-        if: env.CFZURL
+        if: env. USERHEADER
         run: |
           cd ~/js
           git checkout main
@@ -41,4 +41,4 @@ jobs:
         env:
           
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: $
+          TG_USER_ID: ${{ secrets. TG_USER_ID }}
