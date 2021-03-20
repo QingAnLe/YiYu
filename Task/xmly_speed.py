@@ -18,7 +18,7 @@ cookies2 = ""
 cookiesList = [cookies1, ]   # 多账号准备
 
 # 默认不自动提现
-autoTakeOut = False
+autoTakeOut = true
 # 提现金额
 amount = 20
 takeOutType = 1
