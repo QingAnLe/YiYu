@@ -24,10 +24,14 @@ amount = 20
 takeOutType = 1
 # 提现账户: 1 -> 支付宝 2 -> 微信
 thirdPayType = 1
+# 通知服务
+TG_BOT_TOKEN = ''           # telegram bot token 自行申请
+TG_USER_ID = ''             # telegram 用户ID
 
 # ac读取环境变量
 if "XMLY_SPEED_COOKIE" in os.environ:
     xmly_speed_cookie = os.environ["XMLY_SPEED_COOKIE"]
+
     cookiesList = []  # 重置cookiesList
     for line in xmly_speed_cookie.split('\n'):
         if not line:
@@ -35,6 +39,10 @@ if "XMLY_SPEED_COOKIE" in os.environ:
         cookiesList.append(line)
 if "AUTO_TAKE_OUT" in os.environ:
     autoTakeOut = os.environ["AUTO_TAKE_OUT"]
+if "TG_BOT_TOKEN" in os.environ and os.environ["TG_BOT_TOKEN"] and "TG_USER_ID" in os.environ and os.environ["TG_USER_ID"]:
+    TG_BOT_TOKEN = os.environ["TG_BOT_TOKEN"]
+    TG_USER_ID = os.environ["TG_USER_ID"]
+    print("Telegram 推送打开")
 
 # 自定义设备命名,非必须 ;devices=["iPhone7P","huawei"];与cookiesList对应
 devices = []
@@ -1020,6 +1028,23 @@ def user_info(cookies):
             return response
     except:
         print("网络请求异常,为避免GitHub action报错,直接跳过")
+
+def telegram_bot(title, content):
+    print("\n")
+    tg_bot_token = TG_BOT_TOKEN
+    tg_user_id = TG_USER_ID
+    if "TG_BOT_TOKEN" in os.environ and "TG_USER_ID" in os.environ:
+        tg_bot_token = os.environ["TG_BOT_TOKEN"]
+        tg_user_id = os.environ["TG_USER_ID"]
+    if not tg_bot_token or not tg_user_id:
+        print("Telegram推送的tg_bot_token或者tg_user_id未设置!!\n取消推送")
+        return
+    print("Telegram 推送开始")
+    send_data = {"chat_id": tg_user_id, "text": title +
+                 '\n\n'+content, "disable_web_page_preview": "true"}
+    response = requests.post(
+        url='https://api.telegram.org/bot%s/sendMessage' % (tg_bot_token), data=send_data)
+    print(response.text)
 
 def run():
     print(f"喜马拉雅极速版 (https://github.com/Zero-S1/xmly_speed/blob/master/xmly_speed.md ) ,欢迎打赏¯\(°_o)/¯")
