@@ -40,12 +40,12 @@ if "YOUTH_HEADER1" in os.environ:
     shareBodyVar = f'YOUTH_SHAREBODY{str(i+1)}'
     startBodyVar = f'YOUTH_STARTBODY{str(i+1)}'
     if headerVar in os.environ and os.environ[headerVar] and readBodyVar in os.environ and os.environ[readBodyVar] and readTimeBodyVar in os.environ and os.environ[readTimeBodyVar]:
-      globals()['cookies'+str(i + 1)]["YOUTH_HEADER1"] = json.loads(os.environ[headerVar])
-      globals()['cookies'+str(i + 1)]["YOUTH_READBODY1"] = os.environ[readBodyVar]
-      globals()['cookies' + str(i + 1)]["YOUTH_READTIMEBODY1"] = os.environ[readTimeBodyVar]
-      globals()['cookies' + str(i + 1)]["YOUTH_WITHDRAWBODY1"] = os.environ[withdrawBodyVar]
-      globals()['cookies' + str(i + 1)]["YOUTH_SHAREBODY1"] = os.environ[shareBodyVar]
-      globals()['cookies' + str(i + 1)]["YOUTH_STARTBODY1"] = os.environ[startBodyVar]
+      globals()['cookies'+str(i + 1)]["YOUTH_HEADER"] = json.loads(os.environ[headerVar])
+      globals()['cookies'+str(i + 1)]["YOUTH_READBODY"] = os.environ[readBodyVar]
+      globals()['cookies' + str(i + 1)]["YOUTH_READTIMEBODY"] = os.environ[readTimeBodyVar]
+      globals()['cookies' + str(i + 1)]["YOUTH_WITHDRAWBODY"] = os.environ[withdrawBodyVar]
+      globals()['cookies' + str(i + 1)]["YOUTH_SHAREBODY"] = os.environ[shareBodyVar]
+      globals()['cookies' + str(i + 1)]["YOUTH_STARTBODY"] = os.environ[startBodyVar]
       COOKIELIST.append(globals()['cookies'+str(i + 1)])
   print(COOKIELIST)
 
