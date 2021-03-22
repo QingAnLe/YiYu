@@ -18,12 +18,12 @@ from datetime import datetime, timezone, timedelta
 # 清除App后台，重新启动App，找到 start.json 的请求，拷贝请求体，放入对应参数 YOUTH_STARTBODY
 
 cookies1 = {
-  'YOUTH_HEADER': {},
-  'YOUTH_READBODY': '',
-  'YOUTH_READTIMEBODY': '',
-  'YOUTH_WITHDRAWBODY': '',
-  'YOUTH_SHAREBODY': '',
-  'YOUTH_STARTBODY': ''
+  'YOUTH_HEADER':{},
+  'YOUTH_READBODY':'',
+  'YOUTH_READTIMEBODY':'',
+  'YOUTH_WITHDRAWBODY':'',
+  'YOUTH_SHAREBODY':'',
+  'YOUTH_STARTBODY':''
 }
 cookies2 = {}
 
