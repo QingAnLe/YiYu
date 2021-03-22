@@ -24,9 +24,6 @@ jobs:
       - name: 'Install requests'
         run: pip install requests
 
-      - name: "安装依赖包"
-        run: pip install -r Task/requirements.txt
-
       - name: 'run 中青看点'
         run: python3 Task/youth.py
         env:
