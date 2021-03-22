@@ -5,6 +5,8 @@ on:
     - cron: '*/10 5,23 * * *'
   watch:
     types: [started]
+  repository_dispatch:
+    types: youtu
 jobs:
   build:
     runs-on: ubuntu-latest
