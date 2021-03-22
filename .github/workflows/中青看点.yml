@@ -21,10 +21,11 @@ jobs:
       - name: 'Install requests'
         run: pip install requests
 
+      - name: "安装依赖包"
+        run: pip install -r Task./requirements.txt
+
       - name: 'run 中青阅读'
-        # youth_read.py目录自己修改
         run: python3 Task/youth.py
-        # 目前最大5个账号，可按格式继续填写
         env:
             YOUTH_HEADER1: ${{ secrets.YOUTH_HEADER1 }}  #必须 账号1 body1
             YOUTH_READBODY1: ${{ secrets.YOUTH_READBODY1 }}  #必须 账号1 body1
