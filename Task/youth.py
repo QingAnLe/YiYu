@@ -18,12 +18,12 @@ from datetime import datetime, timezone, timedelta
 # 清除App后台，重新启动App，找到 start.json 的请求，拷贝请求体，放入对应参数 YOUTH_STARTBODY
 
 cookies1 = {
-  'YOUTH_HEADER': {},
-  'YOUTH_READBODY': '',
-  'YOUTH_READTIMEBODY': '',
-  'YOUTH_WITHDRAWBODY': '',
-  'YOUTH_SHAREBODY': '',
-  'YOUTH_STARTBODY': ''
+  'YOUTH_HEADER1': {},
+  'YOUTH_READBODY1': '',
+  'YOUTH_READTIMEBODY1': '',
+  'YOUTH_WITHDRAWBODY1': '',
+  'YOUTH_SHAREBODY1': '',
+  'YOUTH_STARTBODY1': ''
 }
 cookies2 = {}
 
@@ -40,12 +40,12 @@ if "YOUTH_HEADER1" in os.environ:
     shareBodyVar = f'YOUTH_SHAREBODY{str(i+1)}'
     startBodyVar = f'YOUTH_STARTBODY{str(i+1)}'
     if headerVar in os.environ and os.environ[headerVar] and readBodyVar in os.environ and os.environ[readBodyVar] and readTimeBodyVar in os.environ and os.environ[readTimeBodyVar]:
-      globals()['cookies'+str(i + 1)]["YOUTH_HEADER"] = json.loads(os.environ[headerVar])
-      globals()['cookies'+str(i + 1)]["YOUTH_READBODY"] = os.environ[readBodyVar]
-      globals()['cookies' + str(i + 1)]["YOUTH_READTIMEBODY"] = os.environ[readTimeBodyVar]
-      globals()['cookies' + str(i + 1)]["YOUTH_WITHDRAWBODY"] = os.environ[withdrawBodyVar]
-      globals()['cookies' + str(i + 1)]["YOUTH_SHAREBODY"] = os.environ[shareBodyVar]
-      globals()['cookies' + str(i + 1)]["YOUTH_STARTBODY"] = os.environ[startBodyVar]
+      globals()['cookies'+str(i + 1)]["YOUTH_HEADER1"] = json.loads(os.environ[headerVar])
+      globals()['cookies'+str(i + 1)]["YOUTH_READBODY1"] = os.environ[readBodyVar]
+      globals()['cookies' + str(i + 1)]["YOUTH_READTIMEBODY1"] = os.environ[readTimeBodyVar]
+      globals()['cookies' + str(i + 1)]["YOUTH_WITHDRAWBODY1"] = os.environ[withdrawBodyVar]
+      globals()['cookies' + str(i + 1)]["YOUTH_SHAREBODY1"] = os.environ[shareBodyVar]
+      globals()['cookies' + str(i + 1)]["YOUTH_STARTBODY1"] = os.environ[startBodyVar]
       COOKIELIST.append(globals()['cookies'+str(i + 1)])
   print(COOKIELIST)
 
