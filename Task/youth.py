@@ -40,8 +40,8 @@ if "YOUTH_HEADER1" in os.environ:
     shareBodyVar = f'YOUTH_SHAREBODY{str(i+1)}'
     startBodyVar = f'YOUTH_STARTBODY{str(i+1)}'
     if headerVar in os.environ and os.environ[headerVar] and readBodyVar in os.environ and os.environ[readBodyVar] and readTimeBodyVar in os.environ and os.environ[readTimeBodyVar]:
-      globals()['cookies'+str(i + 1)]["YOUTH_HEADER"] = json.loads(os.environ[headerVar])
-      globals()['cookies'+str(i + 1)]["YOUTH_READBODY"] = os.environ[readBodyVar]
+      globals()['cookies' + str(i + 1)]["YOUTH_HEADER"] = json.loads(os.environ）[headerVar]
+      globals()['cookies' + str(i + 1)]["YOUTH_READBODY"] = os.environ[readBodyVar]
       globals()['cookies' + str(i + 1)]["YOUTH_READTIMEBODY"] = os.environ[readTimeBodyVar]
       globals()['cookies' + str(i + 1)]["YOUTH_WITHDRAWBODY"] = os.environ[withdrawBodyVar]
       globals()['cookies' + str(i + 1)]["YOUTH_SHAREBODY"] = os.environ[shareBodyVar]
