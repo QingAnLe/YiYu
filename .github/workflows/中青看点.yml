@@ -1,4 +1,4 @@
-name: 中青看点
+baname: 中青看点
 
 on:
   workflow_dispatch:
@@ -31,5 +31,23 @@ jobs:
             YOUTH_WITHDRAWBODY1: ${{ secrets.YOUTH_WITHDRAWBODY1 }}  #非必须 账号1提现 body1
             YOUTH_SHAREBODY1: ${{ secrets.YOUTH_SHAREBODY1 }}  #必须 账号1 body1
             YOUTH_STARTBODY1: ${{ secrets.YOUTH_STARTBODY1 }}  #必须 账号1 body1
+            YOUTH_HEADER2: ${{ secrets.YOUTH_HEADER2 }}  #非必须 账号2 body2
+            YOUTH_READBODY2: ${{ secrets.YOUTH_READBODY2 }}  #非必须 账号2 body2
+            YOUTH_READTIMEBODY2: ${{ secrets.YOUTH_READTIMEBODY2 }}  #非必须 账号2 body2
+            YOUTH_WITHDRAWBODY2: ${{ secrets.YOUTH_WITHDRAWBODY2 }}  #非必须 账号2提现 body2
+            YOUTH_SHAREBODY2: ${{ secrets.YOUTH_SHAREBODY2 }}  #必须 账号2 body2
+            YOUTH_STARTBODY2: ${{ secrets.YOUTH_STARTBODY2 }}  #必须 账号2 body2
+            YOUTH_HEADER3: ${{ secrets.YOUTH_HEADER3 }}  #非必须 账号3 body3
+            YOUTH_READBODY3: ${{ secrets.YOUTH_READBODY3 }}  #非必须 账号3 body3
+            YOUTH_READTIMEBODY3: ${{ secrets.YOUTH_READTIMEBODY3 }}  #非必须 账号3 body3
+            YOUTH_WITHDRAWBODY3: ${{ secrets.YOUTH_WITHDRAWBODY3 }}  #非必须 账号3提现 body3
+            YOUTH_SHAREBODY3: ${{ secrets.YOUTH_SHAREBODY3 }}  #必须 账号3 body3
+            YOUTH_STARTBODY3: ${{ secrets.YOUTH_STARTBODY3 }}  #必须 账号3 body3
+            YOUTH_HEADER4: ${{ secrets.YOUTH_HEADER4 }}  #非必须 账号4 body4
+            YOUTH_READBODY4: ${{ secrets.YOUTH_READBODY4 }}  #非必须 账号4 body4
+            YOUTH_READTIMEBODY4: ${{ secrets.YOUTH_READTIMEBODY4 }}  #非必须 账号4 body4
+            YOUTH_WITHDRAWBODY4: ${{ secrets.YOUTH_WITHDRAWBODY4 }}  #非必须 账号4提现 body4
+            YOUTH_SHAREBODY4: ${{ secrets.YOUTH_SHAREBODY4 }}  #必须 账号4 body4
+            YOUTH_STARTBODY4: ${{ secrets.YOUTH_STARTBODY4 }}  #必须 账号4 body4
             TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}  #非必须 tg机器人token
             TG_USER_ID: ${{ secrets.TG_USER_ID }}  #非必须 tg机器人id
