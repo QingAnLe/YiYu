@@ -18,7 +18,7 @@ from datetime import datetime, timezone, timedelta
 # 清除App后台，重新启动App，找到 start.json 的请求，拷贝请求体，放入对应参数 YOUTH_STARTBODY
 
 cookies1 = {
-  'YOUTH_HEADER':（）,
+  'YOUTH_HEADER': {},
   'YOUTH_READBODY': '',
   'YOUTH_READTIMEBODY': '',
   'YOUTH_WITHDRAWBODY': '',
@@ -32,7 +32,7 @@ COOKIELIST = [cookies1,]  # 多账号准备
 # ac读取环境变量
 if "YOUTH_HEADER1" in os.environ:
   COOKIELIST = []
-  for i in range(5):
+  for i in range(7):
     headerVar = f'YOUTH_HEADER{str(i+1)}'
     readBodyVar = f'YOUTH_READBODY{str(i+1)}'
     readTimeBodyVar = f'YOUTH_READTIMEBODY{str(i+1)}'
