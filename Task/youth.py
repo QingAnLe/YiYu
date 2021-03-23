@@ -32,7 +32,7 @@ COOKIELIST = [cookies1,]  # 多账号准备
 # ac读取环境变量
 if "YOUTH_HEADER1" in os.environ:
   COOKIELIST = []
-  for i in range(7):
+  for i in range(5):
     headerVar = f'YOUTH_HEADER{str(i+1)}'
     readBodyVar = f'YOUTH_READBODY{str(i+1)}'
     readTimeBodyVar = f'YOUTH_READTIMEBODY{str(i+1)}'
