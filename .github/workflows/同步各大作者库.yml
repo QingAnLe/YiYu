@@ -63,15 +63,6 @@ jobs:
           destination_branch: "zq"
           github_token: ${{ secrets.PAT }}
 
-      - name: sync 子夜
-        uses: repo-sync/github-sync@v2
-        if: env.PAT
-        with:
-          source_repo: "http://ziye.animatedlife.top:8888/down/hnsti2HbeRAn.git"
-          source_branch: "main"
-          destination_branch: "ZiYe"
-          github_token: ${{ secrets.PAT }}
-
       - name: sync 执意
         uses: repo-sync/github-sync@v2
         if: env.PAT
