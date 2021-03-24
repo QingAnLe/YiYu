@@ -63,6 +63,15 @@ jobs:
           destination_branch: "zq"
           github_token: ${{ secrets.PAT }}
 
+      - name: sync 子夜
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/ziye888/JavaScript.git"
+          source_branch: "main"
+          destination_branch: "ZiYe"
+          github_token: ${{ secrets.PAT }}
+
       - name: sync 执意
         uses: repo-sync/github-sync@v2
         if: env.PAT
