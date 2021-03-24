@@ -1,7 +1,6 @@
-name: 中青看点1
+name: 中青看点
 
 on:
-  workflow_dispatch:
   schedule:
     - cron: '*/10 5,23 * * *'
   watch:
@@ -23,7 +22,7 @@ jobs:
         run: pip install requests
 
       - name: "安装依赖包"
-        run: pip install -r Task./requirements.txt
+        run: pip install -r Task/requirements.txt
 
       - name: 'run 中青看点'
         run: python3 Task/youth.py
