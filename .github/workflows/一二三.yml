@@ -29,7 +29,7 @@ jobs:
       - name: '运行 【账号一中青浏览赚】'
         if: env.YOUTH_START1
         run: |
-          node youth_gain.js
+          node  Task/youth_gain.js
         env:
           YOUTH_START: ${{ secrets.YOUTH_START }}
           YOUTH_LOOK: ${{ secrets.YOUTH_LOOK }}
