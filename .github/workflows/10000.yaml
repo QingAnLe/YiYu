@@ -20,6 +20,7 @@ jobs:
             - name: npm install
               run: |
                   npm install
+                  npm install download
             - name: "运行【中国电信签到】"
               run: |
                   node Task/10000.js
