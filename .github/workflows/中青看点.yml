@@ -3,7 +3,7 @@ name: 中青看点（1-4）
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/10 5,12,23 * * *'
+    - cron: '*/15 5,10,15,19,23 * * *'
   watch:
     types: [started]
 jobs:
