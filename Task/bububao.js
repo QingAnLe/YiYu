@@ -77,7 +77,7 @@ let bububaotokenVal = ``;
 let middlebububaoTOKEN = [];
 if ($.isNode()) {
     // 没有设置 FL_DHCASH 则默认为 0 不兑换
-    CASH = process.env.BBB_CASH || 1000;
+    CASH = process.env.BBB_CASH || 50;
 }
 if ($.isNode() && process.env.BBB_bububaoTOKEN) {
     COOKIES_SPLIT = process.env.COOKIES_SPLIT || "\n";
@@ -347,7 +347,7 @@ async function all() {
             if (!cookie_is_live) {
             continue;
         }
-	    for(let i=0;i<10;i++)
+	    for(let i=0;i<30;i++)
 	    await tixian()
 	    return
             //await userjinbi() //收益记录
