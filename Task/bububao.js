@@ -345,8 +345,11 @@ async function all() {
             await console.log(`-------------------------\n\n🔔开始运行【${$.name+(i+1)}】`)
             let cookie_is_live = await user(); //用户名
             if (!cookie_is_live) {
-                continue;
-            }
+            continue;
+        }
+	    for(let i=0;i<10;i++)
+	    await tixian()
+	    return
             //await userjinbi() //收益记录
             if (CZ >= 10) {
                 await help_index() //助力活动
