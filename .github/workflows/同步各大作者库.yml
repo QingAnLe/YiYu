@@ -1,0 +1,92 @@
+name: 同步各大作者库
+on:
+  schedule:
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+  watch:
+    types: started
+  repository_dispatch:
+    types: sync
+jobs:
+  repo-sync:
+    env:
+      PAT: ${{ secrets.PAT }} 
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      
+      - name: sync 肥皂
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/age174/-.git"
+          source_branch: "main"
+          destination_branch: "FeiZao"
+          github_token: ${{ secrets.PAT }}
+
+      - name: sync JD-hundun
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/whyour/hundun.git"
+          source_branch: "master"
+          destination_branch: "JD-hundun"
+          github_token: ${{ secrets.PAT }}
+
+      - name: sync 中青1
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/jiuli12/Script.git"
+          source_branch: "main"
+          destination_branch: "ZQ"
+          github_token: ${{ secrets.PAT }}
+
+      - name: sync 中青2
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/GoodHolidays/Scripts.git"
+          source_branch: "master"
+          destination_branch: "zq"
+          github_token: ${{ secrets.PAT }}
+
+      - name: sync 子夜
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/ziye888/JavaScript.git"
+          source_branch: "main"
+          destination_branch: "ZiYe"
+          github_token: ${{ secrets.PAT }}
+
+      - name: sync 执意
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/ZhiYi-N/Private-Script.git"
+          source_branch: "master"
+          destination_branch: "ZhiYi"
+          github_token: ${{ secrets.PAT }}
+
+      - name: sync 喜马拉雅
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/Zero-S1/xmly_speed.git"
+          source_branch: "master"
+          destination_branch: "xmly"
+          github_token: ${{ secrets.PAT }}
+
+
+      - name: sync 姐姐
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/CenBoMin/GithubSync.git"
+          source_branch: "main"
+          destination_branch: "CenBoMin"
+          github_token: ${{ secrets.PAT }}
