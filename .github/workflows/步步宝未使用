@@ -1,44 +1,39 @@
-name: 步步宝
+name: 喜马拉雅极速版
 
 on:
-  workflow_dispatch:
-  schedule:
-     - cron: '*/30 0-23 * * *'
-  watch:
-    types: started
+    workflow_dispatch:
+    schedule:
+        - cron: "2,32 * * * *"
+    watch:
+        types: [started]
+    repository_dispatch:
+        types: xmly_speed
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    if: github.event.repository.owner.id == github.event.sender.id
-    env:
-       BBB_bububaoTOKEN: ${{ secrets. BBB_bububaoTOKEN }}	
-       BBB_CASH: ${{ secrets. BBB_CASH }}
-        
-    steps:
-      - name: Checkout
-        run: |
-          git clone https://github.com/QingAnLe/YiYu ~/js
-      - name: Use Node.js 12.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12.x
-      - name: npm install
-        if: env.BBB_bububaoTOKEN
-        run: |
-          cd ~/js
-          git checkout ZiYe
-          npm install
-      - name: '运行 【步步宝】'
-        if: env.BBB_bububaoTOKEN
-        run: |
-          cd ~/js
-          node Task/bububao.js
-        env:
-          
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+    build:
+        runs-on: ubuntu-latest
+        if: github.event.repository.owner.id == github.event.sender.id
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: "Set up Python"
+              uses: actions/setup-python@v1
+              with:
+                  python-version: 3.7
+            - name: 'Install requests'
+              run: |
+                pip install requests
+                pip install rsa
+                npm install util
+            - name: "安装依赖包"
+              run: pip install -r ./requirements.txt
+
+            - name: "运行 喜马拉雅极速版"
+              run: python3 Task/xmly.py
+              env:
+                  XMLY_SPEED_COOKIE: ${{ secrets.XMLY_SPEED_COOKIE }}  #必须 cookie 多账号 \n 分割
+                  AUTO_TAKE_OUT: ${{ secrets.AUTO_TAKE_OUT }}  #非必须 是否自动提现支付宝20
+                  TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}  #非必须 tg机器人token
+                  TG_USER_ID: ${{ secrets.TG_USER_ID }}  #非必须 tg机器人userId
+                  SYNCURL: https://raw.githubusercontent.com/whyour/hundun/master/quanx/xmly_speed.py          TG_USER_ID: ${{ secret
