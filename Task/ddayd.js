@@ -73,7 +73,7 @@ if ($.isNode() && process.env.DDAYD_ddaydCK) {
     console.log(
         `============ cookie方式为：boxjs复制会话 =============\n`
     );
-    XH = (COOKIE.settings.find(item => item.id === `ddaydXH`)).val;
+    XH = (COOKIE.settings.find(item => item.id === `ddaydXH`));
     ddaydCount = (COOKIE.settings.find(item => item.id === `ddaydCount`)).val || '1';
     for (let i = 1; i <= ddaydCount; i++) {
         if (i == 1) {
