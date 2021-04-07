@@ -1,5 +1,4 @@
 const $ = new Env('V生活');
-//1
 let status;
 status = (status = ($.getval("vshstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
 let vshurlArr = [], vshhdArr = [],vshdspbodyArr = [],vshspbodyArr = [],vshqdbodyArr = [],vsh1bodyArr = [],vsh2bodyArr = [],vshbodyArr = [],vshcount = ''
