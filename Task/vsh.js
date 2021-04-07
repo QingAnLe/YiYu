@@ -13,7 +13,7 @@ let vshbody = $.getdata('vshbody')
 let vshqdbody = $.getdata('vshqdbody')
 let vshsp = ($.getval('vshsp') || '1');//短视频刷金币开关,短视频刷金币因为时间很长,且不知道上限,默认为关闭状态,脚本只会运行除了短视频之外的任务,需要刷短视频金币的,建议先跑完日常任务再去boxjs里把短视频刷金币开关改为1,之后脚本只会运行刷短视频任务。。
 vshurlArr.push("http://iosvsh.zwzanwm.cn/app/svjl")
-    vshhdArr.push("{"Accept-Encoding":"gzip, deflate","Accept":"*/*","Connection":"keep-alive","Content-Type":"application/json","Host":"iosvsh.zwzanwm.cn","User-Agent":"vsh/1.13 (iPhone; iOS 13.6; Scale/3.00)","Content-Length":"2","Accept-Language":"zh-Hans-CN;q=1, en-US;q=0.9","token":"15DAC334-433D-4DC3-A7FA-93EAE26646AC"}")
+    vshhdArr.push({"Accept-Encoding":"gzip, deflate","Accept":"*/*","Connection":"keep-alive","Content-Type":"application/json","Host":"iosvsh.zwzanwm.cn","User-Agent":"vsh/1.13 (iPhone; iOS 13.6; Scale/3.00)","Content-Length":"2","Accept-Language":"zh-Hans-CN;q=1, en-US;q=0.9","token":"15DAC334-433D-4DC3-A7FA-93EAE26646AC"})
     vshdspbodyArr.push("{"isDouble":"0","moneyId":"0","mark":"Yo\/peypZr9IN5KX0mx8JEtM6OhP5G\/tabWh\/rv1PcbUKRXrM1+AT18FT5jJQqlQXd0XPI9GFjb\/Z6LQijoXpxSaGJ9D7rGzMxjWglKRCG8Y=","type":"7","seconds":"22"}")
     vshspbodyArr.push("{"isDouble":"1","moneyId":"0","mark":"9WrZ2+jF06tPsjU8IiZkXD9UokFJisuYnz\/mDcv8MzplX39Snyoo3O+NI7b1ylJKfTJU9iXsgvfspmfg2fWJY2zwsmaVkDo0ZJtEah4VTbU=","type":"1","seconds":"36"}")
     vsh1bodyArr.push("{"isDouble":"0","moneyId":"0","mark":"F9vbngImXJfU1GPh9iqFVkNmMkjYMdN9pFtkUH\/0qYzw1R+mHuNxI0ceKg3B8hj6IpI74prXEY\/aheIkJZdK5d5KI3Zb3wYpM8PubUR9MbE=","type":"13","seconds":"40"}")
