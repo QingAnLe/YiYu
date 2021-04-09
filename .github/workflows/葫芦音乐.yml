@@ -23,12 +23,12 @@ jobs:
         with:
           node-version: 12.x
       - name: npm install
-        if: env.HLYYURL
+        if: env.hlyyurl
         run: |
           cd ~/js
           npm install
       - name: '运行 【葫芦音乐】'
-        if: env.HLYYURL
+        if: env.hlyyurl
         run: |
           cd ~/js
           node Task/hl.js
