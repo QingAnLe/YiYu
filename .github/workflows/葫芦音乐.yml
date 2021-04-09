@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        hlyyurl: ${{ secrets.hlyyurl }}
-        hlyyhd: ${{ secrets.hlyyhd }}
+        hlyyurl: ${{ secrets.HLYYURL }}
+        hlyyhd: ${{ secrets. HLYYHD }}
           
     steps:
       - name: Checkout
@@ -23,12 +23,12 @@ jobs:
         with:
           node-version: 12.x
       - name: npm install
-        if: env.hlyyurl
+        if: env.HLYYURL
         run: |
           cd ~/js
           npm install
       - name: '运行 【葫芦音乐】'
-        if: env.hlyyurl
+        if: env.HLYYURL
         run: |
           cd ~/js
           node Task/hl.js
