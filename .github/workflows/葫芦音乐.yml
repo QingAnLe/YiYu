@@ -26,7 +26,6 @@ jobs:
         if: env.hlyyurl
         run: |
           cd ~/js
-          git checkout YiYu
           npm install
       - name: '运行 【葫芦音乐】'
         if: env.hlyyurl
