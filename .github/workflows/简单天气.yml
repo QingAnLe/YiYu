@@ -23,7 +23,7 @@ jobs:
           npm install cron
           npm install request
           curl ipinfo.io/jdtqCOOKIE.js
-      - name: '运行 【笑谱】'
+      - name: '运行 【简单天气】'
         run: |
           cd ~/js   
           node Task/jdtq.js
