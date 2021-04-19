@@ -3,7 +3,7 @@ name: 简单天气
 on:
   workflow_dispatch:
   schedule:
-      - cron: '6 6 0-23 * * *'
+      - cron: '35 1-23 * * *'
 jobs:
   build:
     runs-on: macos-latest
