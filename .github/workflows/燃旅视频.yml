@@ -8,7 +8,7 @@ on:
     types: started
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
         RLURL: ${{ secrets.RLURL }}
