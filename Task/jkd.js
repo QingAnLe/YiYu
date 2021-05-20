@@ -31,7 +31,7 @@ const DATE = `${new Date().getUTCFullYear()}${(new Date().getUTCMonth() + 1).toS
 let liveBody = null, fakeIOS = true
 const $ = new Env("聚看点")
 let sum = 0
-let cookiesArr = ["JSESSIONID=0E956428EAB3B99108D07AE2D55F3204; xz_jkd_appkey=bd9fa4712806409a93c69e30b7d342a4!iOS!5.6.5"&"JSESSIONID=C39F9E78CCE9F2436DACC697262ACE2C; xz_jkd_appkey=7d23eca4dc84476db0714f76e2494e20!iOS!5.6.5"] cookie = '', message;
+let cookiesArr = [] cookie = 'JSESSIONID=9BB277CDE60E27A4FFE8F6E69FF0843A; UM_distinctid=1798a4921ce4fd-006b13b916f491-724c1651-5a900-1798a4921cf1063; CNZZDATA1275507390=1583915074-1621518933-%7C1621518933; xz_jkd_appkey=7d23eca4dc84476db0714f76e2494e20!iOS!5.6.5"&"JSESSIONID=1216F660B2D354DC04DAE25F208CF7B8; xz_jkd_appkey=bd9fa4712806409a93c69e30b7d342a4!iOS!5.6.5', message;
 let notify = !$.isNode() ? $.getdata("JKD_MSG") : !!process.env.JKD_NOTIFY
 const ntf = $.isNode() ? require('./sendNotify') : '';
 
