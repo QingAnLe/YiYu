@@ -34,7 +34,7 @@ let sum = 0
 let cookiesArr = [
   // '', // xz_jkd_appkey=xxx; JSESSIONID=xxx; UM_distinctid=xxx; （账号1ck）
   // '', // xz_jkd_appkey=xxx; JSESSIONID=xxx; UM_distinctid=xxx; （账号2ck）
-], cookie = '', message;
+], cookie = '["JSESSIONID=0E956428EAB3B99108D07AE2D55F3204; xz_jkd_appkey=bd9fa4712806409a93c69e30b7d342a4!iOS!5.6.5"&"JSESSIONID=C39F9E78CCE9F2436DACC697262ACE2C; xz_jkd_appkey=7d23eca4dc84476db0714f76e2494e20!iOS!5.6.5"]', message;
 let notify = !$.isNode() ? $.getdata("JKD_MSG") : !!process.env.JKD_NOTIFY
 const ntf = $.isNode() ? require('./sendNotify') : '';
 
