@@ -27,5 +27,5 @@ jobs:
         run: |
           node Task/jkd.js
         env:
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+            TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}  #非必须 tg机器人token
+            TG_USER_ID: ${{ secrets.TG_USER_ID }}  #非必须 tg机器人userId
