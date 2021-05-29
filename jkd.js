@@ -1,7 +1,7 @@
 const jsname='聚看点'
 const $ = Env(jsname)
 //cow活动
-if($request && $request.method != `OPTIONS`) {
+if($reques) {
    const  bodyVal =$request.body;
     if(bodyVal)$.setdata(bodyVal,'jukan_body')
      $.log(`bodyVal:${bodyVal}`)
