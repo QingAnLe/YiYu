@@ -36,15 +36,6 @@ jobs:
           destination_branch: "JD-hundun"
           github_token: ${{ secrets.PAT }}
 
-      - name: sync 中青1
-        uses: repo-sync/github-sync@v2
-        if: env.PAT
-        with:
-          source_repo: "https://github.com/jiuli12/Script.git"
-          source_branch: "main"
-          destination_branch: "ZQ"
-          github_token: ${{ secrets.PAT }}
-
       - name: sync 中青2
         uses: repo-sync/github-sync@v2
         if: env.PAT
