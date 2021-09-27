@@ -12,6 +12,8 @@ jobs:
       - name: Checkout
         run: |
           git clone https://github.com/QingAnLe/YiYu.git ~/js
+        env:
+        KUAISHOUMV: ${{ secrets.KUAISHOUMV }}
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
