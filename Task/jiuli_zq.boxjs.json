@@ -1,0 +1,64 @@
+{
+  "id": "jiuli.app.sub",
+  "name": "jiuli 中青应用订阅",
+  "author": "@jiuli",
+  "icon": "",
+  "repo": "https://github.com/jiuli12/Script",
+  "apps": [{
+    "id": "youthQD",
+    "name": "中青多账号签到+转盘抽奖",
+    "keys": ["header_zq", "Read_zq","readTime_zq", "cashUrl_zq", "cashBody_zq","header_zq2", "Read_zq2","readTime_zq2", "cashUrl_zq2", "cashBody_zq2","header_zq3", "Read_zq3","readTime_zq3", "cashUrl_zq3", "cashBody_zq3","header_zq4", "Read_zq4","readTime_zq4", "cashUrl_zq4", "cashBody_zq4","header_zq5", "Read_zq5","readTime_zq5", "cashUrl_zq5", "cashBody_zq5","header_zq6", "Read_zq6","readTime_zq6", "cashUrl_zq6", "cashBody_zq6","header_zq7", "Read_zq7","readTime_zq7", "cashUrl_zq7", "cashBody_zq7","header_zq8", "Read_zq8","readTime_zq8", "cashUrl_zq8", "cashBody_zq8","header_zq9", "Read_zq9","readTime_zq9", "cashUrl_zq9", "cashBody_zq9" ,"header_zq10", "Read_zq10","readTime_zq10", "cashUrl_zq10", "cashBody_zq10"
+            ],
+    "author": "@jiuli",
+    "settings": [
+      {
+        "id": "zqSuffix",
+        "name": "当前账号",
+        "val": "1",
+        "type": "number",
+        "desc": "当前抓取ck记录的账号序号，如：1、2、3目前仅支持3账号"
+      },
+      {
+        "id": "zqCount",
+        "name": "账号个数",
+        "val": "1",
+        "type": "number",
+        "desc": "指定任务最多跑几个账号，根据抓取的账号数据个数来设值"
+      }
+    ],
+    "repo": "https://raw.githubusercontent.com/jiuli12/Script/main/youth.js",
+    "icons": ["https://raw.githubusercontent.com/jiuli12/Script/main/image/youth.png", "https://raw.githubusercontent.com/jiuli12/Script/main/image/youth.png"],
+    "script": "https://raw.githubusercontent.com/jiuli12/Script/main/youth.js"
+  },{
+    "id": "youthZDRead",
+    "name": "中青多账号阅读",
+    "keys": ["zqgetbody_body","index","zqgetbody_body2","index2","zqgetbody_body3","index3"],
+    "author": "@jiuli",
+    "settings": [
+       {
+          "id": "zqReadLog",
+          "name": "通知",
+          "val": false,
+          "type": "boolean",
+          "desc": "通知开关，30秒一次,较频繁！建议关闭。"
+      },
+      {
+        "id": "zqReadSuffix",
+        "name": "当前账号",
+        "val": "1",
+        "type": "number",
+        "desc": "当前抓取ck记录的账号序号，如：1、2、3目前仅支持3账号"
+      },
+      {
+        "id": "zqReadCount",
+        "name": "账号个数",
+        "val": "1",
+        "type": "number",
+        "desc": "指定任务最多跑几个账号，根据抓取的账号数据个数来设值"
+      }
+    ],
+    "repo": "https://raw.githubusercontent.com/jiuli12/Script/main/Youth_AutoRead.js",
+    "icons": ["https://raw.githubusercontent.com/jiuli12/Script/main/image/youth.png", "https://raw.githubusercontent.com/jiuli12/Script/main/image/youth.png"],
+    "script": "https://raw.githubusercontent.com/jiuli12/Script/main/Youth_AutoRead.js"
+  } ]
+}
