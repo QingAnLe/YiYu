@@ -63,16 +63,6 @@ jobs:
           destination_branch: "ZhiYi"
           github_token: ${{ secrets.PAT }}
 
-      - name: sync 喜马拉雅
-        uses: repo-sync/github-sync@v2
-        if: env.PAT
-        with:
-          source_repo: "https://github.com/Zero-S1/xmly_speed.git"
-          source_branch: "master"
-          destination_branch: "xmly"
-          github_token: ${{ secrets.PAT }}
-
-
       - name: sync 姐姐
         uses: repo-sync/github-sync@v2
         if: env.PAT
