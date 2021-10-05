@@ -22,11 +22,11 @@ jobs:
           npm install
           npm install cron
           npm install request
-          curl ipinfo.io/1txstockCOOKIE.js
+          curl ipinfo.io/2txstockCOOKIE.js
       - name: '运行 【腾讯自选股】'
         run: |
           cd ~/js   
-          node Task/1txstock.js
+          node Task/2txstock.js
     env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
