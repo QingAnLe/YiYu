@@ -207,7 +207,7 @@
   },{
     "id": "jrtt",
     "name": "今日头条极速版",
-    "keys": ["signurl", "ssignkey", "farmurl", "farmkey", "readurl", "readkey", "signurl2", "ssignkey2", "farmurl2", "farmkey2", "readurl2", "readkey2", "signurl3", "ssignkey3", "farmurl3", "farmkey3", "readurl3", "readkey3", "signurl4", "ssignkey4", "farmurl4", "farmkey4", "readurl4", "readkey4", "signurl5", "ssignkey5", "farmurl5", "farmkey5", "readurl5", "readkey5", "signurl6", "ssignkey6", "farmurl6", "farmkey6", "readurl6", "readkey6", "signurl7", "ssignkey7", "farmurl7", "farmkey7", "readurl7", "readkey7", "signurl8", "ssignkey8", "farmurl8", "farmkey8", "readurl8", "readkey8", "signurl9", "ssignkey9", "farmurl9", "farmkey9", "readurl9", "readkey9", "signurl10", "ssignkey10", "farmurl10", "farmkey10", "readurl10", "readkey10", "signurl11", "ssignkey11", "farmurl11", "farmkey11", "readurl11", "readkey11", "signurl12", "ssignkey12", "farmurl12", "farmkey12", "readurl12", "readkey12", "signurl13", "ssignkey13", "farmurl13", "farmkey13", "readurl13", "readkey13"],
+    "keys": ["signurl", "ssignkey", "farmurl", "farmkey", "readurl", "readdkey", "signurl2", "ssignkey2", "farmurl2", "farmkey2", "readurl2", "readdkey2", "signurl3", "ssignkey3", "farmurl3", "farmkey3", "readurl3", "readdkey3", "signurl4", "ssignkey4", "farmurl4", "farmkey4", "readurl4", "readdkey4", "signurl5", "ssignkey5", "farmurl5", "farmkey5", "readurl5", "readdkey5", "signurl6", "ssignkey6", "farmurl6", "farmkey6", "readurl6", "readdkey6", "signurl7", "ssignkey7", "farmurl7", "farmkey7", "readurl7", "readdkey7", "signurl8", "ssignkey8", "farmurl8", "farmkey8", "readurl8", "readdkey8", "signurl9", "ssignkey9", "farmurl9", "farmkey9", "readurl9", "readdkey9", "signurl10", "ssignkey10", "farmurl10", "farmkey10", "readurl10", "readdkey10", "signurl11", "ssignkey11", "farmurl11", "farmkey11", "readurl11", "readdkey11", "signurl12", "ssignkey12", "farmurl12", "farmkey12", "readurl12", "readdkey12", "signurl13", "ssignkey13", "farmurl13", "farmkey13", "readurl13", "readdkey13"],
     "author": "@Ariszy",
     "settings": [{
             "id": "tz",
@@ -267,7 +267,7 @@
   {
     "id": "dyjsb",
     "name": "抖音极速版",
-    "keys": ["ssignheader", "signcookie", "stepheader", "stepkey", "readheader", "readkey","ssignheader2", "signcookie2", "stepheader2", "stepkey2", "readheader2", "readkey2"],
+    "keys": ["ssignheader", "signcookie", "stepheader", "stepkey", "readheader", "readdkey","ssignheader2", "signcookie2", "stepheader2", "stepkey2", "readheader2", "readdkey2"],
     "author": "@Ariszy",
     "settings": [{
             "id": "dyhost",
@@ -399,7 +399,7 @@
    {
     "id": "hotsoon",
     "name": "火山小视频极速版",
-    "keys": ["hotsoonssignheader", "hotsoonssignkey", "hotsoonadheader", "hotsoonadkey", "hotsoonreadheader", "hotsoonreadkey", "hotsoonssignheader2", "hotsoonssignkey2", "hotsoonadheader2", "hotsoonadkey2", "hotsoonreadheader2", "hotsoonreadkey2", "hotsoonssignheader3", "hotsoonssignkey3", "hotsoonadheader3", "hotsoonadkey3", "hotsoonreadheader3", "hotsoonreadkey3", "hotsoonssignheader4", "hotsoonssignkey4", "hotsoonadheader4", "hotsoonadkey4", "hotsoonreadheader4", "hotsoonreadkey4", "hotsoonssignheader5", "hotsoonssignkey5", "hotsoonadheader5", "hotsoonadkey5", "hotsoonreadheader5", "hotsoonreadkey5", "hotsoonssignheader6", "hotsoonssignkey6", "hotsoonadheader6", "hotsoonadkey6", "hotsoonreadheader6", "hotsoonreadkey6", "hotsoonssignheader7", "hotsoonssignkey7", "hotsoonadheader7", "hotsoonadkey7", "hotsoonreadheader7", "hotsoonreadkey7", "hotsoonssignheader8", "hotsoonssignkey8", "hotsoonadheader8", "hotsoonadkey8", "hotsoonreadheader8", "hotsoonreadkey8", "hotsoonssignheader9", "hotsoonssignkey9", "hotsoonadheader9", "hotsoonadkey9", "hotsoonreadheader9", "hotsoonreadkey9", "hotsoonssignheader10", "hotsoonssignkey10", "hotsoonadheader10", "hotsoonadkey10", "hotsoonreadheader10", "hotsoonreadkey10"],
+    "keys": ["hotsoonssignheader", "hotsoonssignkey", "hotsoonadheader", "hotsoonadkey", "hotsoonreadheader", "hotsoonreaddkey", "hotsoonssignheader2", "hotsoonssignkey2", "hotsoonadheader2", "hotsoonadkey2", "hotsoonreadheader2", "hotsoonreaddkey2", "hotsoonssignheader3", "hotsoonssignkey3", "hotsoonadheader3", "hotsoonadkey3", "hotsoonreadheader3", "hotsoonreaddkey3", "hotsoonssignheader4", "hotsoonssignkey4", "hotsoonadheader4", "hotsoonadkey4", "hotsoonreadheader4", "hotsoonreaddkey4", "hotsoonssignheader5", "hotsoonssignkey5", "hotsoonadheader5", "hotsoonadkey5", "hotsoonreadheader5", "hotsoonreaddkey5", "hotsoonssignheader6", "hotsoonssignkey6", "hotsoonadheader6", "hotsoonadkey6", "hotsoonreadheader6", "hotsoonreaddkey6", "hotsoonssignheader7", "hotsoonssignkey7", "hotsoonadheader7", "hotsoonadkey7", "hotsoonreadheader7", "hotsoonreaddkey7", "hotsoonssignheader8", "hotsoonssignkey8", "hotsoonadheader8", "hotsoonadkey8", "hotsoonreadheader8", "hotsoonreaddkey8", "hotsoonssignheader9", "hotsoonssignkey9", "hotsoonadheader9", "hotsoonadkey9", "hotsoonreadheader9", "hotsoonreaddkey9", "hotsoonssignheader10", "hotsoonssignkey10", "hotsoonadheader10", "hotsoonadkey10", "hotsoonreadheader10", "hotsoonreaddkey10"],
     "author": "@Ariszy",
     "settings": [{
             "id": "tz",
