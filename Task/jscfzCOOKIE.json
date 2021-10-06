@@ -56,28 +56,4 @@
     "icons": ["https://gitee.com/tom210120/tom/raw/master/jscfz.jpg", "https://gitee.com/tom210120/tom/raw/master/jscfz.jpg"],
     "script": "https://gitee.com/tom210120/tom/raw/master/jscfz.js",
     "icon": "https://gitee.com/tom210120/tom/raw/master/jscfz.jpg",
-    "favIcon": "mdi-star-outline",
-    "favIconColor": "grey",
-    "datas": [{
-      "key": "jscfzheader",
-      "val": ""
-    }, {
-      "key": "jscfzheader2",
-      "val": ""
-    }, {
-      "key": "jscfzheader3",
-      "val": ""
-    }
-    //多账号自行复制以下注释内容
-    //,{
-     // "key": "ddgyurl",
-     // "val": ""
-   // }, {
-    //  "key": "ddgyheader",
-     // "val": ""
-    //}
-],
-    "sessions": [],
-    "isLoaded": true
-  }
-  
+ }
