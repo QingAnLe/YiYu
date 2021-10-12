@@ -87,8 +87,15 @@
                     "val": "10",
                     "type": "number",
                     "desc": "推送以及通知控制在什么分钟段，可设置0-59,默认0到10"
+                },
+                {
+                    "id": "txwzqCASH",
+                    "name": "提现标准",
+                    "val": "0",
+                    "type": "number",
+                    "desc": "0不提现，可设置 1 5 等"
                 }
-              ],
+               ],
             "repo": "https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/txwzq.js",
             "icons": ["https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/txwzq.png", "https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/txwzq.png"],
             "script": "https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/txwzq.js"
