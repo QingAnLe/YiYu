@@ -8,7 +8,7 @@
       "id": "youthCk",
       "name": "中青数据",
       "keys": ["youthheader_zq", "read_zq", "readtime_zq", "youthheader_zq2", "read_zq2", "readtime_zq2", "youthheader_zq3", "read_zq3", "readtime_zq3", "youthheader_zq4", "read_zq4", "readtime_zq4", "youthheader_zq5", "read_zq5", "readtime_zq5", "youthheader_zq6", "read_zq6", "readtime_zq6", "youthheader_zq7", "read_zq7", "readtime_zq7", "youthheader_zq8", "read_zq8", "readtime_zq8",
-"youthheader_zq9", "read_zq9", "readtime_zq9", "youthheader_zq10", "read_zq10", "readtime_zq10"],
+"youthheader_zq9", "read_zq9", "readtime_zq9", "youthheader_zq10", "read_zq10", "readtime_zq10","youthheader_zq11", "read_zq11", "readtime_zq11", "youthheader_zq12", "read_zq12", "readtime_zq12"],
       "descs_html": [
         "多账号脚本地址【<a href=\"https://raw.githubusercontent.com/ztxtop/x/main/youth.js\">中青看点极速版</a>】",
         "中青多账号ck抓取步骤：",
@@ -140,6 +140,18 @@
         "val": "0",
         "type": "number",
         "desc": "账号10阅读数据总行数"
+      }, {
+        "id": "read_count11",
+        "name": "账号11总阅读数",
+        "val": "0",
+        "type": "number",
+        "desc": "账号11阅读数据总行数"
+      }, {
+        "id": "read_count912",
+        "name": "账号12总阅读数",
+        "val": "0",
+        "type": "number",
+        "desc": "账号12阅读数据总行数"
       }],
       "repo": "https://github.com/ztxtop/x/blob/main/zqread.js",
       "icons": ["https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/youth.png", "https://raw.githubusercontent.com/Orz-3/mini/master/Color/youth.png"],
@@ -155,7 +167,7 @@
       "descs_html": [
         "⚠️：带有android字眼的会话数据是抓安卓设备的app数据包的，只用ios的话，无视它的存在吧"
       ],
-      "keys": ["youth_banner", "youth_android_readtime", "youth_android_reward", "youth_android_newtask", "youth_banner2", "youth_android_readtime2", "youth_android_reward2", "youth_android_newtask2", "youth_banner3", "youth_android_readtime3", "youth_android_reward3", "youth_android_newtask3", "youth_banner4", "youth_android_readtime4", "youth_android_reward4", "youth_android_newtask4", "youth_banner5", "youth_android_readtime5", "youth_android_reward5", "youth_android_newtask5", "youth_banner6", "youth_android_readtime6", "youth_android_reward6", "youth_android_newtask6", "youth_banner7", "youth_android_readtime7", "youth_android_reward7", "youth_android_newtask7", "youth_banner8", "youth_android_readtime8", "youth_android_reward8", "youth_android_newtask8", "youth_banner9", "youth_android_readtime9", "youth_android_reward9", "youth_android_newtask9", "youth_banner10", "youth_android_readtime10", "youth_android_reward10", "youth_android_newtask10"],
+      "keys": ["youth_banner", "youth_android_readtime", "youth_android_reward", "youth_android_newtask", "youth_banner2", "youth_android_readtime2", "youth_android_reward2", "youth_android_newtask2", "youth_banner3", "youth_android_readtime3", "youth_android_reward3", "youth_android_newtask3", "youth_banner4", "youth_android_readtime4", "youth_android_reward4", "youth_android_newtask4", "youth_banner5", "youth_android_readtime5", "youth_android_reward5", "youth_android_newtask5", "youth_banner6", "youth_android_readtime6", "youth_android_reward6", "youth_android_newtask6", "youth_banner7", "youth_android_readtime7", "youth_android_reward7", "youth_android_newtask7", "youth_banner8", "youth_android_readtime8", "youth_android_reward8", "youth_android_newtask8", "youth_banner9", "youth_android_readtime9", "youth_android_reward9", "youth_android_newtask9", "youth_banner10", "youth_android_readtime10", "youth_android_reward10", "youth_android_newtask10","youth_banner11", "youth_android_readtime11", "youth_android_reward11", "youth_android_newtask11", "youth_banner12", "youth_android_readtime12", "youth_android_reward12", "youth_android_newtask12"],
       "author": "@ztxtop",
       "settings": [{
         "id": "delErrorData",
