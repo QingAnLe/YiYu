@@ -7,9 +7,7 @@
   "apps": [{
       "id": "youthCk",
       "name": "中青数据",
-      "keys": ["youthheader_zq", "read_zq", "readtime_zq", "youthheader_zq2", "read_zq2", "readtime_zq2", "youthheader_zq3", "read_zq3", "readtime_zq3", "youthheader_zq4", "read_zq4", "readtime_zq4", "youthheader_zq5", "read_zq5", "readtime_zq5", "youthheader_zq6", "read_zq6", "readtime_zq6", "youthheader_zq7", "read_zq7", "readtime_zq7", "youthheader_zq8", "read_zq8", "readtime_zq8",
-"youthheader_zq9", "read_zq9", "readtime_zq9", "youthheader_zq10", "read_zq10", "readtime_zq10","youthheader_zq11", "read_zq11", "readtime_zq11", "youthheader_zq12", "read_zq12", "readtime_zq12", "youthheader_zq13", "read_zq13", "readtime_zq13", "youthheader_zq14", "read_zq14", "readtime_zq14", "youthheader_zq15", "read_zq15", "readtime_zq15", "youthheader_zq16", "read_zq16", "readtime_zq16",
-"youthheader_zq17", "read_zq917", "readtime_zq17", "youthheader_zq18", "read_zq18", "readtime_zq18","youthheader_zq19", "read_zq19", "readtime_zq19", "youthheader_zq20", "read_zq20", "readtime_zq20"],
+      "keys": ["youthheader_zq", "read_zq", "readtime_zq", "youthheader_zq2", "read_zq2", "readtime_zq2", "youthheader_zq3", "read_zq3", "readtime_zq3", "youthheader_zq4", "read_zq4", "readtime_zq4", "youthheader_zq5", "read_zq5", "readtime_zq5", "youthheader_zq6", "read_zq6", "readtime_zq6", "youthheader_zq7", "read_zq7", "readtime_zq7", "youthheader_zq8", "read_zq8", "readtime_zq8","youthheader_zq9", "read_zq9", "readtime_zq9", "youthheader_zq10", "read_zq10", "readtime_zq10","youthheader_zq11", "read_zq11", "readtime_zq11", "youthheader_zq12", "read_zq12", "readtime_zq12", "youthheader_zq13", "read_zq13", "readtime_zq13", "youthheader_zq14", "read_zq14", "readtime_zq14", "youthheader_zq15", "read_zq15", "readtime_zq15", "youthheader_zq16", "read_zq16", "readtime_zq16","youthheader_zq17", "read_zq917", "readtime_zq17", "youthheader_zq18", "read_zq18", "readtime_zq18","youthheader_zq19", "read_zq19", "readtime_zq19", "youthheader_zq20", "read_zq20", "readtime_zq20"],
       "descs_html": [
         "多账号脚本地址【<a href=\"https://raw.githubusercontent.com/ztxtop/x/main/youth.js\">中青看点极速版</a>】",
         "中青多账号ck抓取步骤：",
